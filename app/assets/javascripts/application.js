@@ -5,22 +5,22 @@
 = require oxymoron/angular-cookies
 = require oxymoron/angular-ui-router
 = require oxymoron/ng-notify
+= require oxymoron/angular-animate
 = require oxymoron
 = require_self
 = require_tree ./controllers
 = require ammap
 = require worldLow
+= require angular-scroll
 = require jquery3
 = require jquery_ujs
-= require ng-file-upload
-= require angularjs-toaster
-= require ngDialog
-= require angular-truncate-2
+= require script
 = require_tree ./configs
 = require_tree ./directives
 */
-var app = angular.module('app', ['ui.router','oxymoron', 'ngDialog', 'ngFileUpload']);
+var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll']).value('duScrollBottomSpy', false);
 
 app.config(['$stateProvider', function ($stateProvider) {
   $stateProvider.rails()
 }])
+

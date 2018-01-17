@@ -16,6 +16,102 @@
  *= require ammap.css
  */
 
+
+body, html, ui-view
+  overflow-x: hidden !important
+
+
 @font-face 
   font-family: 'open-sans'
   src: url('OpenSans-Regular.ttf')
+
+a
+  text-decoration: none !important
+
+.navbar
+  position: relative
+  z-index: 9999
+  height: 50px
+  width: 100%
+  background-color: #D4D4D4
+  .logo
+    height: 50px
+    width: 180px
+    margin-left: 50px
+    display: flex
+    cursor: pointer
+    &:hover
+      background-color: #D4D4D4 !important    
+    img
+      width: 50px
+      height: 100%
+    .logo-text
+      padding-top: 10px
+      padding-left: 5px
+      font-size: 20px
+      font-family: 'open-sans'
+
+.fon
+  overflow-x: hidden !important
+  width: 100% !important
+  position: relative
+  display: block
+  height: 1500px
+  background-color: white
+
+.test-content
+  height: 400px
+  position: relative
+  width: 80%
+  background-color: #D4D4D4
+  margin: 0px auto
+  margin-top: 50px
+  img 
+    height: 100%
+    width: 100%
+
+
+@keyframes slide
+  from
+    margin-left: 100%
+  to
+    margin-left: 0%
+
+@keyframes falling
+  0%
+    transform: scale(1.08, 1.08)
+  90%
+    transform: scale(1.08, 1.08)
+  98%
+    transform: scale(1.01, 1.01)
+
+@keyframes hidding
+  0%
+    opacity: 1
+  90%
+    opacity: 0
+  100%
+    opacity: 0
+
+@keyframes scrollUp
+  100%
+    top: 50px
+
+.ng-enter, .ng-enter-active 
+  transition: 0.8s
+  .fon
+    scroll-behavior: smooth
+    z-index: 999
+    position: absolute
+    animation: slide 0.8s, falling 0.8s, scrollUp 0.8s
+
+.ng-leave
+  transition: 0.8s
+  .fon
+    position: absolute
+    z-index: -999
+    animation: hidding 0.8s
+
+.ng-leave-active
+  .fon
+    opacity: 0

@@ -150,22 +150,9 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.1.4)
       sprockets-rails (>= 2.0.0)
-    rails-assets-angular (1.5.11)
-    rails-assets-angular-animate (1.5.11)
-      rails-assets-angular (= 1.5.11)
-    rails-assets-angular-ellipsis (0.1.7)
-      rails-assets-angular (>= 1.1.7)
-    rails-assets-angular-locale-ru (1.3.0)
-    rails-assets-angular-truncate-2 (0.4.2)
-    rails-assets-angularjs-toaster (2.2.0)
-      rails-assets-angular (> 1.2.6)
-      rails-assets-angular-animate (> 1.2.8)
-    rails-assets-momentjs (2.20.1)
-    rails-assets-ng-file-upload (12.2.13)
-      rails-assets-angular (> 1.2.0)
-    rails-assets-ngDialog (1.4.0)
-      rails-assets-angular (>= 1.5)
-    rails-assets-select2 (4.0.5)
+    rails-assets-angular (1.4.7)
+    rails-assets-angular-scroll (1.0.2)
+      rails-assets-angular (>= 1.2.16, < 2)
     rails-assets-underscore (1.8.3)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
@@ -279,15 +266,8 @@ DEPENDENCIES
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.1.4)
-  rails-assets-angular (~> 1.5.8)!
-  rails-assets-angular-ellipsis (~> 0.1)!
-  rails-assets-angular-locale-ru (~> 1.3)!
-  rails-assets-angular-truncate-2 (~> 0.4)!
-  rails-assets-angularjs-toaster (~> 2.1)!
-  rails-assets-momentjs (~> 2.18)!
-  rails-assets-ng-file-upload (~> 12.2)!
-  rails-assets-ngDialog (~> 1.3)!
-  rails-assets-select2 (~> 4.0.3)!
+  rails-assets-angular (= 1.4.7)!
+  rails-assets-angular-scroll!
   rails-assets-underscore (~> 1.8)!
   rails-i18n (~> 5.0.0)
   rspec-rails (~> 3.6)

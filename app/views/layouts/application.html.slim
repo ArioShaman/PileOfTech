@@ -4,6 +4,13 @@ html ng-app="app"
     base href="/"
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
+
+
   body
-    ui-view
+    div.navbar
+      a.logo ui-sref="root_path"
+        =image_tag("logo")
+        .logo-text PileOfTech
+
+    ui-view.slide
       /= yield

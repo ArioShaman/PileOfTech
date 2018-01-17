@@ -115,6 +115,57 @@ angular.module("oxymoron.config.states", [])
           }
         })
       
+        .state('root_path', {
+          url: '/',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['root_path'](params);
+          },
+          controller: 'MainCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('next_main_index_path', {
+          url: '/main/next',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['next_main_index_path'](params);
+          },
+          controller: 'MainCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('next', $stateParams)
+            }]
+          }
+        })
+      
+        .state('main_index_path', {
+          url: '/main',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['main_index_path'](params);
+          },
+          controller: 'MainCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
       return $stateProvider;
     }
   }])
@@ -451,7 +502,7 @@ angular.module("oxymoron.directives", ['oxymoron.directives.fileupload', 'oxymor
 (function () {
   var Routes = function () {
     var self = this,
-        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"}};
+        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"root":{"defaults":{},"path":"/"},"next_main_index":{"defaults":{},"path":"/main/next"},"main_index":{"defaults":{},"path":"/main"}};
 
     self.defaultParams = {}
 
