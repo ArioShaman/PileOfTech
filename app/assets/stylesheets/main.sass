@@ -1,3 +1,155 @@
 // Place all the styles related to the Main controller here.
 // They will automatically be included in application.css.
 // You can use Sass here: http://sass-lang.com/
+$light: #c3c3c3
+$bgrey: #2e2e2e
+$yellow: #ffd631
+
+.fon
+  overflow-x: hidden !important
+  width: 100% !important
+  position: relative
+  display: block
+  height: auto
+  background-color: white
+.content
+  overflow-x: hidden !important
+  width: 100%
+  position: relative
+  height: 930px
+  display: block
+  .container
+    .title-cont
+      height: 200px
+      width: 100%
+      background-color: $light
+      user-select: none
+      .title
+        padding-top: 20px
+        color: $bgrey
+        font-size: 100px
+        text-align: center
+        font-family: 'm-fred'
+      .text
+        text-align: center
+        font-family: 'super-molot'
+        padding-left: 40px
+        padding-right: 40px
+        line-height: 22px
+        color: $bgrey
+
+    .big-cont
+      height: 427px
+      width: 100%
+      display: flex
+      .yellow-line
+        height: 4px
+        width: 50%
+        position: absolute
+        background-color: $yellow
+      .flex
+        display: flex
+        .team
+          width: 40%
+          height:  100%
+          background-color: $bgrey
+          .group
+            margin-top: 30px
+            .title
+              font-family: 'm-fred'
+              color: $yellow
+              font-size: 70px
+              margin-top: 5px
+              line-height: 60px
+              text-align: center
+          .teammate
+            margin: 0px auto
+            margin-top: 30px
+            height: 60px
+            width: 90%
+            display: flex
+            .cover-bl
+              height: 100%
+              min-width: 60px
+              max-width: 60px
+              img
+                height: 100%
+                width: 100%
+                border-radius: 50%
+                box-shadow: 0px 4px 9px 5px rgba(0,0,0,0.5)
+            .info-bl
+              height: 60px
+              width: 100%
+              font-family: 'm-fred'
+              color: $yellow              
+              .name
+                font-size: 35px
+                padding-top: 5px
+                padding-left: 10px
+              .position
+                padding-top: 2px
+                padding-left: 10px
+                font-size: 18px              
+
+
+        .article
+          width: 60%
+          height: 100%
+          font-family: 'm-fred'
+          .cover
+            height: 170px
+            width: 90%
+            margin: 20px auto
+            background-color: grey
+            img
+              width: 100%
+              height: 100%  
+          .title
+            font-size: 35px
+            color: $bgrey
+            text-align: center
+          .small-title
+            font-size: 16px
+            color: $light
+            text-align: center  
+          .text
+            font-size: 16px
+            line-height: 25px
+            padding-left: 25px
+            padding-right: 25px
+            color: #918F8D
+            text-align: center    
+      .half
+        width: 50%
+        height:  100%
+        img
+          width: 100%
+          height: 100%
+        .link
+          position: absolute
+          margin-top:  -150px
+          height: 65px
+          right: 0
+          width: 200px
+          background-color: $yellow
+          font-family: 'super-molot'
+          color: $bgrey
+          text-align: center
+          padding-top: 15px
+          font-size: 20px
+          cursor: pointer
+          transition: 0.5s
+        .link:hover
+          background-color: $bgrey
+          color: $yellow
+
+.test-content
+  height: 400px
+  position: relative
+  width: 80%
+  background-color: #D4D4D4
+  margin: 0px auto
+  margin-top: 50px
+  img 
+    height: 100%
+    width: 100%

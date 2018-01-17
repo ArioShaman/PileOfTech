@@ -1,16 +1,23 @@
 html ng-app="app"
   head
-    title MAD
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title PileOfTech
     base href="/"
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
 
 
   body
-    div.navbar
+    .navbar
       a.logo ui-sref="root_path"
         =image_tag("logo")
         .logo-text PileOfTech
+      .menu
+        .content
+          .el
+          .el
+      .menu-icon
+        .icon
+          
 
     ui-view.slide
-      /= yield

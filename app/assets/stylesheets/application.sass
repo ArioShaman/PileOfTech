@@ -15,26 +15,110 @@
  *= require oxymoron/ng-notify
  *= require ammap.css
  */
-
-
-body, html, ui-view
+$grey: #d3d3d3
+body
   overflow-x: hidden !important
 
+
+.not-overflow
+  overflow-y: hidden !important
+
+@font-face 
+  font-family: 'super-molot'
+  src: url('SuperMolot.ttf')
 
 @font-face 
   font-family: 'open-sans'
   src: url('OpenSans-Regular.ttf')
 
+@font-face 
+  font-family: 'm-fred'
+  src: url('MFred.ttf')
+
 a
   text-decoration: none !important
+
+img
+  user-select: none
 
 .navbar
   position: relative
   z-index: 9999
   height: 50px
   width: 100%
-  background-color: #D4D4D4
+  background-color: $grey
+  .menu
+    position: relative
+    width: 100%
+    height: 0px
+    background-color: rgba(0,0,0,0.9) 
+    transition: 0.5s 
+    @keyframes flexcontent
+      0%
+        height: 0px
+      100%
+        height: 500px
+    .content
+      opacity: 1
+      position: absolute
+      margin: 0px auto
+      top: 50px
+      left: 0px
+      right: 0px
+      height: 0px
+      width: 400px
+      transition: 0.3s
+      background-color: grey
+      .el
+        position: relative
+        height: 0px
+        margin-top: 20px
+        width: 100%
+        background-color: #EFE6E6 
+    .open
+      animation: flexcontent 0.5s
+      height: 500px
+      .el
+        height: 40px
+
+  .menu-field
+    height: 700px
+    display: block
+
+  .menu-icon
+    position: relative
+    height: 27px
+    width: 55px
+    margin: auto  
+    top: 0px
+    border-radius: 0px 0px 5px 5px
+    transition: top 0.5s
+    .icon
+      position: relative
+      height: 20px
+      width: 45px
+      background-image: url('downto')
+      background-size: cover
+      margin: 0px auto
+      top: 2px
+    &:hover
+      cursor: pointer
+      background-color: grey
+    img
+      height: 20px
+      width: 45px  
+
+  .bottom
+    position: absolute
+    border-radius: 5px 5px 0px 0px
+    top: 655px
+    left: 0
+    right: 0  
+    .icon
+      background-image: url('upto')
+
   .logo
+    position: absolute
     height: 50px
     width: 180px
     margin-left: 50px
@@ -46,30 +130,10 @@ a
       width: 50px
       height: 100%
     .logo-text
-      padding-top: 10px
+      padding-top: 15px
       padding-left: 5px
       font-size: 20px
-      font-family: 'open-sans'
-
-.fon
-  overflow-x: hidden !important
-  width: 100% !important
-  position: relative
-  display: block
-  height: 1500px
-  background-color: white
-
-.test-content
-  height: 400px
-  position: relative
-  width: 80%
-  background-color: #D4D4D4
-  margin: 0px auto
-  margin-top: 50px
-  img 
-    height: 100%
-    width: 100%
-
+      font-family: 'super-molot'
 
 @keyframes slide
   from
@@ -99,7 +163,7 @@ a
 
 .ng-enter, .ng-enter-active 
   transition: 0.8s
-  .fon
+  .fon, .content
     scroll-behavior: smooth
     z-index: 999
     position: absolute
@@ -107,11 +171,11 @@ a
 
 .ng-leave
   transition: 0.8s
-  .fon
+  .fon, .content
     position: absolute
     z-index: -999
     animation: hidding 0.8s
 
 .ng-leave-active
-  .fon
+  .fon, .content
     opacity: 0
