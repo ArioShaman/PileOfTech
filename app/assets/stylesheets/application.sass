@@ -17,7 +17,7 @@
  */
 $grey: #d3d3d3
 body
-  overflow-x: hidden !important
+  overflow: hidden !important
 
 
 .not-overflow
@@ -62,22 +62,29 @@ img
       opacity: 1
       position: absolute
       margin: 0px auto
-      top: 50px
+      top: 150px
       left: 0px
       right: 0px
       height: 0px
       width: 400px
       transition: 0.3s
-      background-color: grey
+      overflow-y: hidden
       .el
         position: relative
         height: 0px
         margin-top: 20px
         width: 100%
-        background-color: #EFE6E6 
+        color: white
+        font-size: 32px
+        font-family: 'm-fred'
+        text-align: center
+        cursor: pointer
+        color: white !important
+        &:hover
+          font-size: 33px
     .open
       animation: flexcontent 0.5s
-      height: 500px
+      height: auto
       .el
         height: 40px
 

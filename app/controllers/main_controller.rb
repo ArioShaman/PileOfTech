@@ -2,8 +2,8 @@ class MainController < ApplicationController
   def index
   end
 
-  def next
-    render :next
+  def about
+    render :about
   end
 
 end
