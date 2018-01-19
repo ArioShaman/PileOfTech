@@ -19,10 +19,9 @@ app.controller 'MainCtrl', [
         setTimeout( ->
            $(".gallery-el.active").toggleClass("slide"+side)
         , 700)    
-        $(".gallery-el#"+prev).addClass("hideSlide")
-        setTimeout( ->
-           $(".gallery-el.active").toggleClass("slide"+side)
-        , 700)
+        $(".gallery-el").removeClass("hideSlide")
+        $(".gallery-el#"+prev).toggleClass("hideSlide")
+
 
       $('.next').click () ->   
         target = $('.gallery-el.active').attr('id')

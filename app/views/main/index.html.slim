@@ -9,9 +9,10 @@
             .text Gallery
             =image_tag("gallery")
         .foot-el.hover.grey
-          .cont
-            .text About us
-            =image_tag("profile")      
+          a ui-sref="about_main_index_path"
+            .cont
+              .text About us
+              =image_tag("profile")      
         .foot-el.hover.bgrey
           .cont
             .text Contacts
