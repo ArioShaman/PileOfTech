@@ -3,7 +3,8 @@ var translationsEN = {
   'HOME': 'Home',
   'ABOUT': 'About us',
   'GALLERY': 'Gallery',
-  'CONTACTS': 'Contacts'
+  'CONTACTS': 'Contacts',
+  'LK': 'Loged in',
 };
 
 var translationsRU = {
@@ -11,5 +12,6 @@ var translationsRU = {
   'HOME': 'ДОМОЙ',
   'ABOUT': 'О НАС',
   'GALLERY': 'ГАЛЕРЕЯ',
-  'CONTACTS': 'КОНТАКТЫ'  
+  'CONTACTS': 'КОНТАКТЫ'  ,
+  'LK':'ЛИЧНЫЙ КАБИНЕТ'
 };
