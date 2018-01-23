@@ -39,6 +39,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-underscore',          '~> 1.8'
   gem 'rails-assets-angular-scroll'
   gem 'rails-assets-angular-translate'
+  
   # gem 'rails-assets-angular-locale-ru',   '~> 1.3'
   # gem 'rails-assets-momentjs',            '~> 2.18'
   # gem 'rails-assets-angular-ellipsis',    '~> 0.1'

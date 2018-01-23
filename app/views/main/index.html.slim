@@ -7,15 +7,15 @@
         a.foot-el.link ui-sref="about_main_index_path"
           .hover.yellow
             .cont
-              .text Gallery
+              .text ng-bind="'GALLERY' | translate"
               =image_tag("gallery")
         a.foot-el.link ui-sref="about_main_index_path"
           .hover.grey
             .cont
-              .text About us
+              .text ng-bind="'ABOUT' | translate"
               =image_tag("profile") 
         a.foot-el.link ui-sref="about_main_index_path"  
           .hover.bgrey
             .cont
-              .text Contacts
+              .text ng-bind="'CONTACTS' | translate"
               =image_tag("contacts")        

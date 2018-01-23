@@ -12,7 +12,6 @@ $(document).ready ->
     $('.content').toggleClass('open')
 
 
-
   links = ["root_path"]
   $(document).on "click", "a.link", () ->
     attr = this.getAttribute("ui-sref")

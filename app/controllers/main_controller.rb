@@ -6,4 +6,8 @@ class MainController < ApplicationController
     render :about
   end
 
+  def gallery
+    render :gallery
+  end
+
 end

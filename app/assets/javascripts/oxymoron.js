@@ -149,6 +149,23 @@ angular.module("oxymoron.config.states", [])
           }
         })
       
+        .state('gallery_main_index_path', {
+          url: '/main/gallery',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['gallery_main_index_path'](params);
+          },
+          controller: 'MainCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('gallery', $stateParams)
+            }]
+          }
+        })
+      
         .state('main_index_path', {
           url: '/main',
           
@@ -502,7 +519,7 @@ angular.module("oxymoron.directives", ['oxymoron.directives.fileupload', 'oxymor
 (function () {
   var Routes = function () {
     var self = this,
-        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"root":{"defaults":{},"path":"/"},"about_main_index":{"defaults":{},"path":"/main/about"},"main_index":{"defaults":{},"path":"/main"}};
+        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"root":{"defaults":{},"path":"/"},"about_main_index":{"defaults":{},"path":"/main/about"},"gallery_main_index":{"defaults":{},"path":"/main/gallery"},"main_index":{"defaults":{},"path":"/main"}};
 
     self.defaultParams = {}
 

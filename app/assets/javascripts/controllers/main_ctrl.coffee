@@ -1,7 +1,7 @@
 app.controller 'MainCtrl', [
-  '$scope', '$document', 'action',
-  ($scope, $document, action) -> 
-
+  '$scope', '$document', 'action','$translate',
+  ($scope, $document, action, $translate) -> 
+    $scope.lang = 'ru'
     $document.scrollTo(0, 0)
     ctrl = this
 
@@ -45,5 +45,7 @@ app.controller 'MainCtrl', [
         target = prevId(target)
         sliderResponse(target, prev, 'Left')        
 
+    action 'gallery', () ->
+      $scope.name = 'Dan'
     return
 ]

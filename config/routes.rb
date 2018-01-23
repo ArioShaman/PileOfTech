@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :main, only: [:index] do
     collection do
       get :about
+      get :gallery
     end
   end  
 end

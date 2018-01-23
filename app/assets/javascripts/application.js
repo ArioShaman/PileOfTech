@@ -12,18 +12,27 @@
 = require ammap
 = require worldLow
 = require angular-scroll
+= require angular-translate
 = require jquery3
 = require jquery_ujs
 = require script
+= require translate
 = require_tree ./configs
 = require_tree ./directives
 */
-var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll']).value('duScrollBottomSpy', false);
+var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate']).value('duScrollBottomSpy', false);
 
 app.config(['$stateProvider', function ($stateProvider) {
   $stateProvider.rails()
-  
 }])
 
-//Hello
+app.config(['$translateProvider', function ($translateProvider) {
+
+  $translateProvider.translations('en', translationsEN);
+  $translateProvider.translations('ru', translationsRU);
+
+  $translateProvider.preferredLanguage('en');
+}])
+
+
 

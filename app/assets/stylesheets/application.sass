@@ -16,6 +16,9 @@
  *= require ammap.css
  */
 $grey: #d3d3d3
+$yellow: #ffd631
+$bgrey: #2e2e2e
+
 body, ui-view, html
   overflow: hidden !important
 
@@ -69,6 +72,22 @@ img
       width: 400px
       transition: 0.3s
       overflow-y: hidden
+      font-family: 'm-fred'
+      .lang-back
+        width: 200px
+        margin: 0px auto
+        height: 30px
+        font-size: 25px
+        text-align: center
+        padding-top: 7px
+      .ru
+        cursor: pointer
+        background-color: $yellow
+        color: $bgrey
+        transition: 0.5s
+        &:hover
+          background-color: $bgrey
+          color: $yellow
       .el
         position: relative
         height: 0px
@@ -76,7 +95,6 @@ img
         width: 100%
         color: white
         font-size: 32px
-        font-family: 'm-fred'
         text-align: center
         cursor: pointer
         color: white !important

@@ -14,13 +14,15 @@ html ng-app="app"
       .menu
         .content
           a.menu-link.link ui-sref="root_path"
-            .el HOME
+            .el ng-bind="'HOME' | translate"
           a.menu-link.link ui-sref="about_main_index_path"
-            .el ABOUT US
+            .el ng-bind="'ABOUT' | translate"
+          a.menu-link.link ui-sref="gallery_main_index_path"
+            .el ng-bind="'GALLERY' | translate"
           a.menu-link.link ui-sref="root_path"
-            .el GALLERY
-          a.menu-link.link ui-sref="root_path"
-            .el CONTACTS  
+            .el ng-bind="'CONTACTS' | translate"
+          div language=""
+
       .menu-icon
         .icon
       a.logo.link ui-sref="root_path"
