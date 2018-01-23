@@ -17,21 +17,20 @@
 = require jquery_ujs
 = require script
 = require translate
+= require ngstorage
 = require_tree ./configs
 = require_tree ./directives
 */
-var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate']).value('duScrollBottomSpy', false);
+var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate', 'ngStorage']).value('duScrollBottomSpy', false);
 
 app.config(['$stateProvider', function ($stateProvider) {
   $stateProvider.rails()
 }])
 
-app.config(['$translateProvider', function ($translateProvider) {
+app.config(['$translateProvider', function ($translateProvider, $rootScope) {
 
   $translateProvider.translations('en', translationsEN);
   $translateProvider.translations('ru', translationsRU);
-
-  $translateProvider.preferredLanguage('en');
 }])
 
 

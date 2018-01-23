@@ -1,4 +1,5 @@
-app.directive('language', function($translate) {
+app.directive('language', function($translate, $localStorage,
+    $sessionStorage) {
   return {
     estrict: 'A',
     template: '{{lang}}',
@@ -10,9 +11,11 @@ app.directive('language', function($translate) {
             attrs.$observe('language', function() {
               if($scope.lang == 'ru'){
                 $scope.lang = 'en';
+                $localStorage.lang = 'en';
                 $translate.use('en');
               }else{
                 $scope.lang = 'ru';
+                $localStorage.lang = 'ru';
                 $translate.use('ru');      
               }   
             });             
@@ -20,8 +23,10 @@ app.directive('language', function($translate) {
       });     
     },
 
-    controller: function($scope, $translate){
-      $scope.lang = 'en';
+    controller: function($scope, $translate, $localStorage,
+    $sessionStorage, $rootScope){
+      $scope.lang = $localStorage.lang || 'en';
+      $translate.use($scope.lang);
     }
   }
 });

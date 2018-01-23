@@ -155,6 +155,8 @@ GEM
       rails-assets-angular (>= 1.2.16, < 2)
     rails-assets-angular-translate (2.17.0)
       rails-assets-angular (>= 1.2.26, < 1.7)
+    rails-assets-ngstorage (0.3.11)
+      rails-assets-angular (>= 1.0.8)
     rails-assets-underscore (1.8.3)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
@@ -271,6 +273,7 @@ DEPENDENCIES
   rails-assets-angular (= 1.4.7)!
   rails-assets-angular-scroll!
   rails-assets-angular-translate!
+  rails-assets-ngstorage!
   rails-assets-underscore (~> 1.8)!
   rails-i18n (~> 5.0.0)
   rspec-rails (~> 3.6)
