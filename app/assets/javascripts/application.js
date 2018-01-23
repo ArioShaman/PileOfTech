@@ -22,5 +22,6 @@ var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll'
 
 app.config(['$stateProvider', function ($stateProvider) {
   $stateProvider.rails()
+  
 }])
 

@@ -9,21 +9,22 @@ html ng-app="app"
 
   body
     .navbar
-      a.logo ui-sref="root_path"
-        =image_tag("logo")
-        .logo-text PileOfTech
+      a.arrow-back ui-sref="root_path"
+        =image_tag("arrow.png", onmouseenter: "this.src ='#{image_path("arrow.gif")}';", onmouseout: "this.src = '#{image_path("arrow.png")}';" )
       .menu
         .content
-          a.menu-link ui-sref="root_path"
+          a.menu-link.link ui-sref="root_path"
             .el HOME
-          a.menu-link ui-sref="about_main_index_path"
+          a.menu-link.link ui-sref="about_main_index_path"
             .el ABOUT US
-          a.menu-link ui-sref="root_path"
+          a.menu-link.link ui-sref="root_path"
             .el GALLERY
-          a.menu-link  ui-sref="root_path"
+          a.menu-link.link ui-sref="root_path"
             .el CONTACTS  
       .menu-icon
         .icon
-          
+      a.logo.link ui-sref="root_path"
+        =image_tag("logo")
+        .logo-text PileOfTech      
 
     ui-view.slide

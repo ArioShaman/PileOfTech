@@ -4,16 +4,18 @@
 
     .footer-nav
       .container
-        .foot-el.hover.yellow
-          .cont
-            .text Gallery
-            =image_tag("gallery")
-        .foot-el.hover.grey
-          a ui-sref="about_main_index_path"
+        a.foot-el.link ui-sref="about_main_index_path"
+          .hover.yellow
+            .cont
+              .text Gallery
+              =image_tag("gallery")
+        a.foot-el.link ui-sref="about_main_index_path"
+          .hover.grey
             .cont
               .text About us
-              =image_tag("profile")      
-        .foot-el.hover.bgrey
-          .cont
-            .text Contacts
-            =image_tag("contacts")        
+              =image_tag("profile") 
+        a.foot-el.link ui-sref="about_main_index_path"  
+          .hover.bgrey
+            .cont
+              .text Contacts
+              =image_tag("contacts")        
