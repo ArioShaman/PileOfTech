@@ -217,74 +217,6 @@ angular.module("oxymoron.config.states", [])
           }
         })
       
-        .state('users_path', {
-          url: '/users',
-          
-          templateUrl: function(params) {
-            params['ng-view']='';
-            
-            
-            return Routes['users_path'](params);
-          },
-          controller: 'UsersCtrl as ctrl',
-          resolve: {
-            action: ['$stateParams', function ($stateParams) {
-              return resolve('index', $stateParams)
-            }]
-          }
-        })
-      
-        .state('new_user_path', {
-          url: '/users/new',
-          
-          templateUrl: function(params) {
-            params['ng-view']='';
-            
-            
-            return Routes['new_user_path'](params);
-          },
-          controller: 'UsersCtrl as ctrl',
-          resolve: {
-            action: ['$stateParams', function ($stateParams) {
-              return resolve('new', $stateParams)
-            }]
-          }
-        })
-      
-        .state('edit_user_path', {
-          url: '/users/:id/edit',
-          
-          templateUrl: function(params) {
-            params['ng-view']='';
-            
-            
-            return Routes['edit_user_path'](params);
-          },
-          controller: 'UsersCtrl as ctrl',
-          resolve: {
-            action: ['$stateParams', function ($stateParams) {
-              return resolve('edit', $stateParams)
-            }]
-          }
-        })
-      
-        .state('user_path', {
-          url: '/users/:id',
-          
-          templateUrl: function(params) {
-            params['ng-view']='';
-            
-            
-            return Routes['user_path'](params);
-          },
-          controller: 'UsersCtrl as ctrl',
-          resolve: {
-            action: ['$stateParams', function ($stateParams) {
-              return resolve('show', $stateParams)
-            }]
-          }
-        })
-      
         .state('root_path', {
           url: '/',
           
@@ -346,6 +278,23 @@ angular.module("oxymoron.config.states", [])
             return Routes['main_index_path'](params);
           },
           controller: 'MainCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('profile_index_path', {
+          url: '/profile',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['profile_index_path'](params);
+          },
+          controller: 'ProfileCtrl as ctrl',
           resolve: {
             action: ['$stateParams', function ($stateParams) {
               return resolve('index', $stateParams)
@@ -415,28 +364,6 @@ angular.module("oxymoron.services.resources", [])
     };
   }])
 
-  
-    .factory('User', ['$resource', 'resourceDecorator', function ($resource, resourceDecorator) {
-      return resourceDecorator($resource('/users/:id.json', {"id":"@id"}, {
-        "new": {
-          "method": "GET",
-          "url": "/users/:id/new.json"
-        },
-        "edit": {
-          "method": "GET",
-          "url": "/users/:id/edit.json"
-        },
-        "update": {
-          "method": "PUT"
-        },
-        "create": {
-          "method": "POST"
-        },
-        "destroy": {
-          "method": "DELETE"
-        }
-      }));
-    }])
   
 angular.module("oxymoron.services.sign", [])
   .service('Sign', ['$http', function ($http) {
@@ -711,7 +638,7 @@ angular.module("oxymoron.directives", ['oxymoron.directives.fileupload', 'oxymor
 (function () {
   var Routes = function () {
     var self = this,
-        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"new_user_session":{"defaults":{},"path":"/users/sign_in"},"user_session":{"defaults":{},"path":"/users/sign_in"},"destroy_user_session":{"defaults":{},"path":"/users/sign_out"},"new_user_password":{"defaults":{},"path":"/users/password/new"},"edit_user_password":{"defaults":{},"path":"/users/password/edit"},"user_password":{"defaults":{},"path":"/users/password"},"cancel_user_registration":{"defaults":{},"path":"/users/cancel"},"new_user_registration":{"defaults":{},"path":"/users/sign_up"},"edit_user_registration":{"defaults":{},"path":"/users/edit"},"user_registration":{"defaults":{},"path":"/users"},"users":{"defaults":{},"path":"/users"},"new_user":{"defaults":{},"path":"/users/new"},"edit_user":{"defaults":{},"path":"/users/:id/edit"},"user":{"defaults":{},"path":"/users/:id"},"root":{"defaults":{},"path":"/"},"about_main_index":{"defaults":{},"path":"/main/about"},"gallery_main_index":{"defaults":{},"path":"/main/gallery"},"main_index":{"defaults":{},"path":"/main"}};
+        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"new_user_session":{"defaults":{},"path":"/users/sign_in"},"user_session":{"defaults":{},"path":"/users/sign_in"},"destroy_user_session":{"defaults":{},"path":"/users/sign_out"},"new_user_password":{"defaults":{},"path":"/users/password/new"},"edit_user_password":{"defaults":{},"path":"/users/password/edit"},"user_password":{"defaults":{},"path":"/users/password"},"cancel_user_registration":{"defaults":{},"path":"/users/cancel"},"new_user_registration":{"defaults":{},"path":"/users/sign_up"},"edit_user_registration":{"defaults":{},"path":"/users/edit"},"user_registration":{"defaults":{},"path":"/users"},"root":{"defaults":{},"path":"/"},"about_main_index":{"defaults":{},"path":"/main/about"},"gallery_main_index":{"defaults":{},"path":"/main/gallery"},"main_index":{"defaults":{},"path":"/main"},"profile_index":{"defaults":{},"path":"/profile"}};
 
     self.defaultParams = {}
 

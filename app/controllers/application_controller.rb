@@ -14,7 +14,11 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       super
     else
-      redirect_to login_path, :notice => 'if you want to add a notice'
+      redirect_to root_path, :notice => 'if you want to add a notice'
     end  
   end
+    
+  def after_sign_in_path_for(resource)
+    return profile_index_url  
+  end  
 end

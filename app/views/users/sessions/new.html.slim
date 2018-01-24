@@ -6,11 +6,11 @@
 
       form novalidate="" name="form" ng-submit="commit()"
         .field
-            input ng-model="ctrl.data.email" type='text'
+            input ng-model="ctrl.data.email" type='text' name="user[login]"
             label for="user[login]" Логин 
 
         .field 
-            input type='password' ng-model="ctrl.data.password" 
+            input type='password' ng-model="ctrl.data.password" name="user[password]"
             label for="user[password]" Пароль            
         
         .field
