@@ -1,23 +1,29 @@
 .content
-  .container
-    .gallery
-      .arrow-cont
-        .arrow.last
-        .arrow.next    
-      .gallery-cont
-        .gallery-el
+  .about-container
+    .sidebar-cont
+      .right-line    
+      .sidebar-el
+      .sidebar-el
+      .sidebar-el
+    .info-cont
+      .info
+      .slider-cont
+        .slider-el.active
           .cover
             =image_tag("test-01")
           .info-bl
-        .gallery-el
+        .slider-el
           .cover
             =image_tag("test-02")
-          .info-bl
-        .gallery-el
+          .info-bl 
+        .slider-el
           .cover
-            | 3
-          .info-bl                       
-    .footer-nav
-      .foot-el.grey
-      .foot-el.grey
-      .foot-el.grey
+            =image_tag("test-01")
+          .info-bl 
+        .slider-el
+          .cover
+            =image_tag("test-02")
+          .info-bl                                   
+        .arrow-cont
+         .arrow.last
+         .arrow.next       
