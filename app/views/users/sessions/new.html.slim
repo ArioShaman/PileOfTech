@@ -1,0 +1,18 @@
+.content
+  .container
+    .bgrey-back
+     .form-cont
+      .title ng-bind="'LOGIN' | translate"
+
+      form novalidate="" name="form" ng-submit="commit()"
+        .field
+            input ng-model="ctrl.data.email" type='text' name="user[login]"
+            label for="user[login]" Логин 
+
+        .field 
+            input type='password' ng-model="ctrl.data.password" name="user[password]"
+            label for="user[password]" Пароль            
+        
+        .field
+          button.submit type="submit" ng-bind="'LOG' | translate"
+    
