@@ -6,7 +6,6 @@ class Users::SessionsController < Devise::SessionsController
     if user_signed_in?
       redirect_to profile_index_path
     end
-    #render :new   
   end
 
   def create
