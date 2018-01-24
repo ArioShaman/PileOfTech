@@ -31,6 +31,7 @@ $grey: #a7a7a7
       min-width: 350px
       max-width: 350px
       background-color: $bgrey
+      z-index: 100
       display: flex
       flex-direction: column
       .right-line
@@ -53,6 +54,7 @@ $grey: #a7a7a7
         height: 65%
         width: 100%
       .slider-cont
+        z-index: 10
         width: 100%
         height: 35%
         background-color: white 
@@ -68,10 +70,11 @@ $grey: #a7a7a7
           .cover
             background-color: grey
             height: 100%
-            flex-basis: 100%
+            max-width: 500px
+            min-width: 500px
             position: relative
             img
-              width: 100%
+              width: 500px
               height: 100%
           .info-bl
             height: 100%

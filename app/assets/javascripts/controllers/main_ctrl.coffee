@@ -13,7 +13,7 @@ app.controller 'MainCtrl', [
         if parseInt(target) == 0 then target = lastItem else target = target-1
         target
 
-      images = $('.gallery-el')
+      images = $('.slider-el')
       lastItem =  images.length - 1
       for i in [0..lastItem]
         images[i].setAttribute("id", i)
@@ -23,23 +23,23 @@ app.controller 'MainCtrl', [
 
       sliderResponse = (target, prev, side) ->
         images.removeClass('active')
-        $('.gallery-el#'+target).addClass('active')
-        $(".gallery-el.active").toggleClass("slide"+side)
+        $('.slider-el#'+target).addClass('active')
+        $(".slider-el.active").toggleClass("slide"+side)
         setTimeout( ->
-           $(".gallery-el.active").toggleClass("slide"+side)
+           $(".slider-el.active").toggleClass("slide"+side)
         , 700)    
-        $(".gallery-el").removeClass("hideSlide")
-        $(".gallery-el#"+prev).toggleClass("hideSlide")
+        $(".slider-el").removeClass("hideSlide")
+        $(".slider-el#"+prev).toggleClass("hideSlide")
 
 
       $('.next').click () ->   
-        target = $('.gallery-el.active').attr('id')
+        target = $('.slider-el.active').attr('id')
         prev = target
         target = nextId(target)
         sliderResponse(target, prev, 'Right')
 
       $('.last').click () ->   
-        target = $('.gallery-el.active').attr('id')
+        target = $('.slider-el.active').attr('id')
         prev = target
         target = prevId(target)
         sliderResponse(target, prev, 'Left')  
