@@ -33,5 +33,23 @@ app.config(['$translateProvider', function ($translateProvider, $rootScope) {
   $translateProvider.translations('ru', translationsRU);
 }])
 
+app.run(['$rootScope','$location', function($rootScope, $location){
+  links = []
 
+  $(document).on("click", "a.link", function(){
+    attr = $location.path();
+    if (links[links.length] != attr){
+      links.push(attr)
+    }
+  }); 
+  $(document).on("click", "a.arrow-back", function(){
+    attr = $location.path();
+    if(links.length > 0){
+      link = links[links.length - 1];
+      $location.path(link);
+      $rootScope.$apply();
+      links.pop(attr);
+    }
+  });
+}]);
 
