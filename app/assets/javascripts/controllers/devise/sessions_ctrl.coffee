@@ -1,8 +1,15 @@
 app.controller 'UsersSessionsCtrl', [
-  '$scope', '$rootScope', 'action'
-  ($scope,   $rootScope, action) ->
+  '$scope', '$http', '$rootScope', 'action', '$location', 'User',
+  ($scope, $http, $rootScope, action, $location, User) ->
 
     ctrl = this
-    console.log 'Hello world'    
+
+    $scope.commit = ->
+      console.log ctrl.data
+      
+      $http.post('/users/sign_in.json', ctrl.data).success (data)->  
+        console.log data
+
+    
     return
 ]

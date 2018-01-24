@@ -5,6 +5,8 @@ var translationsEN = {
   'GALLERY': 'Gallery',
   'CONTACTS': 'Contacts',
   'LK': 'Loged in',
+  'LOGIN': 'Login',
+  'LOG': 'Log in'
 };
 
 var translationsRU = {
@@ -13,5 +15,7 @@ var translationsRU = {
   'ABOUT': 'О НАС',
   'GALLERY': 'ГАЛЕРЕЯ',
   'CONTACTS': 'КОНТАКТЫ'  ,
-  'LK':'ЛИЧНЫЙ КАБИНЕТ'
+  'LK':'ЛИЧНЫЙ КАБИНЕТ',
+  'LOGIN': 'АВТОРИЗАЦИЯ',
+  'LOG': 'ВОЙТИ',
 };
