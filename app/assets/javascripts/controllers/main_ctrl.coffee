@@ -57,16 +57,20 @@ app.controller 'MainCtrl', [
         target
 
       images = $('.gallery-el')
+      dots = $('.dot')
       lastItem =  images.length - 1
       for i in [0..lastItem]
         images[i].setAttribute("id", i)
-      
+        dots[i].setAttribute("id", i)
       images
       images.first().addClass('active')
-
+      dots.first().addClass('active')
       sliderResponse = (target, prev, side) ->
         images.removeClass('active')
+        dots.removeClass('active')
+        $('#'+target+'.dot').addClass('active')
         $('.gallery-el#'+target).addClass('active')
+
         $(".gallery-el.active").toggleClass("slide"+side)
         setTimeout( ->
            $(".gallery-el.active").toggleClass("slide"+side)

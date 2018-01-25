@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       get :about
       get :gallery
+      get :contacts
     end
   end  
   resources :profile, only: [:index]

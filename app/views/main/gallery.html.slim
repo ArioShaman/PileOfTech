@@ -1,23 +1,34 @@
 .content
   .container
-    / .gallery
-    /   .arrow-cont
-    /     .arrow.last
-    /     .arrow.next    
-    /   .gallery-cont
-    /     .gallery-el
-    /       .cover
-    /         =image_tag("test-01")
-    /       .info-bl
-    /     .gallery-el
-    /       .cover
-    /         =image_tag("test-02")
-    /       .info-bl
-    /     .gallery-el
-    /       .cover
-    /         | 3
-    /       .info-bl                       
-    / .footer-nav
-    /   .foot-el.grey
-    /   .foot-el.grey
-    /   .foot-el.grey
+    .gallery    
+      .gallery-cont
+        .gallery-el
+          .cover
+            =image_tag("test-01")
+          .info-bl
+        .gallery-el
+          .cover
+            =image_tag("test-02")
+          .info-bl
+        .gallery-el
+          .cover
+            =image_tag("test-01")
+          .info-bl                       
+    .footer-slider
+      .dots
+        .dot
+          .back
+            .text Title
+          =image_tag("test-01")
+        .dot
+          .back
+            .text Title           
+          =image_tag("test-02")
+        .dot
+          .back
+            .text Title
+          =image_tag("test-01")        
+
+      .arrow-cont
+        .arrow.last
+        .arrow.next    

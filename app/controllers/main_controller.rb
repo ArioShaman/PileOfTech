@@ -10,4 +10,7 @@ class MainController < ApplicationController
     render :gallery
   end
 
+  def contacts
+    render :contacts
+  end
 end
