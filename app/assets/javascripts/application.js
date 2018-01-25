@@ -28,7 +28,7 @@ app.config(['$stateProvider', function ($stateProvider) {
 }])
 
 app.config(['$translateProvider', function ($translateProvider, $rootScope) {
-
+  
   $translateProvider.translations('en', translationsEN);
   $translateProvider.translations('ru', translationsRU);
 }])

@@ -25,8 +25,16 @@ app.directive('language', function($translate, $localStorage,
 
     controller: function($scope, $translate, $localStorage,
     $sessionStorage, $rootScope){
-      $scope.lang = $localStorage.lang || 'en';
-      $translate.use($scope.lang);
+
+      $.get("https://api.ipdata.co", function (response) { 
+        code = response['country_code'].toLowerCase()
+        if (code != 'ru'){
+          code = 'en';
+        }
+        $scope.lang = $localStorage.lang || code;
+        $translate.use($scope.lang); 
+      }, "jsonp"); 
+
     }
   }
 });
