@@ -91,5 +91,29 @@ app.controller 'MainCtrl', [
         target = prevId(target)
         sliderResponse(target, prev, 'Left')  
 
+      $('.dot').click () ->
+        id = $(this).attr('id')
+        activeEl = $('.gallery-el.active') 
+        activeId = activeEl.attr('id')
+        if id != activeId
+          dots.removeClass('active')
+          images.removeClass('active')        
+          $('#'+id+'.dot').addClass('active')
+          $('.gallery-el#'+id).addClass('active') 
+
+          side = ''
+          if id > activeId
+            side = 'Right'
+          else if id < activeId
+            side = 'Left'
+
+          $(".gallery-el.active").toggleClass("slide"+side)
+          setTimeout( ->
+             $(".gallery-el.active").toggleClass("slide"+side)
+          , 700)   
+
+          $(".gallery-el").removeClass("hideSlide")
+          activeEl.toggleClass("hideSlide")
+
     return
 ]
