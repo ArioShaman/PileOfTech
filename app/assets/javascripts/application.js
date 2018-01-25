@@ -33,22 +33,23 @@ app.config(['$translateProvider', function ($translateProvider, $rootScope) {
   $translateProvider.translations('ru', translationsRU);
 }])
 
-app.run(['$rootScope','$location', function($rootScope, $location){
-  links = []
+app.run(['$rootScope','$location', '$localStorage', function($rootScope, $location, $localStorage){
+  links = $localStorage.links || []
+  $localStorage.links = links
 
   $(document).on("click", "a.link", function(){
     attr = $location.path();
-    if (links[links.length] != attr){
-      links.push(attr)
+    if ($localStorage.links[$localStorage.links.length] != attr){
+      $localStorage.links.push(attr)
     }
   }); 
   $(document).on("click", "a.arrow-back", function(){
     attr = $location.path();
-    if(links.length > 0){
-      link = links[links.length - 1];
+    if($localStorage.links.length > 0){
+      link = $localStorage.links[$localStorage.links.length - 1];
       $location.path(link);
       $rootScope.$apply();
-      links.pop(attr);
+      $localStorage.links.pop(attr);
     }
   });
 }]);
