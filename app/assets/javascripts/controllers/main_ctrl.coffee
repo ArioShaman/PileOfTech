@@ -5,7 +5,13 @@ app.controller 'MainCtrl', [
     $document.scrollTo(0, 0)
     ctrl = this
 
-    action 'about', () ->      
+    click = false
+    action 'about', () ->   
+      $('.sidebar-el').click ->
+        $('.profile-info-bl').addClass('open')
+      $('.close-but').click ->
+        $('.profile-info-bl').removeClass('open')
+
       nextId = (target) ->
         if parseInt(target) == lastItem then target = 0 else target = parseInt(target) + 1 
         target
