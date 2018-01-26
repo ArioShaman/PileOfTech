@@ -114,10 +114,75 @@ $grey: #a7a7a7
             right: 0
             border-radius: 5px 0px 0px 5px          
   .contact-container
-    position: relative
     height: 100%
     width: 100%  
+    display: relative
     background-color: $bgrey
+    .blocks
+      $cont-h: 500px
+      position: absolute
+      margin-left: 10%
+      width: 80%
+      height: 500px
+      top: 50px
+      display: flex
+      justify-content: space-between
+      .half
+        height: 100%
+        width: 50%
+        .contacts
+          height: 100%
+          width: 100%
+          display: flex
+          flex-direction: column
+          justify-content: space-around
+          .contact
+            height: 100px
+            width: 100%
+            padding-top: 40px
+            color: white            
+            &:nth-child(even)
+              background-color: $yellow
+              color: $bgrey
+            span
+              font-family: 'super-molot'
+              font-size: 25px
+              &:nth-child(1)
+                moz-user-select: none
+                user-select: none
+                apple-user-select: none
+                webkit-user-select: none
+                font-weight: 600
+                padding-left: 20px
+              &:nth-child(2)
+                padding-left: 20px                
+
+        .logo-cont
+          $logo-h: 200px
+          height: $logo-h
+          width: 100%
+          margin: 0px auto
+          margin-top: ($cont-h - $logo-h)/2
+          display: flex
+          .anim
+            height: $logo-h
+            width: $logo-h
+            img
+              position: absolute
+              top: 0
+              left: -200px
+          .title
+            moz-user-select: none
+            user-select: none
+            apple-user-select: none
+            webkit-user-select: none          
+            padding-top: 60px
+            color: $light
+            font-family: 'super-molot'
+            font-size: 61
+            text-align: center
+
+
   .container
     position: relative
     height: 100%
@@ -237,7 +302,7 @@ $grey: #a7a7a7
               color: white
               font-family: 'm-fred'
               font-size: 30px
-              padding-top: 35px
+              padding-top: 55px
             &:hover, &:focus
               background-color: rgba(0, 0, 0, 0.9)
               transform: scale(1.1, 1.1)
