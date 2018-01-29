@@ -6,7 +6,61 @@ app.controller 'MainCtrl', [
     ctrl = this
 
     click = false
-    action 'about', () ->   
+    action 'about', () ->
+
+      $scope.list = []
+      dan = {
+        "Skills": [
+            "HTML(HTML5), CSS(CSS3)", "JS, JQuery, AngularJs",
+            "Ruby on Rails", "Database(PostgreSQL, MySQL, SQLite)",
+            "Python, C/c++. Java "
+          ],
+        "Soft-Skills": [
+          "Peppa pig",
+          "Critical thinking",
+          "Professional attitude to work"
+        ],
+        "Favorite quote": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
+          'Albert Einstein']
+      }   
+      vlad = {
+        "Skills": [
+            "Pixel, vector - graphic",
+            "Photoshop, Illustator",
+            "page-proofs of templates"
+          ],
+        "Soft-Skills": [
+          "Peppa pig",
+          "Critical thinking",
+          "Professional attitude to work"
+        ],
+        "Favorite quote": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
+          'Albert Einstein']
+      }   
+
+      alan = {
+        "Skills": [
+            "HTML(HTML5), CSS(CSS3)", "JS, JQuery, React AngularJs",
+            "Database(PostgreSQL)",
+            "Python, C/c++"
+          ],
+        "Soft-Skills": [
+          "Peppa pig",
+          "Critical thinking",
+          "Professional attitude to work"
+        ],
+        "Favorite quote": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
+          'Albert Einstein']
+      }         
+      
+      $scope.tab = (name)->
+        if (name == 'vlad')
+          $scope.list = vlad
+        if (name == 'dan')
+          $scope.list = dan
+        if (name == 'alan')
+          $scope.list = alan
+
       $('.sidebar-el').click ->
         $('.profile-info-bl').addClass('open')
       $('.close-but').click ->

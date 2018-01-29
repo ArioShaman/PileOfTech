@@ -1,7 +1,7 @@
 .content
   .about-container
     .sidebar-cont
-      .sidebar-el         
+      .sidebar-el ng-click="tab('vlad')"     
         .pers-bl
           .ava
             =image_tag("vlad")
@@ -10,7 +10,7 @@
             .position web-designer
         .right-line
 
-      .sidebar-el
+      .sidebar-el ng-click="tab('dan')"
         .pers-bl
           .ava
             =image_tag("danya")
@@ -19,7 +19,7 @@
             .position back-end developer
         .right-line            
    
-      .sidebar-el
+      .sidebar-el ng-click="tab('alan')"
         .pers-bl
           .ava
             =image_tag("alan")
@@ -29,11 +29,16 @@
         .right-line
 
     .info-cont
-      .profile-info-bl.open
+      .profile-info-bl
         .close-but
           =image_tag("close")
         .background
         .profile
+          .block ng-repeat="(type, skills)  in list"
+            .tit ng-bind="type" 
+            div ng-repeat="skill in skills"
+              .subtit - {{skill}}
+
 
       .info
       .slider-cont
