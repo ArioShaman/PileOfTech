@@ -6,18 +6,26 @@
           .cover
             =image_tag("mart")
           .info-bl
+            .title MART
+            .desc-bl at="" {{'status'|translate}}   &nbsp;&nbsp;&nbsp; {{'done'|translate}}
+            .desc-bl 
+              p at="" {{'desc'|translate}} 
+              p at="" {{'martDesc'|translate  }}
+
+            a.but href="https://arioshaman.github.io/" target="blank" ng-bind="'goto'|translate"
+
         .gallery-el
           .cover
-            =image_tag("test-02")
+            =image_tag("MAD")
           .info-bl
-        .gallery-el
-          .cover
-            =image_tag("test-02")
-          .info-bl
-        .gallery-el
-          .cover
-            =image_tag("test-02")
-          .info-bl          
+            .title MAD
+            .desc-bl at="" {{'status'|translate}}   &nbsp;&nbsp;&nbsp; {{'inDev'|translate}}
+            .desc-bl 
+              p at="" {{'desc'|translate}} 
+              p at="" {{'madDesc'|translate  }}
+
+            a.but.disable ng-bind="'goto'|translate"
+        
     .footer-slider
       .dots
         .dot
@@ -26,16 +34,9 @@
           =image_tag("mart")
         .dot
           .back
-            .text Title           
-          =image_tag("test-02")
-        .dot
-          .back
-            .text MART
-          =image_tag("mart")
-        .dot
-          .back
-            .text Title           
-          =image_tag("test-02")          
+            .text MAD          
+          =image_tag("music")
+       
 
       .arrow-cont
         .arrow.last

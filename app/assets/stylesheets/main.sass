@@ -151,6 +151,16 @@ $grey: #a7a7a7
       .info
         height: 65%
         width: 100%
+        .content
+          width: 100%
+          height: 100%
+          position: absolute
+          .title
+            font-size: 40px
+            color: $yellow
+            text-align: center
+            margin-top: 60px
+            font-family: 'm-fred'
       .slider-cont
         z-index: 10
         width: 100%
@@ -171,12 +181,30 @@ $grey: #a7a7a7
             max-width: 500px
             min-width: 500px
             position: relative
+            moz-user-select: none
+            user-select: none
+            apple-user-select: none
+            webkit-user-select: none            
             img
               width: 500px
               height: 100%
           .info-bl
             height: 100%
             min-width: 500px
+            .title
+              color: $bgrey
+              margin-top: 20px
+              font-size: 35px
+              font-family: 'm-fred'
+              text-align: center
+            .desc 
+              height: auto
+              width: 400px
+              margin: 20px 20px
+              font-family: 'super-molot'
+              color: $bgrey
+              font-size: 15px
+              line-height: 24px
         .hideSLide
           animation: hide 0.4s   
         .active 
@@ -294,6 +322,19 @@ $grey: #a7a7a7
       max-height: $cover-h
       background-image: url("main")
       background-size: cover
+      .title
+        margin-top: 50px
+        margin-right: 50px
+        float: right
+        height: auto
+        width: 600px
+        right: 0
+        position: relative
+        color: $yellow
+        font-size: 100px
+        font-family: 'm-fred'
+        text-align: right
+
     .gallery
       position: relative
       $cover-h: 450px
@@ -344,10 +385,47 @@ $grey: #a7a7a7
               width: 100%
               height: $cover-h
           .info-bl
-            flex-basis: 100%          
+            position: relative
+            width: 100%         
             height: 100%
             background-color: $bgrey
             border-left: 4px solid $yellow
+            .title
+              font-family: 'm-fred'
+              color: $yellow
+              font-size: 55px
+              text-align: center
+              margin-top: 30px
+            .desc-bl
+              color: white
+              height: auto
+              width: 92%
+              margin: 0px auto
+              margin-top: 20px
+              font-family: 'super-molot'
+              p:nth-child(2)
+                width: 450px
+                padding-left: 50px
+            .but
+              position: absolute
+              height: 40px
+              width: 250px
+              bottom: 40px
+              right: 20px
+              background-color: $yellow
+              text-align: center
+              padding-top: 17px
+              font-family: 'm-fred'
+              font-size: 25px
+              color: $bgrey
+              z-index: 200
+              transition: 0.3s
+              cursor: pointer
+              &:hover
+                transform: scale(1.1, 1.1)
+                box-shadow: 2px 2px 6px 2px black
+            .disable:hover
+              background-color: $light
         .hideSLide
           animation: hide 0.4s   
         .active 
