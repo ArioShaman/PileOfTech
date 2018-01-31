@@ -99,6 +99,10 @@ $grey: #a7a7a7
         z-index: 100
         position: absolute
         background-color: $bgrey
+        moz-user-select: none
+        user-select: none
+        apple-user-select: none
+        webkit-user-select: none        
         .profile
           z-index: 30
           height: 80%
@@ -421,10 +425,16 @@ $grey: #a7a7a7
               z-index: 200
               transition: 0.3s
               cursor: pointer
+              moz-user-select: none
+              user-select: none
+              apple-user-select: none
+              webkit-user-select: none               
               &:hover
                 transform: scale(1.1, 1.1)
                 box-shadow: 2px 2px 6px 2px black
             .disable:hover
+              box-shadow: none
+              transform: none !important
               background-color: $light
         .hideSLide
           animation: hide 0.4s   
@@ -444,7 +454,7 @@ $grey: #a7a7a7
       background-color: #404040
       position: relative
       .dots
-        height: 140px
+        height: 160px
         width: 90%
         margin: 0px auto
         margin-top: 20px
@@ -453,9 +463,9 @@ $grey: #a7a7a7
         wrap: nowrap
         justify-content: space-around
         .dot
-          height: 100%
+          z-index: 1000
+          height: 140px
           width: 250px
-          position: relative
           img
             top: 0
             position: absolute
@@ -527,8 +537,10 @@ $grey: #a7a7a7
         flex-wrap: nowrap      
         .yellow
           background-color: $yellow
+          color: $bgrey
         .grey
           background-color: $grey
+          color: white
         .bgrey
           background-color: $bgrey 
           color: $yellow 
