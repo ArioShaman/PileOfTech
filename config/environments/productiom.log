@@ -1,0 +1,2 @@
+config.log_level = :info
+RAILS_DEFAULT_LOGGER = Logger.new('log/production.log')
