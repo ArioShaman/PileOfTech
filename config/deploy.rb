@@ -3,7 +3,7 @@ server '91.217.5.237', port: 2020, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'https://github.com/ArioShaman/PileOfTech.git'
 set :application,     'PileOfTech'
-set :user,            'deployer'
+set :user,            'webadmin'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
@@ -22,6 +22,11 @@ set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+
+
+
+#set :linked_dirs, %w('log', 'tmp/pids', 'tmp/cache','tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+set :linked_files, %w(config/database.yml config/secrets.yml config/initializers/devise.rb)
 
 ## Defaults:
 # set :scm,           :git
@@ -48,6 +53,11 @@ end
 
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
+
+  task :config_symlink do
+    run "cp #{shared_path}/../../shared/database.yml #{release_path}/config/database.yml"
+  end
+
   task :check_revision do
     on roles(:app) do
       unless `git rev-parse HEAD` == `git rev-parse origin/master`
@@ -69,7 +79,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
+      invoke! 'puma:restart'
     end
   end
 
