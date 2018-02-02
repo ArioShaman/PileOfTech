@@ -11,29 +11,28 @@ html ng-app="app"
     .navbar
       a.arrow-back
         =image_tag("arrow.png", onmouseenter: "this.src ='#{image_path("arrow.gif")}';", onmouseout: "this.src = '#{image_path("arrow.png")}';" )
-      .menu
-        .content
-          a.menu-link.link ui-sref="root_path"
-            .el ng-bind="'HOME' | translate"
-          a.menu-link.link ui-sref="about_main_index_path"
-            .el ng-bind="'ABOUT' | translate"
-          a.menu-link.link ui-sref="gallery_main_index_path"
-            .el ng-bind="'GALLERY' | translate"
-          a.menu-link.link ui-sref="contacts_main_index_path"
-            .el ng-bind="'CONTACTS' | translate"
-          a.menu-link.link ui-sref="new_user_session_path"
-            .el ng-bind="'LK' | translate"
-
-          -if user_signed_in?
-            .el
-              = link_to('Logout', destroy_user_session_path, method: :delete)
-
-          div language=""
-
-      .menu-icon
-        .icon
       a.logo.link ui-sref="root_path"
         =image_tag("logo")
         .logo-text PileOfTech      
+
+    .menu-icon
+      .icon
+    .menu
+      .content
+        a.menu-link.link ui-sref="root_path"
+          .el ng-bind="'HOME' | translate"
+        a.menu-link.link ui-sref="about_main_index_path"
+          .el ng-bind="'ABOUT' | translate"
+        a.menu-link.link ui-sref="gallery_main_index_path"
+          .el ng-bind="'GALLERY' | translate"
+        a.menu-link.link ui-sref="contacts_main_index_path"
+          .el ng-bind="'CONTACTS' | translate"
+        a.menu-link.link ui-sref="new_user_session_path"
+          .el ng-bind="'LK' | translate"
+        -if user_signed_in?
+          .el
+            = link_to('Logout', destroy_user_session_path, method: :delete)
+        div language=""
+
 
     ui-view.slide
