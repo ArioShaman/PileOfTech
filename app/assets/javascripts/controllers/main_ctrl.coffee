@@ -62,8 +62,11 @@ app.controller 'MainCtrl', [
           $scope.list = alan
 
       $('.sidebar-el').click ->
+        $('.sidebar-el').removeClass('active')
+        $(this).toggleClass('active')
         $('.profile-info-bl').addClass('open')
       $('.close-but').click ->
+        $('.sidebar-el').removeClass('active')
         $('.profile-info-bl').removeClass('open')
 
       nextId = (target) ->

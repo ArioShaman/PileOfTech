@@ -1,6 +1,7 @@
 .content
   .about-container
     .sidebar-cont
+      .right-line
       .sidebar-el ng-click="tab('vlad')"     
         .pers-bl
           .ava
@@ -8,7 +9,6 @@
           .text-cont
             .name VLAD KLIMENKO
             .position web-designer
-        .right-line
 
       .sidebar-el ng-click="tab('dan')"
         .pers-bl
@@ -17,8 +17,7 @@
           .text-cont
             .name DAN MATVEEW
             .position back-end developer
-        .right-line            
-   
+
       .sidebar-el ng-click="tab('alan')"
         .pers-bl
           .ava
@@ -26,7 +25,6 @@
           .text-cont
             .name ALAN IKAEEV
             .position front-end developer
-        .right-line
 
     .info-cont
       .profile-info-bl
@@ -43,6 +41,9 @@
       .info
         .content
           .title Как мы работаем
+          .text-cont
+            .text Процедура проверки на плагиат проста: всего несколько кликов — и вы узнаете процент уникальности текста. Если в сети есть дубликаты текстов, они обязательно найдутся. Вы также можете проверить текст на ошибки с помощью сервиса проверки орфографии. При регистрации на сервисе у вас будут автоматически сняты ограничения проверки, предназначенные для гостей, и вы получите возможность проверять гораздо большее количество текстов с помощью нашего сервиса плагиат онлайн. будут автоматически сняты ограничения проверки, предназначенные для гостей, и вы получите возможность проверять гораздо большее количество текстов с помощью нашего сервиса плагиат онлайн.будут автоматически сняты ограничения проверки, предназначенные для гостей, и вы получите возможность проверять гораздо большее количество текстов с помощью нашего сервиса плагиат онлайн.
+
       .slider-cont
         .slider-el.active
           .cover
@@ -69,5 +70,7 @@
             .title Progressive Web Application
             .desc Веб приложения созданные нашей командой отличаются от других отличной мобильной адаптивностью и на маленьких экранах ведут себя как полноценное мобильное приложение.                     
         .arrow-cont
-         .arrow.last
-         .arrow.next       
+          .arrow.last
+            =image_tag("chevron.svg")
+          .arrow.next
+            =image_tag("chevron.svg")      

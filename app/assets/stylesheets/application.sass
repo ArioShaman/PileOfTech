@@ -19,6 +19,18 @@ $grey: #d3d3d3
 $yellow: #ffd631
 $bgrey: #2e2e2e
 
+@mixin desctop
+  @media (min-width: $desctop)
+    @content
+
+@mixin smobile
+  @media (max-width: 320px)
+    @content
+
+@mixin mobile
+  @media (min-width: 321px) and (max-width: 567px)
+    @content
+
 body, ui-view, html
   overflow: hidden !important
 
@@ -51,19 +63,20 @@ img
   width: 100%
   background-color: $grey  
   .arrow-back
+    margin-left: 5px
     position: absolute
     left: 0
     top: 0px
-    width: 75px
+    width: 100px
     height: 50px
     cursor: pointer
     &:hover
       background-color: $grey
       img
-        width: 200px
+        width: 100px
     img
       height: 50px
-      width: 60px
+      width: 100px
 
   .logo
     position: absolute
@@ -74,17 +87,26 @@ img
     display: flex
     cursor: pointer
     z-index: 200 !important
+    @include smobile 
+      width: 50px  
+    @include mobile
+      width: 50px
     &:hover
       background-color: transparent    
     img
       width: 50px
       height: 100%
     .logo-text
+      display: block
       padding-top: 15px
       padding-left: 5px
       font-size: 20px
       font-family: 'super-molot'
-
+      @include smobile
+        display: none
+      @include mobile
+        display: none
+    
 @keyframes slide
   from
     margin-left: 100%
@@ -134,7 +156,7 @@ img
   position: absolute
   width: 100%
   height: 0%
-  z-index: 1000
+  z-index: 10000
   top: 0px
   background-color: rgba(0,0,0,0.9) 
   transition: 0.5s 
@@ -151,10 +173,14 @@ img
     left: 0px
     right: 0px
     height: 0px
-    width: 400px
+    width: 300px
     transition: 0.3s
     overflow-y: hidden
     font-family: 'm-fred'
+    @include smobile
+      top: 30px
+    @include mobile
+      top: 90px
     .lang-back
       width: 200px
       margin: 0px auto
@@ -191,12 +217,11 @@ img
   height: 100%
 
 .menu-icon
-  z-index: 1001
+  z-index: 10001
   position: absolute
   height: 27px
   width: 55px
-  left: 50%
-  right: 50%  
+  left: calc(50% - 27px)  
   top: 0px
   border-radius: 0px 0px 5px 5px
   transition: top 0.5s
