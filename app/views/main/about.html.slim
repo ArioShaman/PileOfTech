@@ -32,6 +32,8 @@
           =image_tag("close")
         .background
         .profile
+          .name ng-bind="name"
+          .position ng-bind="position"
           .block ng-repeat="(type, skills)  in list"
             .tit ng-bind="type" 
             div ng-repeat="skill in skills"

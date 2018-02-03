@@ -9,6 +9,14 @@ app.controller 'MainCtrl', [
     action 'about', () ->
 
       $scope.list = []
+      $scope.name = ""
+      $scope.position = ""
+      DanName = "Daniyl Matveew"
+      AlanName = "Alan Ikaev"
+      VladName = "Vlad Klimenko"
+      DanPosition = "back-end developer"
+      AlanPosition = "front-end developer"
+      VladPosition = "web-designer"
       dan = {
         "Skills": [
             "HTML(HTML5), CSS(CSS3)", "JS, JQuery, AngularJs",
@@ -56,10 +64,16 @@ app.controller 'MainCtrl', [
       $scope.tab = (name)->
         if (name == 'vlad')
           $scope.list = vlad
+          $scope.name = VladName
+          $scope.position = VladPosition
         if (name == 'dan')
           $scope.list = dan
+          $scope.name = DanName
+          $scope.position = DanPosition
         if (name == 'alan')
           $scope.list = alan
+          $scope.name = AlanName
+          $scope.position = AlanPosition
 
       $('.sidebar-el').click ->
         $('.sidebar-el').removeClass('active')

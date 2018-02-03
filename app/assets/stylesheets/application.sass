@@ -61,7 +61,11 @@ img
   z-index: 999
   height: 50px
   width: 100%
-  background-color: $grey  
+  background-color: $grey 
+  @include mobile
+    height: 35px
+  @include smobile
+    height: 35px     
   .arrow-back
     margin-left: 5px
     position: absolute
@@ -70,6 +74,14 @@ img
     width: 100px
     height: 50px
     cursor: pointer
+    @include mobile
+      top: -8px
+      height: 35px
+      width: 90px
+    @include smobile
+      top: -8px
+      height: 35px
+      width: 90px      
     &:hover
       background-color: $grey
       img
@@ -88,14 +100,21 @@ img
     cursor: pointer
     z-index: 200 !important
     @include smobile 
-      width: 50px  
+      width: 35px  
+      top: -7px
     @include mobile
-      width: 50px
+      width: 35px
+      top: -7px
     &:hover
       background-color: transparent    
     img
       width: 50px
       height: 100%
+      @include smobile 
+        width: 45px  
+      @include mobile
+        width: 45px
+
     .logo-text
       display: block
       padding-top: 15px
