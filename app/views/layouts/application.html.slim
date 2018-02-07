@@ -1,6 +1,6 @@
 html ng-app="app"
   head
-    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"
     title PileOfTech
     base href="/"
     = stylesheet_link_tag 'application'
@@ -12,7 +12,7 @@ html ng-app="app"
       a.arrow-back
         =image_tag("arrow.png", onmouseenter: "this.src ='#{image_path("arrow.gif")}';", onmouseout: "this.src = '#{image_path("arrow.png")}';" )
       a.logo.link ui-sref="root_path"
-        =image_tag("logo")
+        =image_tag("logo.png")
         .logo-text PileOfTech      
 
     .menu-icon
