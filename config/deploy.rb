@@ -1,9 +1,9 @@
 # Change these
-server '91.217.5.237', port: 2020, roles: [:web, :app, :db], primary: true
+server '82.146.49.217', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'https://github.com/ArioShaman/PileOfTech.git'
 set :application,     'PileOfTech'
-set :user,            'webadmin'
+set :user,            'root'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
