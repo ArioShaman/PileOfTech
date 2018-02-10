@@ -36,7 +36,7 @@ require 'capistrano/yarn'
 # require "capistrano/passenger"
 
 #require "capistrano_database"
-require 'capistrano/rails'
+require 'capistrano/rails/migrations'
 require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/puma'
