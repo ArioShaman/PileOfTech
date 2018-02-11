@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+ #config.assets.precompile = [ Proc.new { |path, fn| fn =~ /app\/assets/ && !%w(.js .css).include?(File.extname(path)) },
+ #                             /(?:\/|\\|\A)application\.(css|js)$/ ]
+#  config.assets.precompile += %w(subdir/*.jpg)
   # Code is not reloaded between requests.
   config.cache_classes = true
   # Eager load code on boot. This eager loads most of Rails and
@@ -8,6 +11,10 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
+  
+  config.assets.enabled = false
+
+
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
@@ -27,8 +34,9 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
-
+  config.assets.compile = false
+  config.assets.digest = false
+  config.assets.paths << Rails.root.join('vendor', 'assets', 'stylesheets', 'custom')
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
