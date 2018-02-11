@@ -7,6 +7,10 @@ set :user,            'root'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
+set :migration_role, :db
+set :migration_servers, -> { primary(fetch(:migration_role)) }
+set :conditionally_migrate, true
+
 # Don't change these unless you know what you're doing
 set :pty,             true
 set :use_sudo,        false
@@ -33,6 +37,7 @@ set :migration_role, :app
 
 #set :linked_dirs, %w('log', 'tmp/pids', 'tmp/cache','tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 set :linked_files, %w(config/database.yml config/secrets.yml config/initializers/devise.rb)
+set :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads'
 
 ## Defaults:
 # set :scm,           :git
