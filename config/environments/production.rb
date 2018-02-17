@@ -34,9 +34,10 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
   config.assets.digest = false
   config.assets.paths << Rails.root.join('vendor', 'assets', 'stylesheets', 'custom')
+  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif *.svg] 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.

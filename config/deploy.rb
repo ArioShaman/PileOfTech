@@ -109,7 +109,7 @@ namespace :deploy do
   #before "deploy:assets:precompile", "deploy:yarn_install"
   #before "deploy:assets:precompile", "deploy:npm_install"
   before :starting,     :check_revision
-  after  :finishing,    :compile_assets
+  #after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
 
