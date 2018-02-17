@@ -49,7 +49,6 @@ namespace :puma do
     on roles(:app) do
       execute "mkdir #{shared_path}/tmp/sockets -p"
       execute "mkdir #{shared_path}/tmp/pids -p"
-      execute "mkdir #{release_path}/subdir"
     end
   end
 

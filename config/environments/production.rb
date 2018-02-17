@@ -1,8 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
- #config.assets.precompile = [ Proc.new { |path, fn| fn =~ /app\/assets/ && !%w(.js .css).include?(File.extname(path)) },
- #                             /(?:\/|\\|\A)application\.(css|js)$/ ]
+ config.assets.precompile = [ Proc.new { |path, fn| fn =~ /app\/assets/ && !%w(.js .css).include?(File.extname(path)) },
+                              /(?:\/|\\|\A)application\.(css|js)$/ ]
 #  config.assets.precompile += %w(subdir/*.jpg)
   # Code is not reloaded between requests.
   config.cache_classes = true
