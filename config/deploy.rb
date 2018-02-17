@@ -1,4 +1,4 @@
-lock '3.2.1'
+lock '3.10.1'
 
 # Change these
 server '82.146.49.217', roles: [:web, :app, :db], primary: true
@@ -28,12 +28,12 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 set :nvm_map_bins, %w{node npm bower}
 set :bundle_flags,    ""
-#set :assets_roles, [:web, :app]
-#set :assets_prefix, 'prepackaged-assets'
-#set :rails_assets_groups, :assets
-#set :normalize_asset_timestamps, %w{public/images public/javascripts public/stylesheets}
-#set :keep_assets, 2
-#set :migration_role, :app
+set :assets_roles, [:web, :app]
+set :assets_prefix, 'prepackaged-assets'
+set :rails_assets_groups, :assets
+set :normalize_asset_timestamps, %w{public/images public/javascripts public/stylesheets}
+set :keep_assets, 2
+set :migration_role, :app
 
 #set :yarn_target_path, -> { release_path.join('subdir') }  # default not set
 #set :yarn_flags, '--production --pure-lockfile --no-emoji --no-progress' # default
@@ -107,7 +107,7 @@ namespace :deploy do
   end
 
   #before "deploy:assets:precompile", "deploy:yarn_install"
-  before "deploy:assets:precompile", "deploy:npm_install"
+  #before "deploy:assets:precompile", "deploy:npm_install"
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
