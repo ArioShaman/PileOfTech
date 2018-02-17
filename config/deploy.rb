@@ -1,3 +1,5 @@
+lock '3.10.1'
+
 # Change these
 server '82.146.49.217', roles: [:web, :app, :db], primary: true
 
