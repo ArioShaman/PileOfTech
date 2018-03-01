@@ -46,6 +46,3 @@ app.run [
 
     return
 ]
-
-
-# © Rnd-Soft (Рнд Софт), 2017

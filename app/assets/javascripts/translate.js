@@ -1,4 +1,5 @@
 var translationsEN = {
+  'SLOGAN':'Dream. Do. Behold',
   'NAME': 'Dan',
   'HOME': 'Home',
   'ABOUT': 'About us',
@@ -20,6 +21,7 @@ var translationsEN = {
 };
 
 var translationsRU = {
+  'SLOGAN':'Мечтай. Создавай. Созерцай',
   'NAME': 'Даниил',
   'HOME': 'ДОМОЙ',
   'ABOUT': 'О НАС',

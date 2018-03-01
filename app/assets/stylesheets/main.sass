@@ -609,26 +609,41 @@ $grey: #a7a7a7
       height: 100%
       background-image: url("main.jpg")
       background-size: cover
+      background-position: center      
+      .background
+        top: 0px
+        height: 100%
+        z-index: 10
+        width: 100%
+        position: absolute
+        background-color: rgba(0, 0, 0, 0.7)
+        z-index: 10
       .title
-        margin-top: 50px
-        margin-right: 50px
-        float: right
-        height: auto
-        width: 600px
-        right: 0
-        position: relative
+        moz-user-select: none
+        user-select: none
+        apple-user-select: none
+        webkit-user-select: none        
+        $tit-size: 140px
+        text-transform: uppercase
         color: $yellow
-        font-size: 100px
+        font-size: $tit-size
         font-family: 'm-fred'
-        text-align: right
+        text-align: center
+        margin: 0px auto
+        margin-top: 180px
         @include smobile
-          font-size: 45px
+          font-size: 80px
           width: 70%
           left: 40px
+          margin: 0px auto
+          margin-top: 80px
         @include mobile
-          font-size: 45px
+          font-size: 90px
           width: 70%
-          left: 40px          
+          left: 40px  
+          margin: 0px auto
+          margin-top: 80px
+
 
 
     .gallery
@@ -973,6 +988,7 @@ $grey: #a7a7a7
 
     .footer-nav
       $foot-h: 100px
+      z-index: 100
       @include mobile
         $foot-m-h: 180px
         min-height: $foot-m-h
