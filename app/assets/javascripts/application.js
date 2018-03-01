@@ -9,8 +9,6 @@
 = require oxymoron
 = require_self
 = require_tree ./controllers
-= require ammap
-= require worldLow
 = require angular-scroll
 = require angular-translate
 = require jquery3
@@ -21,14 +19,13 @@
 = require_tree ./configs
 = require_tree ./directives
 */
-var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate', 'ngStorage']).value('duScrollBottomSpy', false);
+var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate', 'ngStorage']);
 
 app.config(['$stateProvider', function ($stateProvider) {
   $stateProvider.rails()
 }])
 
-app.config(['$translateProvider', function ($translateProvider, $rootScope) {
-  
+app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('en', translationsEN);
   $translateProvider.translations('ru', translationsRU);
 }])
