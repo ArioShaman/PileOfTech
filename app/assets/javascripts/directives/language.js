@@ -1,6 +1,4 @@
-app.directive('language', 
-  ['$translate', '$localStorage', '$sessionStorage',
-    function($translate, $localStorage,
+app.directive('language', function($translate, $localStorage,
     $sessionStorage) {
   return {
     estrict: 'A',
@@ -39,4 +37,4 @@ app.directive('language',
 
     }
   }
-}]);
+});
