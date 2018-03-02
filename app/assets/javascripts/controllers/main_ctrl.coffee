@@ -23,42 +23,46 @@ app.controller 'MainCtrl', [
             "Ruby on Rails", "Database(PostgreSQL, MySQL, SQLite)",
             "Python, C/c++. Java "
           ],
-        "Коммуникативные навыки": [
-          "Peppa pig",
-          "Critical thinking",
-          "Professional attitude to work"
+        "Личностные навыки": [
+          "Критическое мышление",
+          "Проффесиональное отношение к работе",
+          "Общительный",
+          "Легко Находит общий язык",
+          "Творческий подход в любом деле"
         ],
-        "Любимая цитата": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
-          'Albert Einstein']
+        "Любимая цитата": ['"Чтобы выигрывать, прежде всего нужно играть."',
+          '© Альберт Эйнштейн']
       }   
       vlad = {
         "Навыки": [
-            "Pixel, vector - graphic",
+            "Растровая, векторная - графика",
             "Photoshop, Illustator",
-            "page-proofs of templates"
+            "Создание макетов сайтов"
           ],
-        "Коммуникативные навыки": [
-          "Peppa pig",
-          "Critical thinking",
-          "Professional attitude to work"
+        "Личностные навыки": [
+          "Справедлив",
+          "Целеустремлённый",
+          "Упрямый",
+          "Добрый в душе",
+          "Коммуникабельный"
         ],
-        "Любимая цитата": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
-          'Albert Einstein']
+        "Любимая цитата": ['"Жизнь- это череда поступков и их последствий."',
+          '© Влад Клименко']
       }   
 
       alan = {
         "Навыки": [
-            "HTMLНавыкиHTML5), CSS(CSS3)", "JS, JQuery, React AngularJs",
+            "HTML(HTML5), CSS(CSS3)", "JS, JQuery, React AngularJs",
             "Database(PostgreSQL)",
             "Python, C/c++"
           ],
-        "Коммуникативные навыки": [
-          "Peppa pig",
-          "Critical thinking",
-          "Professional attitude to work"
+        "Личностные навыки": [
+          "Целеустремлённый",
+          "Стрессоустойчивый",
+          "Мечтатель"
         ],
-        "Любимая цитата": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
-          'Albert Einstein']
+        "Любимая цитата": ['"Когда одна дверь счастья закрывается, открывается другая; но мы часто не замечаем ее, уставившись взглядом в закрытую дверь."',
+          '© Хелен Келлер']
       }         
       
       $scope.tab = (name)->
