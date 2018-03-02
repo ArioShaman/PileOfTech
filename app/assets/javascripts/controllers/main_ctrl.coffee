@@ -11,53 +11,53 @@ app.controller 'MainCtrl', [
       $scope.list = []
       $scope.name = ""
       $scope.position = ""
-      DanName = "Daniyl Matveew"
-      AlanName = "Alan Ikaev"
-      VladName = "Vlad Klimenko"
-      DanPosition = "back-end developer"
-      AlanPosition = "front-end developer"
-      VladPosition = "web-designer"
+      DanName = "Даниил Матвеев"
+      AlanName = "Алан Икаев"
+      VladName = "Влад Клименко"
+      DanPosition = "back-end разработчик"
+      AlanPosition = "front-end разработчик"
+      VladPosition = "web-дизайнер"
       dan = {
-        "Skills": [
+        "Навыки": [
             "HTML(HTML5), CSS(CSS3)", "JS, JQuery, AngularJs",
             "Ruby on Rails", "Database(PostgreSQL, MySQL, SQLite)",
             "Python, C/c++. Java "
           ],
-        "Soft-Skills": [
+        "Коммуникативные навыки": [
           "Peppa pig",
           "Critical thinking",
           "Professional attitude to work"
         ],
-        "Favorite quote": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
+        "Любимая цитата": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
           'Albert Einstein']
       }   
       vlad = {
-        "Skills": [
+        "Навыки": [
             "Pixel, vector - graphic",
             "Photoshop, Illustator",
             "page-proofs of templates"
           ],
-        "Soft-Skills": [
+        "Коммуникативные навыки": [
           "Peppa pig",
           "Critical thinking",
           "Professional attitude to work"
         ],
-        "Favorite quote": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
+        "Любимая цитата": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
           'Albert Einstein']
       }   
 
       alan = {
-        "Skills": [
-            "HTML(HTML5), CSS(CSS3)", "JS, JQuery, React AngularJs",
+        "Навыки": [
+            "HTMLНавыкиHTML5), CSS(CSS3)", "JS, JQuery, React AngularJs",
             "Database(PostgreSQL)",
             "Python, C/c++"
           ],
-        "Soft-Skills": [
+        "Коммуникативные навыки": [
           "Peppa pig",
           "Critical thinking",
           "Professional attitude to work"
         ],
-        "Favorite quote": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
+        "Любимая цитата": ['"Bla-bla-bla-bla-bla-bla-bla-bla-bla-bla"',
           'Albert Einstein']
       }         
       

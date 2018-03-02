@@ -20,19 +20,19 @@ html ng-app="app"
     .menu
       .content
         a.menu-link.link ui-sref="root_path"
-          .el ng-bind="'HOME' | translate"
+          .el ДОМОЙ
         a.menu-link.link ui-sref="about_main_index_path"
-          .el ng-bind="'ABOUT' | translate"
+          .el О НАС
         a.menu-link.link ui-sref="gallery_main_index_path"
-          .el ng-bind="'GALLERY' | translate"
+          .el ГАЛЕРЕЯ
         a.menu-link.link ui-sref="contacts_main_index_path"
-          .el ng-bind="'CONTACTS' | translate"
+          .el КОНТАКТЫ
         a.menu-link.link ui-sref="new_user_session_path"
-          .el ng-bind="'LK' | translate"
+          .el ЛИЧНЫЙ КАБИНЕТ
         -if user_signed_in?
           .el
             = link_to('Logout', destroy_user_session_path, method: :delete)
-        div language=""
+        / div language=""
 
 
     ui-view.slide

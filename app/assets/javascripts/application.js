@@ -17,7 +17,6 @@
 = require translate
 = require ngstorage
 = require_tree ./configs
-= require_tree ./directives
 */
 var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate', 'ngStorage']);
 
@@ -25,10 +24,10 @@ app.config(['$stateProvider', function ($stateProvider) {
   $stateProvider.rails()
 }])
 
-app.config(['$translateProvider', function ($translateProvider) {
-  $translateProvider.translations('en', translationsEN);
-  $translateProvider.translations('ru', translationsRU);
-}])
+// app.config(['$translateProvider', function ($translateProvider) {
+//   $translateProvider.translations('en', translationsEN);
+//   $translateProvider.translations('ru', translationsRU);
+// }])
 
 app.run(['$rootScope','$location', '$localStorage', function($rootScope, $location, $localStorage){
   links = $localStorage.links || []
