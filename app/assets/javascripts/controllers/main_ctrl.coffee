@@ -12,10 +12,10 @@ app.controller 'MainCtrl', [
       $scope.name = ""
       $scope.position = ""
       DanName = "Даниил Матвеев"
-      AlanName = "Алан Икаев"
+      KostyaName = "Константин Кравченко"
       VladName = "Влад Клименко"
       DanPosition = "back-end разработчик"
-      AlanPosition = "front-end разработчик"
+      KostyaPosition = "manager"
       VladPosition = "web-дизайнер"
       dan = {
         "Навыки": [
@@ -25,9 +25,9 @@ app.controller 'MainCtrl', [
           ],
         "Личностные навыки": [
           "Критическое мышление",
-          "Проффесиональное отношение к работе",
+          "Професиональное отношение к работе",
           "Общительный",
-          "Легко Находит общий язык",
+          "Легко находижу общий язык",
           "Творческий подход в любом деле"
         ],
         "Любимая цитата": ['"Чтобы выигрывать, прежде всего нужно играть."',
@@ -50,19 +50,21 @@ app.controller 'MainCtrl', [
           '© Влад Клименко']
       }   
 
-      alan = {
+      kostya = {
         "Навыки": [
-            "HTML(HTML5), CSS(CSS3)", "JS, JQuery, React AngularJs",
-            "Database(PostgreSQL)",
-            "Python, C/c++"
+            "SMM",
+            "Маркетинг",
+            "Продвижение"
           ],
         "Личностные навыки": [
-          "Целеустремлённый",
-          "Стрессоустойчивый",
-          "Мечтатель"
+            "Креативный",
+            "Справедливый",
+            "Решительный",
+            "Целеустремленный",
+            "Коммуникабельный"
         ],
-        "Любимая цитата": ['"Когда одна дверь счастья закрывается, открывается другая; но мы часто не замечаем ее, уставившись взглядом в закрытую дверь."',
-          '© Хелен Келлер']
+        "Любимая цитата": ['"Ты родился оригиналом,не умри копией..."',
+          '© Джон Мэйсон']
       }         
       
       $scope.tab = (name)->
@@ -74,10 +76,10 @@ app.controller 'MainCtrl', [
           $scope.list = dan
           $scope.name = DanName
           $scope.position = DanPosition
-        if (name == 'alan')
-          $scope.list = alan
-          $scope.name = AlanName
-          $scope.position = AlanPosition
+        if (name == 'kostya')
+          $scope.list = kostya
+          $scope.name = KostyaName
+          $scope.position = KostyaPosition
 
       $('.sidebar-el').click ->
         $('.sidebar-el').removeClass('active')
