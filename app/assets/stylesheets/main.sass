@@ -5,6 +5,7 @@ $light: #c3c3c3
 $bgrey: #2e2e2e
 $yellow: #ffd631
 $grey: #a7a7a7
+$desctop: 1300px
 
 @mixin desctop
   @media (min-width: $desctop)
@@ -22,6 +23,8 @@ $grey: #a7a7a7
   @media (min-width: 568px) and (max-width: 1025px)
     @content
 
+.grey
+  background-color: $bgrey
 .fon
   overflow-x: hidden !important
   width: 100% !important
