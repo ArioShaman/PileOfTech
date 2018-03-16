@@ -1,6 +1,6 @@
 app.controller 'StuffBoxCtrl', [
-  '$scope', '$http', '$rootScope', 'action', '$location',
-  ($scope, $http, $rootScope, action, $location) ->
+  '$scope', '$http', '$rootScope', 'action', '$location', '$document',
+  ($scope, $http, $rootScope, action, $location, $document) ->
 
     ctrl = this
 
@@ -54,6 +54,10 @@ app.controller 'StuffBoxCtrl', [
         setTimeout(toBlock, 1800)
 
     action 'town', () ->
-      console.log 'town'
+      canvas = document.getElementById("town")
+      ctx = canvas.getContext("2d")
+
+      ctx.fillStyle = "green"
+      ctx.fillRect(10, 10, 50, 50)      
     return
 ]

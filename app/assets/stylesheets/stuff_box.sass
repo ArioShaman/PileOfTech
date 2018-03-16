@@ -15,23 +15,34 @@ $border: #D3A473
 
 $time: 1s
 
+.close
+  z-index: 30
+  height: 30px
+  width: 30px
+  right: 0
+  margin: 15px
+  cursor: pointer
+  position: absolute
+  &:hover
+    transform: scale(1.1, 1.1)
+  img
+    width: 100%
+    height: 100%
+
 .town
   height: 100%
   width: 100%
-  background-color: grey
-  .close
-    z-index: 30
-    height: 40px
-    width: 40px
-    right: 0
-    margin: 15px
-    cursor: pointer
+  background-color: $bgrey
+  position: relative
+  #town
     position: absolute
-    &:hover
-      transform: scale(1.1, 1.1)
-    img
-      width: 100%
-      height: 100%
+    height: 550px
+    width: 90%
+    background-color: white
+    margin-top: 25px
+    left: 50
+    right: 0
+
 
 .real-stuff
   height: 180px
