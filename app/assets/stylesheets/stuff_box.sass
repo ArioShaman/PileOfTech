@@ -11,25 +11,59 @@ $angle: 250px
 
 $box: #D0B89D
 $shadow: #BFA58A
+$border: #D3A473
 
+$time: 1s
+
+@keyframes Toper
+  0%
+    transform: scale(0.6, 0.6)
+  100%
+    transform: scale(1.0, 1.0)
+.real-stuff
+  height: 180px
+  width: 300px
+  z-index: 110
+  background-color: $yellow
+  margin-top: 60px
+  transform: scale(0.6, 0.6)
+  position: absolute
+  display: none
+
+.toper
+  display: block
+  animation: Toper 0.5s
+  transform: scale(1.0, 1.0)
+  z-index: 180 !important
+
+.visib
+  background-color: rgba(0,0,0,0.3)
 .stuff-container
-  width: 1220px
-  height: auto
+  position: absolute
+  width: 100%
+  min-height: 100%
   margin: 0px auto
-  margin-top: 50px
-  display: flex
-  .stuff-bl
-    height: 250px
-    width: 400px
-    background-color: $yellow
-    margin-top: 15px
-    &:hover
-      transform: scale(1.1, 1.1)
-    &:not(:first-child)
-      margin-left: 15px
-    img
-      height: 100%
-      width: 100%
+  z-index: 120 !important
+  .stuff-flex
+    margin: 0px auto
+    margin-top: 50px
+    z-index: 240
+    width: 1200px
+    height: auto
+    display: flex
+    flex-wrap: wrap
+    .stuff-bl
+      z-index: 250 !important
+      height: 180px
+      width: 300px
+      margin-top: 50px
+      &:hover
+        transform: scale(1.1, 1.1)
+      &:not(:nth-child(3n-2))
+        margin-left: 150px
+      img
+        height: 100%
+        width: 100%
 
 .stuff-box
   height: 600px
@@ -37,40 +71,87 @@ $shadow: #BFA58A
   margin: 0px auto
   margin-top: 0px
   position: relative
+  .fly
+    animation: Fly 0.5s
+    top: -300px !important 
+    left: 1000px !important
+  .scotch
+    paddding-top: 10px
+    z-index: 130
+    position: absolute
+    height: 60px
+    width: 250px
+    background-color: rgb(255,156,56)
+    cursor: pointer
+    top: 260px
+    left: 175px
+    transform: rotate(-45deg)
+    .text
+      text-align: center
+      margin-top: 5px
+      font-family: 'm-fred'
+      color: $bgrey
+      font-size: 60px
   .bottom
     background-color: $shadow
     position: absolute
+    border-radius: 0px
     height: 300px
     width: 300px
     margin-left: 150px
     top: 150px
-
+    // .real-stuff
+    //   height: 180px
+    //   width: 300px
+    //   z-index: 110
+    //   background-color: $yellow
+    //   margin-top: 60px
+    //   transform: scale(0.6, 0.6)
+    //   transition: 0.5s
+    // .toper
+    //   transform: scale(1.0, 1.0)
+    //   z-index: 180 !important
   .left-cap
     box-sizing: border-box
     position: absolute
     background-color: $box
-    z-index: 100
+    z-index: 90
     top: 150
-    left: 0
+    left: 150
     top: 150px
     width: 150px
     height: 300px
-    border-left: 5px solid #D3A473
-    transform: perspective(345px) rotateX(0deg)
+    border-top: 5px solid $border
+    border-bottom: 5px solid $border
+    border-left: 5px solid $border
+    transform: perspective(345px) rotateY(180deg)
 
+  .left-cap-anim
+    animation: leftCap $time
+    z-index: 110
+    left: 0
+    transform: perspective(345px) rotateY(0deg)
 
-  .rigth-cap
+  .right-cap
     box-sizing: border-box
     position: absolute
     background-color: $box
-    z-index: 100
+    z-index: 90
     top: 150
-    left: 450
+    right: 150
     top: 150px
     width: 150px
     height: 300px
-    border-rigth: 5px solid #D3A473
-    transform: perspective(345px) rotateX(0deg)
+    border-top: 5px solid $border
+    border-bottom: 5px solid $border    
+    border-left: 5px solid $border
+    transform: perspective(345px) rotateY(0deg)
+
+  .right-cap-anim
+    z-index: 110
+    animation: rightCap $time
+    right: 0
+    transform: perspective(345px) rotateY(180deg)
 
   .top-cap
     box-sizing: border-box
@@ -81,26 +162,28 @@ $shadow: #BFA58A
     top: 150px
     width: 300px
     height: 150px
-    border-bottom: 5px solid #D3A473
+    border-bottom: 5px solid $border
+    border-left: 5px solid $border
+    border-right: 5px solid $border
     transform: perspective(345px) rotateX(0deg)
 
   .top-cap-anim
     position: absolute
-    background-color: #D0B89D
     z-index: 100
     left: 150
     top: 0px
     width: 300px
     height: 150px 
-    animation: topCap 1.5s
+    animation: topCap $time
     transform: perspective(345px) rotateX(180deg)
-
 
   .bot-cap
     box-sizing: border-box
-    border-bottom: 3px solid #A06822
+    border-bottom: 3px solid $border
+    border-left: 5px solid $border
+    border-right: 5px solid $border    
     position: absolute
-    background-color: #D0B89D
+    background-color: $box
     z-index: 100
     left: 150
     bottom: 150px
@@ -110,16 +193,65 @@ $shadow: #BFA58A
 
   .bot-cap-anim
     position: absolute
-    background-color: #D0B89D
     z-index: 100
     left: 150
     bottom: 0px
     width: 300px
     height: 150px 
-    animation: botCap 1.5s
+    animation: botCap $time
     transform: perspective(345px) rotateX(0deg)
 
+@keyframes Fly
+  0%
+    top: 260px
+    left: 175px
+  100%
+    top: -300
+    left: 1000
 
+@keyframes rightCap
+  0%
+    transform: perspective($angle) rotateY(0deg)
+    right: 150
+    height: 300px
+    top: 150  
+  33%
+    transform: perspective($angle) rotateY(0deg)
+    right: 150
+    height: 300px
+    top: 150
+  66%
+    transform: perspective($angle) rotateY(90deg)
+    right: 75
+    height: 500px
+    top: 50
+  100%
+    transform: perspective($angle) rotateY(180deg)
+    right: 0
+    height: 300px
+    top: 150
+
+@keyframes leftCap
+  0%
+    transform: perspective($angle) rotateY(180deg)
+    left: 150
+    height: 300px
+    top: 150  
+  33%
+    transform: perspective($angle) rotateY(180deg)
+    left: 150
+    height: 300px
+    top: 150
+  66%
+    transform: perspective($angle) rotateY(90deg)
+    left: 75
+    height: 500px
+    top: 50
+  100%
+    transform: perspective($angle) rotateY(0deg)
+    left: 0
+    height: 300px
+    top: 150
 
 @keyframes botCap
   0%
