@@ -26,6 +26,7 @@ $time: 1s
   &:hover
     transform: scale(1.1, 1.1)
   img
+    stroke: $bgrey
     width: 100%
     height: 100%
 
@@ -34,16 +35,81 @@ $time: 1s
   width: 100%
   background-color: $bgrey
   position: relative
-  #town
+  .town-container
     position: absolute
-    height: 550px
-    width: 90%
+    height: 500px
+    width: 1000px
     background-color: white
-    margin-top: 25px
-    left: 50
+    margin-top: 50px
+    left: 150
     right: 0
-
-
+    img
+      position: absolute
+      width: 100%
+      height: 100%
+    #road
+      background-color: $bgrey
+      z-index: 10
+    #roads
+      z-index: 11
+    #place-1
+      z-index: 20
+    #place-2
+      z-index: 15
+    #place-3
+      z-index: 30
+    .dot
+      position: absolute
+      height: 4px
+      width: 4px
+      border-radius: 50%
+      background-color: black
+      top: 120
+      left: 700
+    .car
+      position: absolute
+      height: 50px
+      width: 50px
+      opacity: 0            
+    #car1
+      background-image: url("car-left.svg")
+      top: 280
+      left: 880
+      z-index: 25
+    #car2
+      z-index: 12
+      background-image: url("car-top.svg")
+      top: 365
+      left: 265
+    #ballon
+      position: absolute
+      z-index: 100
+      top: 100
+      left: 50
+      height: 150px
+      width: 150px
+    #cloud-left
+      position: absolute
+      z-index: 70
+      height: 150px
+      width: 150px
+      top: 80
+      left: 50
+    #cloud-right
+      position: absolute
+      z-index: 70
+      height: 150px
+      width: 150px
+      top: 70
+      left: 800  
+    #portal
+      position: absolute    
+      height: 50px
+      width: 50px
+      top: 160
+      left: 770
+      z-index: 70
+      opacity: 0
 .real-stuff
   height: 180px
   width: 300px
@@ -53,12 +119,14 @@ $time: 1s
   position: absolute
   display: none
   transition: 0.2s
+  background-color: rgba(0,0,0,0)
   img
     position: absolute
     height: 100%
     width: 100%
   &:hover
     transform: scale(1.1, 1.1)
+    background-color: rgba(0,0,0,0) !important
 
 .toper
   display: block
