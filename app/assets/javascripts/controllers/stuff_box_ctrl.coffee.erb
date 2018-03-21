@@ -1,0 +1,107 @@
+app.controller 'StuffBoxCtrl', [
+  '$scope', '$http', '$rootScope', 'action', '$location', '$document',
+  ($scope, $http, $rootScope, action, $location, $document) ->
+
+    ctrl = this
+
+    openCap = () ->
+      $('.top-cap').addClass('top-cap-anim')
+      $('.bot-cap').addClass('bot-cap-anim')
+
+    openSides = () ->
+      $('.left-cap').addClass('left-cap-anim')
+      $('.right-cap').addClass('right-cap-anim')      
+
+    background = () ->
+      $('.stuff-container').addClass('visib')
+
+    position = () ->
+      pos = $('.bottom').offset() 
+      $('.real-stuff').css({
+        top: pos.top - 50,
+        left: pos.left
+      })
+
+    top = (i, currpos) ->
+      $('.real-stuff').eq(i).addClass('toper')
+      $('.real-stuff').eq(i).animate({top: currpos.top - 110, left: currpos.left})
+
+    toBlock = () ->
+      poss = []
+      $('.stuff-bl').each(() ->
+        pos = $(this).offset()
+        poss.push pos 
+      )
+      len = $('.real-stuff').length
+
+      i = 0
+      setTimeout(toper = ()-> 
+        if(i < len)
+          currpos = poss[i]
+          setTimeout(top(i, currpos), 500)
+          
+          i++
+          setTimeout(toper, 500)
+      ,500)
+
+    car1 = () ->
+      setInterval(()->
+        $('#car1').animate({top: 280, left: 880, opacity: 0})        
+        $('#car1').animate({top: 250, left: 840, opacity: 1}, 1000, "linear")
+        $('#car1').animate({top: 29, left: 450}, 8000, "linear")
+        $('#car1').animate({top: 9, left: 420, opacity: 0}, 1000, "linear")
+      
+      , 1000)
+
+    car2 = () ->
+      setInterval(()->
+        $('#car2').animate({top: 365, left: 265, opacity: 0})        
+        $('#car2').animate({top: 335, left: 315, opacity: 1}, 1000, "linear")
+        $('#car2').animate({top: 120, left: 700}, 8000, "linear")
+        $('#car2').animate({top: 90, left: 750, opacity: 0}, 1000, "linear")
+      
+      , 1000)
+
+    ballon = ()->
+      setInterval(()->
+        $("#ballon").animate({top: 0},6000)
+        $("#ballon").animate({top: 100},6000)
+      , 1000)
+
+    leftCloud = () ->
+      setInterval(() ->
+        $("#cloud-left").animate({top: -40, left: 300}, 18000)
+        $("#cloud-left").animate({top: 80, left: 50}, 18000)
+      ,1000)
+
+    rightCloud = () ->
+      setInterval(() ->
+        $("#cloud-right").animate({top: 0, left: 650}, 18000)
+        $("#cloud-right").animate({top: 70, left: 800}, 18000)
+      ,1000)  
+
+    rick = () ->
+      setInterval(()->
+        $('#portal').animate({opacity: 1}, 4000)
+        $('#portal').animate({opacity: 0}, 4000)
+      , 7000)
+    action 'index', () ->
+      $('.scotch').click ->
+        $('.scotch').addClass('fly')
+        setTimeout(openCap, 10)
+        setTimeout(openSides, 600)
+        setTimeout(background, 1700)
+        setTimeout(position, 600)
+        setTimeout(toBlock, 1800)
+
+
+    action 'town', () ->
+      car1()
+      car2()
+      ballon()
+      leftCloud()
+      rightCloud()
+      rick()
+
+    return
+]

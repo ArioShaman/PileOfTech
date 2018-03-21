@@ -1,0 +1,393 @@
+// Place all the styles related to the StuffBox controller here.
+// They will automatically be included in application.css.
+// You can use Sass here: http://sass-lang.com/
+
+$light: #c3c3c3
+$bgrey: #2e2e2e
+$yellow: #ffd631
+$grey: #a7a7a7
+
+$angle: 250px
+
+$box: #D0B89D
+$shadow: #BFA58A
+$border: #D3A473
+
+$time: 1s
+
+.close
+  z-index: 30
+  height: 30px
+  width: 30px
+  right: 0
+  margin: 15px
+  cursor: pointer
+  position: absolute
+  &:hover
+    transform: scale(1.1, 1.1)
+  img
+    stroke: $bgrey
+    width: 100%
+    height: 100%
+
+.town
+  height: 100%
+  width: 100%
+  background-color: $bgrey
+  position: relative
+  .town-container
+    position: absolute
+    height: 500px
+    width: 1000px
+    background-color: white
+    margin-top: 50px
+    left: 150
+    right: 0
+    img
+      position: absolute
+      width: 100%
+      height: 100%
+    #road
+      background-color: $bgrey
+      z-index: 10
+    #roads
+      z-index: 11
+    #place-1
+      z-index: 20
+    #place-2
+      z-index: 15
+    #place-3
+      z-index: 30
+    .dot
+      position: absolute
+      height: 4px
+      width: 4px
+      border-radius: 50%
+      background-color: black
+      top: 120
+      left: 700
+    .car
+      position: absolute
+      height: 50px
+      width: 50px
+      opacity: 0            
+    #car1
+      background-image: url("car-left.svg")
+      top: 280
+      left: 880
+      z-index: 25
+    #car2
+      z-index: 12
+      background-image: url("car-top.svg")
+      top: 365
+      left: 265
+    #ballon
+      position: absolute
+      z-index: 100
+      top: 100
+      left: 50
+      height: 150px
+      width: 150px
+    #cloud-left
+      position: absolute
+      z-index: 70
+      height: 150px
+      width: 150px
+      top: 80
+      left: 50
+    #cloud-right
+      position: absolute
+      z-index: 70
+      height: 150px
+      width: 150px
+      top: 70
+      left: 800  
+    #portal
+      position: absolute    
+      height: 50px
+      width: 50px
+      top: 160
+      left: 770
+      z-index: 70
+      opacity: 0
+.real-stuff
+  height: 180px
+  width: 300px
+  z-index: 110
+  margin-top: 60px
+  transform: scale(0.6, 0.6)
+  position: absolute
+  display: none
+  transition: 0.2s
+  background-color: rgba(0,0,0,0)
+  img
+    position: absolute
+    height: 100%
+    width: 100%
+  &:hover
+    transform: scale(1.1, 1.1)
+    background-color: rgba(0,0,0,0) !important
+
+.toper
+  display: block
+  animation: Toper 0.5s
+  transform: scale(1.0, 1.0)
+  z-index: 180 !important
+
+.visib
+  background-color: rgba(0,0,0,0.3)
+.stuff-container
+  position: absolute
+  width: 100%
+  min-height: 100%
+  margin: 0px auto
+  z-index: 120 !important
+  .stuff-flex
+    margin: 0px auto
+    margin-top: 50px
+    z-index: 240
+    width: 1200px
+    height: auto
+    display: flex
+    flex-wrap: wrap
+    .stuff-bl
+      z-index: 250 !important
+      height: 180px
+      width: 300px
+      margin-top: 50px
+      &:hover
+        transform: scale(1.1, 1.1)
+      &:not(:nth-child(3n-2))
+        margin-left: 150px
+      img
+        height: 100%
+        width: 100%
+
+.stuff-box
+  height: 600px
+  width: 600px
+  margin: 0px auto
+  margin-top: 0px
+  position: relative
+  .fly
+    animation: Fly 0.5s
+    top: -300px !important 
+    left: 1000px !important
+  .scotch
+    paddding-top: 10px
+    z-index: 130
+    position: absolute
+    height: 60px
+    width: 250px
+    background-color: rgb(255,156,56)
+    cursor: pointer
+    top: 260px
+    left: 175px
+    transform: rotate(-45deg)
+    .text
+      text-align: center
+      margin-top: 5px
+      font-family: 'm-fred'
+      color: $bgrey
+      font-size: 60px
+  .bottom
+    background-color: $shadow
+    position: absolute
+    border-radius: 0px
+    height: 300px
+    width: 300px
+    margin-left: 150px
+    top: 150px
+
+  .left-cap
+    box-sizing: border-box
+    position: absolute
+    background-color: $box
+    z-index: 90
+    top: 150
+    left: 150
+    top: 150px
+    width: 150px
+    height: 300px
+    border-top: 5px solid $border
+    border-bottom: 5px solid $border
+    border-left: 5px solid $border
+    transform: perspective(345px) rotateY(180deg)
+
+  .left-cap-anim
+    animation: leftCap $time
+    z-index: 110
+    left: 0
+    transform: perspective(345px) rotateY(0deg)
+
+  .right-cap
+    box-sizing: border-box
+    position: absolute
+    background-color: $box
+    z-index: 90
+    top: 150
+    right: 150
+    top: 150px
+    width: 150px
+    height: 300px
+    border-top: 5px solid $border
+    border-bottom: 5px solid $border    
+    border-left: 5px solid $border
+    transform: perspective(345px) rotateY(0deg)
+
+  .right-cap-anim
+    z-index: 110
+    animation: rightCap $time
+    right: 0
+    transform: perspective(345px) rotateY(180deg)
+
+  .top-cap
+    box-sizing: border-box
+    position: absolute
+    background-color: $box
+    z-index: 100
+    left: 150
+    top: 150px
+    width: 300px
+    height: 150px
+    border-bottom: 5px solid $border
+    border-left: 5px solid $border
+    border-right: 5px solid $border
+    transform: perspective(345px) rotateX(0deg)
+
+  .top-cap-anim
+    position: absolute
+    z-index: 100
+    left: 150
+    top: 0px
+    width: 300px
+    height: 150px 
+    animation: topCap $time
+    transform: perspective(345px) rotateX(180deg)
+
+  .bot-cap
+    box-sizing: border-box
+    border-bottom: 3px solid $border
+    border-left: 5px solid $border
+    border-right: 5px solid $border    
+    position: absolute
+    background-color: $box
+    z-index: 100
+    left: 150
+    bottom: 150px
+    width: 300px
+    height: 150px
+    transform: perspective(345px) rotateX(180deg)
+
+  .bot-cap-anim
+    position: absolute
+    z-index: 100
+    left: 150
+    bottom: 0px
+    width: 300px
+    height: 150px 
+    animation: botCap $time
+    transform: perspective(345px) rotateX(0deg)
+
+
+@keyframes Toper
+  0%
+    transform: scale(0.6, 0.6)
+  100%
+    transform: scale(1.0, 1.0)
+
+@keyframes Fly
+  0%
+    top: 260px
+    left: 175px
+  100%
+    top: -300
+    left: 1000
+
+@keyframes rightCap
+  0%
+    transform: perspective($angle) rotateY(0deg)
+    right: 150
+    height: 300px
+    top: 150  
+  33%
+    transform: perspective($angle) rotateY(0deg)
+    right: 150
+    height: 300px
+    top: 150
+  66%
+    transform: perspective($angle) rotateY(90deg)
+    right: 75
+    height: 500px
+    top: 50
+  100%
+    transform: perspective($angle) rotateY(180deg)
+    right: 0
+    height: 300px
+    top: 150
+
+@keyframes leftCap
+  0%
+    transform: perspective($angle) rotateY(180deg)
+    left: 150
+    height: 300px
+    top: 150  
+  33%
+    transform: perspective($angle) rotateY(180deg)
+    left: 150
+    height: 300px
+    top: 150
+  66%
+    transform: perspective($angle) rotateY(90deg)
+    left: 75
+    height: 500px
+    top: 50
+  100%
+    transform: perspective($angle) rotateY(0deg)
+    left: 0
+    height: 300px
+    top: 150
+
+@keyframes botCap
+  0%
+    transform: perspective($angle) rotateX(180deg)
+    bottom: 150px
+    width: 300px
+    left: 150  
+  33%
+    transform: perspective($angle) rotateX(180deg)
+    bottom: 150px
+    width: 300px
+    left: 150
+  66%
+    transform: perspective($angle) rotateX(90deg)
+    bottom: 75px
+    width: 500px
+    left: 50
+  100%
+    transform: perspective($angle) rotateX(0deg)
+    bottom: 0px
+    width: 300px
+    left: 150
+
+@keyframes topCap
+  0%
+    transform: perspective($angle) rotateX(0deg)
+    top: 150px
+    width: 300px
+    left: 150  
+  33%
+    transform: perspective($angle) rotateX(0deg)
+    top: 150px
+    width: 300px
+    left: 150
+  66%
+    transform: perspective($angle) rotateX(90deg)
+    top: 75px
+    width: 500px
+    left: 50
+  100%
+    transform: perspective($angle) rotateX(180deg)
+    top: 0px
+    width: 300px
+    left: 150

@@ -10,6 +10,13 @@ Rails.application.routes.draw do
       get :gallery
       get :contacts
     end
-  end  
+  end
+
+  resources :stuff_box, only: [:index] do
+    collection do
+      get :town
+    end
+  end
+  
   resources :profile, only: [:index]
 end

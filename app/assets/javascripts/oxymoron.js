@@ -302,6 +302,40 @@ angular.module("oxymoron.config.states", [])
           }
         })
       
+        .state('town_stuff_box_index_path', {
+          url: '/stuff_box/town',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['town_stuff_box_index_path'](params);
+          },
+          controller: 'StuffBoxCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('town', $stateParams)
+            }]
+          }
+        })
+      
+        .state('stuff_box_index_path', {
+          url: '/stuff_box',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['stuff_box_index_path'](params);
+          },
+          controller: 'StuffBoxCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
         .state('profile_index_path', {
           url: '/profile',
           
@@ -655,7 +689,7 @@ angular.module("oxymoron.directives", ['oxymoron.directives.fileupload', 'oxymor
 (function () {
   var Routes = function () {
     var self = this,
-        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"new_user_session":{"defaults":{},"path":"/users/sign_in"},"user_session":{"defaults":{},"path":"/users/sign_in"},"destroy_user_session":{"defaults":{},"path":"/users/sign_out"},"new_user_password":{"defaults":{},"path":"/users/password/new"},"edit_user_password":{"defaults":{},"path":"/users/password/edit"},"user_password":{"defaults":{},"path":"/users/password"},"cancel_user_registration":{"defaults":{},"path":"/users/cancel"},"new_user_registration":{"defaults":{},"path":"/users/sign_up"},"edit_user_registration":{"defaults":{},"path":"/users/edit"},"user_registration":{"defaults":{},"path":"/users"},"root":{"defaults":{},"path":"/"},"about_main_index":{"defaults":{},"path":"/main/about"},"gallery_main_index":{"defaults":{},"path":"/main/gallery"},"contacts_main_index":{"defaults":{},"path":"/main/contacts"},"main_index":{"defaults":{},"path":"/main"},"profile_index":{"defaults":{},"path":"/profile"}};
+        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"new_user_session":{"defaults":{},"path":"/users/sign_in"},"user_session":{"defaults":{},"path":"/users/sign_in"},"destroy_user_session":{"defaults":{},"path":"/users/sign_out"},"new_user_password":{"defaults":{},"path":"/users/password/new"},"edit_user_password":{"defaults":{},"path":"/users/password/edit"},"user_password":{"defaults":{},"path":"/users/password"},"cancel_user_registration":{"defaults":{},"path":"/users/cancel"},"new_user_registration":{"defaults":{},"path":"/users/sign_up"},"edit_user_registration":{"defaults":{},"path":"/users/edit"},"user_registration":{"defaults":{},"path":"/users"},"root":{"defaults":{},"path":"/"},"about_main_index":{"defaults":{},"path":"/main/about"},"gallery_main_index":{"defaults":{},"path":"/main/gallery"},"contacts_main_index":{"defaults":{},"path":"/main/contacts"},"main_index":{"defaults":{},"path":"/main"},"town_stuff_box_index":{"defaults":{},"path":"/stuff_box/town"},"stuff_box_index":{"defaults":{},"path":"/stuff_box"},"profile_index":{"defaults":{},"path":"/profile"}};
 
     self.defaultParams = {}
 

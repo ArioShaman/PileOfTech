@@ -18,6 +18,7 @@
 $grey: #d3d3d3
 $yellow: #ffd631
 $bgrey: #2e2e2e
+$desctop: 1300px
 
 @mixin desctop
   @media (min-width: $desctop)
@@ -227,6 +228,21 @@ img
       color: white !important
       &:hover
         font-size: 33px
+        .new
+          transform: scale(1.1, 1.1)
+      span
+        position: relative
+      .new
+        position: absolute
+        height: 30px
+        width: 50px
+        background-color: red
+        top: -8
+        right: 40
+        padding-top: 10px
+        color: white
+        font-size: 24px
+        transition: 0.3s      
   .open
     animation: flexcontent 0.4s
     height: auto
