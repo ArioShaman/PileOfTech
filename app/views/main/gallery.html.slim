@@ -4,6 +4,19 @@
       .gallery-cont
         .gallery-el
           .cover
+            =image_tag("mnt.png")
+          .info-bl
+            .title MidNightTown
+            .desc-bl at="" Статус:  &nbsp;&nbsp;&nbsp; Готово
+            .desc-bl 
+              p at="" Описание: 
+              p at="" Сайт-портфолио для проффесионального фотографа. Здесь вы сможете увидеть примеры его работ, разбитые по жанрам. Ознакомится с прайслистом и получить необходимые контакты
+
+            a.but href="http://midnighttown.store/" target="blank" ПЕРЕЙТИ
+
+
+        .gallery-el
+          .cover
             =image_tag("mart.png")
           .info-bl
             .title MART
@@ -22,17 +35,21 @@
             .desc-bl at="" Статус:  &nbsp;&nbsp;&nbsp; В разработке
             .desc-bl 
               p at="" Описание
-              p at="" Личный проект команды. Цель проекта получить данные о популярных музыкальных чартах за каждый год 21ст в каждой стране. И дать прсослушать песни этих чартов
+              p at="" Личный проект команды. Цель проекта получить данные о популярных музыкальных чартах за каждый год и в каждой стране. И дать прсослушать песни этих чартов
 
             a.but.disable ПЕРЕЙТИ
         
     .footer-slider
       .dots
+        .dot.visible
+          .back
+            .text MidNightTown
+          =image_tag("mnt-small.png")      
         .dot
           .back
             .text MART
           =image_tag("mart-small.png")
-        .dot
+        .dot.visible
           .back
             .text MAD          
           =image_tag("music.jpg")

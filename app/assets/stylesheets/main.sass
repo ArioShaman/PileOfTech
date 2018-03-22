@@ -679,14 +679,23 @@ $desctop: 1300px
           height: 100%
           min-width: 100%
           height: $cover-h
-
           @include tablet
+            flex-direction: column
+            .cover
+              min-width: 100% !important
+              img
+                display: none
             &:nth-child(1)
+              .cover
+                background-image: url("mnt.png") !important
+                background-size: cover
+                background-position: center          
+            &:nth-child(2)
               .cover
                 background-image: url("mart.png")
                 background-size: cover
                 background-position: center
-            &:nth-child(2)
+            &:nth-child(3)
               .cover
                 background-image: url("MAD.png")
                 background-size: cover           
@@ -694,11 +703,19 @@ $desctop: 1300px
             flex-direction: column
             &:nth-child(1)
               .cover
-                background-image: url("mart.png")
+                min-width: 100% !important
+                background-image: url("mnt.png")
                 background-size: cover
                 background-position: center
             &:nth-child(2)
               .cover
+                min-width: 100% !important
+                background-image: url("mart.png")
+                background-size: cover
+                background-position: center
+            &:nth-child(3)
+              .cover
+                min-width: 100% !important
                 background-image: url("MAD.png")
                 background-size: cover             
           @include smobile
@@ -714,7 +731,7 @@ $desctop: 1300px
                 background-size: cover                           
           .cover
             position: relative
-            width: 100%
+            min-width: 750px
             background-color: grey
             height: 100%
             position: relative             
@@ -772,7 +789,8 @@ $desctop: 1300px
               @include tablet
                 width: 100% 
                 margin-top: 12px
-                margin-left: 20px                          
+                margin-left: 60px 
+                font-size: 22px                                       
               @include mobile
                 font-size: 13px
                 width: 350px
@@ -787,7 +805,7 @@ $desctop: 1300px
                 width: 450px
                 padding-left: 50px
                 @include tablet
-                  width: 400px
+                  width: 90%
                   padding-left: 10px                
                 @include mobile
                   width: 80%
@@ -874,8 +892,11 @@ $desctop: 1300px
           height: 100px
         @include smobile
           margin-top: 10px
-          height: 80px          
+          height: 80px 
+        .visible
+          display: block !important        
         .dot
+          display: none
           z-index: 1000
           height: 140px
           width: 250px
@@ -997,6 +1018,8 @@ $desctop: 1300px
     .footer-nav
       $foot-h: 100px
       z-index: 100
+      position: absolute !important
+      bottom: 0
       @include mobile
         $foot-m-h: 180px
         min-height: $foot-m-h

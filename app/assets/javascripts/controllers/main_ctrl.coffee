@@ -146,9 +146,31 @@ app.controller 'MainCtrl', [
         images[i].setAttribute("id", i)
         dots[i].setAttribute("id", i)
       images
+        
+      console.log images
+      console.log dots
       images.first().addClass('active')
       dots.first().addClass('active')
+
+      render = (target) ->
+        $('.dot').removeClass('visible')
+        width = window.innerWidth 
+        next = nextId(target)
+        prev = prevId(target)
+
+        if width < 767
+          $('#'+target+'.dot').addClass('visible')
+          $('#'+next+'.dot').addClass('visible')
+        else
+           $('#'+prev+'.dot').addClass('visible')
+          $('#'+target+'.dot').addClass('visible')
+          $('#'+next+'.dot').addClass('visible')
+        
+      render($('.gallery-el.active').attr('id'))
+
+
       sliderResponse = (target, prev, side) ->
+        render(target)
         images.removeClass('active')
         dots.removeClass('active')
         $('#'+target+'.dot').addClass('active')
