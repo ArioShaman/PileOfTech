@@ -34,10 +34,23 @@
         .profile
           .name ng-bind="name"
           .position ng-bind="position"
-          .block ng-repeat="(type, skills)  in list"
-            .tit ng-bind="type" 
-            div ng-repeat="skill in skills"
-              .subtit - {{skill}}
+          div ng-show="isDan"
+            .block ng-repeat="(type, skills) in dan track by $index"
+              .tit ng-bind="type" 
+              div ng-repeat="skill in skills track by $index"
+                .subtit - {{skill}}
+
+          div ng-show="isVlad"
+            .block ng-repeat="(type, skills) in vlad track by $index"
+              .tit ng-bind="type" 
+              div ng-repeat="skill in skills track by $index"
+                .subtit - {{skill}}
+
+          div ng-show="isKostya"
+            .block ng-repeat="(type, skills) in kostya track by $index"
+              .tit ng-bind="type" 
+              div ng-repeat="skill in skills track by $index"
+                .subtit - {{skill}}                
 
 
       .info

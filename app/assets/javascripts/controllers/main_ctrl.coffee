@@ -17,7 +17,11 @@ app.controller 'MainCtrl', [
       DanPosition = "back-end разработчик"
       KostyaPosition = "manager"
       VladPosition = "web-дизайнер"
-      dan = {
+
+      $scope.isDan = false
+      $scope.isVlad = false
+      $scope.isKostya = false
+      $scope.dan = {
         "Навыки": [
             "HTML(HTML5), CSS(CSS3)", "JS, JQuery, AngularJs",
             "Ruby on Rails", "Database(PostgreSQL, MySQL, SQLite)",
@@ -27,13 +31,13 @@ app.controller 'MainCtrl', [
           "Критическое мышление",
           "Професиональное отношение к работе",
           "Общительный",
-          "Легко находижу общий язык",
+          "Легко нахожу общий язык",
           "Творческий подход в любом деле"
         ],
         "Любимая цитата": ['"Чтобы выигрывать, прежде всего нужно играть."',
           '© Альберт Эйнштейн']
       }   
-      vlad = {
+      $scope.vlad = {
         "Навыки": [
             "Растровая, векторная - графика",
             "Photoshop, Illustator",
@@ -50,7 +54,7 @@ app.controller 'MainCtrl', [
           '© Влад Клименко']
       }   
 
-      kostya = {
+      $scope.kostya = {
         "Навыки": [
             "SMM",
             "Маркетинг",
@@ -66,18 +70,21 @@ app.controller 'MainCtrl', [
         "Любимая цитата": ['"Ты родился оригиналом,не умри копией..."',
           '© Джон Мэйсон']
       }         
-      
+
       $scope.tab = (name)->
+        $scope.isDan = false
+        $scope.isVlad = false
+        $scope.isKostya = false        
         if (name == 'vlad')
-          $scope.list = vlad
+          $scope.isVlad = true
           $scope.name = VladName
           $scope.position = VladPosition
         if (name == 'dan')
-          $scope.list = dan
+          $scope.isDan = true
           $scope.name = DanName
           $scope.position = DanPosition
         if (name == 'kostya')
-          $scope.list = kostya
+          $scope.isKostya = true
           $scope.name = KostyaName
           $scope.position = KostyaPosition
 
