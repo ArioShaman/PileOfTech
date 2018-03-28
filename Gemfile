@@ -40,6 +40,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-scroll'
   gem 'rails-assets-angular-translate'
   gem 'rails-assets-ngstorage'
+  gem 'rails-assets-angular-sanitize'
   # gem 'rails-assets-momentjs',            '~> 2.18'
   # gem 'rails-assets-angular-ellipsis',    '~> 0.1'
   # gem 'rails-assets-select2',             '~> 4.0.3'

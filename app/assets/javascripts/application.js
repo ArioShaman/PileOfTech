@@ -16,19 +16,23 @@
 = require script
 = require translate
 = require ngstorage
+= require angular-sanitize
+= require translate
 = require_tree ./configs
 = require_tree ./directives
 */
-var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate', 'ngStorage']);
+var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate', 'ngStorage', 'ngSanitize']);
 
 app.config(['$stateProvider', function ($stateProvider) {
   $stateProvider.rails()
 }])
 
-// app.config(['$translateProvider', function ($translateProvider) {
-//   $translateProvider.translations('en', translationsEN);
-//   $translateProvider.translations('ru', translationsRU);
-// }])
+app.config(['$translateProvider', function ($translateProvider) {
+  $translateProvider.translations('en', translationsEN);
+  $translateProvider.translations('ru', translationsRU);
+  // $translateProvider.useSanitizeValueStrategy('escape');
+  $translateProvider.useSanitizeValueStrategy('escapeParameters');
+}])
 
 app.run(['$rootScope','$location', '$localStorage', function($rootScope, $location, $localStorage){
   links = $localStorage.links || []

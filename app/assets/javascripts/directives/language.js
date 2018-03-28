@@ -27,7 +27,7 @@ app.directive('language', ['$translate', '$localStorage', '$sessionStorage',
       $sessionStorage, $rootScope){
 
         $.get("https://api.ipdata.co", function (response) { 
-          code = response['country_code'].toLowerCase()
+          code = response['country_code'].toLowerCase();
           if (code != 'ru'){
             code = 'en';
           }

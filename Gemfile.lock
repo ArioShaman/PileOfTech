@@ -185,6 +185,8 @@ GEM
       railties (= 5.1.4)
       sprockets-rails (>= 2.0.0)
     rails-assets-angular (1.4.7)
+    rails-assets-angular-sanitize (1.4.7)
+      rails-assets-angular (= 1.4.7)
     rails-assets-angular-scroll (1.0.2)
       rails-assets-angular (>= 1.2.16, < 2)
     rails-assets-angular-translate (2.17.0)
@@ -320,6 +322,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails-assets-angular (= 1.4.7)!
+  rails-assets-angular-sanitize!
   rails-assets-angular-scroll!
   rails-assets-angular-translate!
   rails-assets-ngstorage!
