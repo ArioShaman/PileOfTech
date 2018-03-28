@@ -17,6 +17,7 @@
 = require translate
 = require ngstorage
 = require_tree ./configs
+= require_tree ./directives
 */
 var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate', 'ngStorage']);
 

@@ -7,8 +7,6 @@ app.controller 'MainCtrl', [
 
     click = false
     action 'about', () ->
-
-      $scope.list = []
       $scope.name = ""
       $scope.position = ""
       DanName = "Даниил Матвеев"

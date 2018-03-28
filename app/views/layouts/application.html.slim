@@ -33,10 +33,15 @@ html ng-app="app"
           .el КОНТАКТЫ
         a.menu-link.link ui-sref="new_user_session_path"
           .el ЛИЧНЫЙ КАБИНЕТ
+
+
         -if user_signed_in?
           .el
             = link_to('Logout', destroy_user_session_path, method: :delete)
-        / div language=""
+
+        
+        div test=""
+        /div language=""
 
 
     ui-view.slide
