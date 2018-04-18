@@ -4,6 +4,7 @@ app.controller 'StuffBoxCtrl', [
 
     ctrl = this
 
+    width = window.innerWidth 
     openCap = () ->
       $('.top-cap').addClass('top-cap-anim')
       $('.bot-cap').addClass('bot-cap-anim')
@@ -45,46 +46,83 @@ app.controller 'StuffBoxCtrl', [
       ,500)
 
     car1 = () ->
-      setInterval(()->
-        $('#car1').animate({top: 280, left: 880, opacity: 0})        
-        $('#car1').animate({top: 250, left: 840, opacity: 1}, 1000, "linear")
-        $('#car1').animate({top: 29, left: 450}, 8000, "linear")
-        $('#car1').animate({top: 9, left: 420, opacity: 0}, 1000, "linear")
-      
-      , 1000)
+      if width < 767
+        setInterval(()->
+          $('#car1').animate({top: 125, left: 300, opacity: 0})        
+          $('#car1').animate({top: 125, left: 300, opacity: 1}, 1000, "linear")
+          $('#car1').animate({top: 25, left: 120}, 8000, "linear")
+          $('#car1').animate({top: 20, left: 110, opacity: 0}, 1000, "linear")
+        
+        , 1000)
+      else          
+        setInterval(()->
+          $('#car1').animate({top: 280, left: 880, opacity: 0})        
+          $('#car1').animate({top: 250, left: 840, opacity: 1}, 1000, "linear")
+          $('#car1').animate({top: 29, left: 450}, 8000, "linear")
+          $('#car1').animate({top: 9, left: 420, opacity: 0}, 1000, "linear")
+        
+        , 1000)
 
     car2 = () ->
-      setInterval(()->
-        $('#car2').animate({top: 365, left: 265, opacity: 0})        
-        $('#car2').animate({top: 335, left: 315, opacity: 1}, 1000, "linear")
-        $('#car2').animate({top: 120, left: 700}, 8000, "linear")
-        $('#car2').animate({top: 90, left: 750, opacity: 0}, 1000, "linear")
-      
-      , 1000)
+      if width < 767
+        setInterval(()->
+            $('#car2').animate({top: 160, left: 90, opacity: 0})        
+            $('#car2').animate({top: 160, left: 90, opacity: 1}, 1000, "linear")
+            $('#car2').animate({top: 60, left: 265}, 8000, "linear")
+            $('#car2').animate({top: 50, left: 275, opacity: 0}, 1000, "linear")
+          
+          , 1000)
+      else      
+        setInterval(()->
+          $('#car2').animate({top: 365, left: 265, opacity: 0})        
+          $('#car2').animate({top: 335, left: 315, opacity: 1}, 1000, "linear")
+          $('#car2').animate({top: 120, left: 700}, 8000, "linear")
+          $('#car2').animate({top: 90, left: 750, opacity: 0}, 1000, "linear")
+        
+        , 1000)
 
     ballon = ()->
-      setInterval(()->
-        $("#ballon").animate({top: 0},6000)
-        $("#ballon").animate({top: 100},6000)
-      , 1000)
+      if width < 767
+        setInterval(()->
+            $("#ballon").animate({top: 0},6000)
+            $("#ballon").animate({top: 100},6000)
+          , 1000)
+      else
+        setInterval(()->
+          $("#ballon").animate({top: 0},6000)
+          $("#ballon").animate({top: 100},6000)
+        , 1000)
 
     leftCloud = () ->
-      setInterval(() ->
-        $("#cloud-left").animate({top: -40, left: 300}, 18000)
-        $("#cloud-left").animate({top: 80, left: 50}, 18000)
-      ,1000)
+      if width < 767
+        setInterval(() ->
+          $("#cloud-left").animate({top: -40, left: 150}, 18000)
+          $("#cloud-left").animate({top: 35, left: 0}, 18000)
+        ,1000)
+      else
+        setInterval(() ->
+          $("#cloud-left").animate({top: -40, left: 300}, 18000)
+          $("#cloud-left").animate({top: 80, left: 50}, 18000)
+        ,1000)
 
     rightCloud = () ->
-      setInterval(() ->
-        $("#cloud-right").animate({top: 0, left: 650}, 18000)
-        $("#cloud-right").animate({top: 70, left: 800}, 18000)
-      ,1000)  
+      if width < 767
+        setInterval(() ->
+          $("#cloud-right").animate({top: -20, left: 175}, 18000)
+          $("#cloud-right").animate({top: 35, left: 270}, 18000)
+        ,1000)        
+      else      
+        setInterval(() ->
+          $("#cloud-right").animate({top: 0, left: 650}, 18000)
+          $("#cloud-right").animate({top: 70, left: 800}, 18000)
+        ,1000)  
 
     rick = () ->
-      setInterval(()->
-        $('#portal').animate({opacity: 1}, 4000)
-        $('#portal').animate({opacity: 0}, 4000)
-      , 7000)
+      if width > 768
+        setInterval(()->
+          $('#portal').animate({opacity: 1}, 4000)
+          $('#portal').animate({opacity: 0}, 4000)
+        , 7000)
     action 'index', () ->
       $('.scotch').click ->
         $('.scotch').addClass('fly')
