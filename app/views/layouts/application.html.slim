@@ -40,7 +40,6 @@ html ng-app="app"
             = link_to('Logout', destroy_user_session_path, method: :delete)
 
         
-        div language=""
-        /div test=""
+        div.lang-back ng-bind="lang"
 
     ui-view.slide

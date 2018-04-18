@@ -33,7 +33,7 @@ app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.useSanitizeValueStrategy('escapeParameters');
 }])
 
-app.run(['$rootScope','$location', '$localStorage', function($rootScope, $location, $localStorage){
+app.run(['$rootScope','$location', '$localStorage', '$translate', function($rootScope, $location, $localStorage, $translate){
   links = $localStorage.links || []
   $localStorage.links = links
 
@@ -51,6 +51,38 @@ app.run(['$rootScope','$location', '$localStorage', function($rootScope, $locati
       $rootScope.$apply();
       $localStorage.links.pop(attr);
     }
+  });
+
+  if($localStorage.lang){
+    $rootScope.lang = $localStorage.lang;
+  }else{
+    $.get("https://api.ipdata.co", function (response) { 
+      code = response['country_code'].toLowerCase();
+      if (code != 'ru'){
+        code = 'en';
+      }
+      $rootScope.lang = code;
+    }, "jsonp");
+  }
+  $translate.use($rootScope.lang); 
+  $('.lang-back').addClass($rootScope.lang);  
+
+  $(document).on("click", ".lang-back", function(){
+    if($rootScope.lang == 'ru'){
+      $rootScope.lang = 'en';
+      console.log($rootScope.lang);
+      $localStorage.lang = 'en';
+      $translate.use('en');
+      $('.lang-back').removeClass('ru'); 
+      $('.lang-back').addClass('en'); 
+    }else{
+      $rootScope.lang = 'ru';
+      console.log($rootScope.lang);
+      $localStorage.lang = 'ru';
+      $translate.use('ru');
+      $('.lang-back').removeClass('en'); 
+      $('.lang-back').addClass('ru');           
+    }     
   });
 }]);
 
