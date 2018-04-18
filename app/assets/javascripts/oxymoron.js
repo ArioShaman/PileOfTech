@@ -1,1 +1,760 @@
-(function(){angular.module("oxymoron.config.http",[]).config(["$httpProvider","$locationProvider","$stateProvider",function(e){e.defaults.headers.common["X-Requested-With"]="AngularXMLHttpRequest",e.defaults.paramSerializer="$httpParamSerializerJQLike"}]),angular.module("oxymoron.config.states",[]).config(["$locationProvider","$stateProvider","$urlRouterProvider","$urlMatcherFactoryProvider",function(e,t,r){e.html5Mode({enabled:!0,requireBase:!1}),r.rule(function(e,r){var n=r.path(),o="/"===n[n.length-1];if(t.oxymoron_location=r,o)return n.substr(0,n.length-1)});var n=function(e,t){return function(r,n){try{-1!=(r=angular.isArray(r)?r:[r]).indexOf(e)&&n(t)}catch(o){console.error(o)}}};t.rails=function(){return t.state("new_user_session_path",{url:"/users/sign_in",templateUrl:function(e){return e["ng-view"]="",Routes.new_user_session_path(e)},controller:"UsersSessionsCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("new",e)}]}}).state("new_user_password_path",{url:"/users/password/new",templateUrl:function(e){return e["ng-view"]="",Routes.new_user_password_path(e)},controller:"DevisePasswordsCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("new",e)}]}}).state("edit_user_password_path",{url:"/users/password/edit",templateUrl:function(e){return e["ng-view"]="",Routes.edit_user_password_path(e)},controller:"DevisePasswordsCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("edit",e)}]}}).state("cancel_user_registration_path",{url:"/users/cancel",templateUrl:function(e){return e["ng-view"]="",Routes.cancel_user_registration_path(e)},controller:"DeviseRegistrationsCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("cancel",e)}]}}).state("new_user_registration_path",{url:"/users/sign_up",templateUrl:function(e){return e["ng-view"]="",Routes.new_user_registration_path(e)},controller:"DeviseRegistrationsCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("new",e)}]}}).state("edit_user_registration_path",{url:"/users/edit",templateUrl:function(e){return e["ng-view"]="",Routes.edit_user_registration_path(e)},controller:"DeviseRegistrationsCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("edit",e)}]}}).state("root_path",{url:"/",templateUrl:function(e){return e["ng-view"]="",Routes.root_path(e)},controller:"MainCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("index",e)}]}}).state("about_main_index_path",{url:"/main/about",templateUrl:function(e){return e["ng-view"]="",Routes.about_main_index_path(e)},controller:"MainCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("about",e)}]}}).state("gallery_main_index_path",{url:"/main/gallery",templateUrl:function(e){return e["ng-view"]="",Routes.gallery_main_index_path(e)},controller:"MainCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("gallery",e)}]}}).state("contacts_main_index_path",{url:"/main/contacts",templateUrl:function(e){return e["ng-view"]="",Routes.contacts_main_index_path(e)},controller:"MainCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("contacts",e)}]}}).state("main_index_path",{url:"/main",templateUrl:function(e){return e["ng-view"]="",Routes.main_index_path(e)},controller:"MainCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("index",e)}]}}).state("town_stuff_box_index_path",{url:"/stuff_box/town",templateUrl:function(e){return e["ng-view"]="",Routes.town_stuff_box_index_path(e)},controller:"StuffBoxCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("town",e)}]}}).state("stuff_box_index_path",{url:"/stuff_box",templateUrl:function(e){return e["ng-view"]="",Routes.stuff_box_index_path(e)},controller:"StuffBoxCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("index",e)}]}}).state("profile_index_path",{url:"/profile",templateUrl:function(e){return e["ng-view"]="",Routes.profile_index_path(e)},controller:"ProfileCtrl as ctrl",resolve:{action:["$stateParams",function(e){return n("index",e)}]}}),t}}]).config(["$provide",function(e){e.decorator("$state",["$delegate",function(e){var t=e;t.baseGo=t.go;var r=function(e,r,n){if(n=n||{},t.defaultParams){var o=angular.copy(t.defaultParams);r=angular.extend(o,r)}n.inherit=!1,t.baseGo(e,r,n)};return t.go=r,e}])}]),angular.module("oxymoron.config.debug",[]).config(["$compileProvider",function(e){e.debugInfoEnabled(!1)}]),angular.module("oxymoron.config",["oxymoron.config.http","oxymoron.config.states","oxymoron.config.debug"]),angular.module("oxymoron.services.interceptor",[]).factory("httpInterceptor",["$q","$rootScope","$log",function(e,t){return{request:function(r){return t.$broadcast("loading:progress"),r||e.when(r)},response:function(r){return t.$broadcast("loading:finish",r),r||e.when(r)},responseError:function(r){return t.$broadcast("loading:error",r),e.reject(r)}}}]).config(["$httpProvider",function(e){e.interceptors.push("httpInterceptor")}]),angular.module("oxymoron.services.resources",[]).factory("resourceDecorator",[function(){return function(e){return e}}]),angular.module("oxymoron.services.sign",[]).service("Sign",["$http",function(e){var t=this;t.out=function(t){e["delete"](Routes.destroy_user_session_path()).success(function(){t&&t()})},t["in"]=function(t,r){e.post(Routes.user_session_path(),{user:t}).success(function(){r&&r()})},t.up=function(t,r){e.post(Routes.user_registration_path(),{user:t}).success(function(){r&&r()})}}]),angular.module("oxymoron.services.validate",[]).factory("Validate",[function(){return function(e,t){try{var r=angular.element(document.querySelector('[name="'+e+'"]')).scope()[e]}catch(n){r={}}angular.element(document.querySelectorAll(".rails-errors")).remove(),angular.forEach(r,function(e,t){0!=t.indexOf("$")&&angular.forEach(e.$error,function(t,r){e.$setValidity(r,null)})}),angular.forEach(t,function(t,o){var a=e+"["+o+"]";try{r[a]&&(r[a].$setTouched(),r[a].$setDirty(),r[a].$setValidity("server",!1)),angular.element(document.querySelector('[name="'+a+'"]')).parent().append('<div class="rails-errors" ng-messages="'+a+'.$error"><div ng-message="server">'+t[0]+"</div></div>")}catch(n){console.log(n),console.warn("Element with name "+a+" not found for validation.")}})}}]),angular.module("oxymoron.services.notice",[]).service("Notice",["ngNotify",function(e){this.callback=function(t,r){e.set(r.data.msg||r.data.error,t)}}]),angular.module("oxymoron.services",["oxymoron.services.interceptor","oxymoron.services.notice","oxymoron.services.resources","oxymoron.services.sign","oxymoron.services.validate"]),angular.module("oxymoron.directives.contentFor",[]).directive("contentFor",["$compile",function(e){return{compile:function(t){var r=t.html();return{pre:function(n,o,a){var i=angular.element(document.querySelectorAll('[ng-yield="'+a.contentFor+'"]'));return"true"==i.attr("only-text")&&(r=t.text().replace(/(?:\r\n|\r|\n)/g," ")),i.html((i.attr("prefix")||"")+r+(i.attr("postfix")||"")),e(i)(n),o.remove()}}}}}]),angular.module("oxymoron.directives.fileupload",[]).directive("fileupload",["$http","$timeout","$cookies","ngNotify",function(e,t,r,n){return{scope:{fileupload:"=",ngModel:"=",hash:"=",percentCompleted:"=",maxSize:"="},restrict:"A",link:function(e,t,o){e.percentCompleted=undefined,t.bind("change",function(){var a=!0;e.xhr&&e.xhr.abort();var i=new FormData;if(angular.forEach(t[0].files,function(t){e.maxSize&&t.size/1024/1024>e.maxSize?a=!1:i.append("attachments[]",t)}),!a)return n.set("File size is more then "+e.maxSize+" Mb","error"),!1;e.xhr=new XMLHttpRequest,e.percentCompleted=0,e.xhr.upload.onprogress=function(t){e.$apply(function(){t.lengthComputable&&(e.percentCompleted=Math.round(t.loaded/t.total*100))})},e.xhr.onload=function(){var t=JSON.parse(this.responseText);200==this.status?e.$apply(function(){e.hash?(e.ngModel=e.ngModel||{},angular.forEach(t,function(t,r){e.ngModel[r]=e.ngModel[r]||[],angular.forEach(t,function(t){e.ngModel[r].push(t)})})):o.multiple?(e.ngModel=e.ngModel||[],angular.forEach(t,function(t){e.ngModel.push(t)})):e.ngModel=t[0],e.percentCompleted=undefined}):n.set(t.msg||"Uploading error","error")},e.xhr.open("POST",e.fileupload),e.xhr.setRequestHeader("X-XSRF-Token",r.get("XSRF-TOKEN")),e.xhr.send(i),t[0].value=""})}}}]),angular.module("oxymoron.directives.clickOutside",[]).directive("clickOutside",["$document",function(e){return{restrict:"A",scope:{clickOutside:"&",clickOutsideIf:"="},link:function(t,r){var n=function(e){t.clickOutsideIf&&r!==e.target&&!r[0].contains(e.target)&&document.body.contains(e.target)&&t.$apply(function(){t.$eval(t.clickOutside)})};e.bind("click",n),t.$on("$destroy",function(){e.unbind("click",n)})}}}]),angular.module("oxymoron.directives",["oxymoron.directives.fileupload","oxymoron.directives.contentFor","oxymoron.directives.clickOutside"]),angular.module("oxymoron.notifier",[]).run(["$rootScope","ngNotify","Validate","$state","$http","$location","Notice",function(e,t,r,n,o,a,i){t.config({theme:"pure",position:"top",duration:2e3,type:"info"});var s=function(e,t){t.data&&angular.isObject(t.data)&&((t.data.msg||t.data.error)&&i.callback(e,t),t.data.errors&&r(t.data.form_name||t.config.data.form_name,t.data.errors),t.data.reload?t.data.redirect_to_url?window.location=t.data.redirect_to_url:t.data.redirect_to&&n.transitionTo(t.data.redirect_to,t.data.redirect_options||{},{notify:!1,location:!0,reload:!0}):t.data.redirect_to_url?a.url(t.data.redirect_to_url):t.data.redirect_to&&n.go(t.data.redirect_to,t.data.redirect_options||{}),t.data.reload&&window.location.reload())};e.$on("loading:finish",function(e,t){s("success",t)}),e.$on("loading:error",function(e,t){s("error",t)})}]),angular.module("oxymoron",["ngNotify","ngCookies","ui.router","ngResource","oxymoron.directives","oxymoron.services","oxymoron.config","oxymoron.notifier"])}).call(this),function(){var e=function(){var e=this,t={new_user_session:{defaults:{},path:"/users/sign_in"},user_session:{defaults:{},path:"/users/sign_in"},destroy_user_session:{defaults:{},path:"/users/sign_out"},new_user_password:{defaults:{},path:"/users/password/new"},edit_user_password:{defaults:{},path:"/users/password/edit"},user_password:{defaults:{},path:"/users/password"},cancel_user_registration:{defaults:{},path:"/users/cancel"},new_user_registration:{defaults:{},path:"/users/sign_up"},edit_user_registration:{defaults:{},path:"/users/edit"},user_registration:{defaults:{},path:"/users"},root:{defaults:{},path:"/"},about_main_index:{defaults:{},path:"/main/about"},gallery_main_index:{defaults:{},path:"/main/gallery"},contacts_main_index:{defaults:{},path:"/main/contacts"},main_index:{defaults:{},path:"/main"},town_stuff_box_index:{defaults:{},path:"/stuff_box/town"},stuff_box_index:{defaults:{},path:"/stuff_box"},profile_index:{defaults:{},path:"/profile"}};e.defaultParams={};var r=function(e,t){var n=[];for(var o in e)if(e.hasOwnProperty(o)){var a=t?t+"["+(Array.isArray(e)?"":o)+"]":o,i=e[o];n.push("object"==typeof i?r(i,a):encodeURIComponent(a)+"="+encodeURIComponent(i))}return n.join("&")},n=function(e,t){return delete(e=angular.copy(e))[t],e};angular.forEach(t,function(t,o){var a="",i=function(e){e.format&&(a+="."+e.format);e=n(e,"format");return angular.forEach(e,function(t,r){var o=":"+r;-1!=a.search(o)&&(a=a.replace(o,t),e=n(e,r))}),-1!=a.search(/\*\w+/)&&(a=a.replace(/\*(\w+)/,function(t,r){return e[r]})),Object.keys(e).length&&(a+="?"+r(e)),a};e[o+"_path"]=function(r){r=angular.extend(angular.copy(t.defaults),r||{});a=t.path;var n=angular.copy(e.defaultParams);return i(angular.extend(n,r))},e[o+"_url"]=function(t){return window.location.origin+e[o+"_path"](t)}})};window.Routes=new e}.call(this);
+(function() {
+  angular.module("oxymoron.config.http", [])
+  .config(['$httpProvider', '$locationProvider', '$stateProvider', function($httpProvider, $locationProvider, $stateProvider) {
+    /*
+     *  Set token for AngularJS ajax methods
+    */
+    $httpProvider.defaults.headers.common['X-Requested-With'] = 'AngularXMLHttpRequest';
+    $httpProvider.defaults.paramSerializer = '$httpParamSerializerJQLike';
+  }])
+angular.module("oxymoron.config.states", [])
+  .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$urlMatcherFactoryProvider', function ($locationProvider, $stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
+    /*
+     *  Enable HTML5 History API
+    */
+    $locationProvider.html5Mode({enabled: true, requireBase: false});
+
+    /*
+     *  $stateProvider Rails
+    */
+    $urlRouterProvider.rule(function($injector, $location) {
+      var path = $location.path();
+      var hasTrailingSlash = path[path.length-1] === '/';
+
+      //for later access in tempalteUrl callback
+      $stateProvider.oxymoron_location = $location;
+
+      if(hasTrailingSlash) {
+        var newPath = path.substr(0, path.length - 1); 
+        return newPath; 
+      }
+    });
+
+    var resolve = function (action, $stateParams) {
+      return function (actionNames, callback) {
+        try {
+          var actionNames = angular.isArray(actionNames) ? actionNames : [actionNames];
+          
+          if (actionNames.indexOf(action)!=-1) {
+            callback($stateParams);
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+
+    $stateProvider.rails = function () {
+      $stateProvider
+      
+        .state('rails_info_properties_path', {
+          url: '/rails/info/properties',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['rails_info_properties_path'](params);
+          },
+          controller: 'RailsInfoCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('properties', $stateParams)
+            }]
+          }
+        })
+      
+        .state('rails_info_routes_path', {
+          url: '/rails/info/routes',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['rails_info_routes_path'](params);
+          },
+          controller: 'RailsInfoCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('routes', $stateParams)
+            }]
+          }
+        })
+      
+        .state('rails_info_path', {
+          url: '/rails/info',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['rails_info_path'](params);
+          },
+          controller: 'RailsInfoCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('rails_mailers_path', {
+          url: '/rails/mailers',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['rails_mailers_path'](params);
+          },
+          controller: 'RailsMailersCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('new_user_session_path', {
+          url: '/users/sign_in',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['new_user_session_path'](params);
+          },
+          controller: 'UsersSessionsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('new', $stateParams)
+            }]
+          }
+        })
+      
+        .state('new_user_password_path', {
+          url: '/users/password/new',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['new_user_password_path'](params);
+          },
+          controller: 'DevisePasswordsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('new', $stateParams)
+            }]
+          }
+        })
+      
+        .state('edit_user_password_path', {
+          url: '/users/password/edit',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['edit_user_password_path'](params);
+          },
+          controller: 'DevisePasswordsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('edit', $stateParams)
+            }]
+          }
+        })
+      
+        .state('cancel_user_registration_path', {
+          url: '/users/cancel',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['cancel_user_registration_path'](params);
+          },
+          controller: 'DeviseRegistrationsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('cancel', $stateParams)
+            }]
+          }
+        })
+      
+        .state('new_user_registration_path', {
+          url: '/users/sign_up',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['new_user_registration_path'](params);
+          },
+          controller: 'DeviseRegistrationsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('new', $stateParams)
+            }]
+          }
+        })
+      
+        .state('edit_user_registration_path', {
+          url: '/users/edit',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['edit_user_registration_path'](params);
+          },
+          controller: 'DeviseRegistrationsCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('edit', $stateParams)
+            }]
+          }
+        })
+      
+        .state('root_path', {
+          url: '/',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['root_path'](params);
+          },
+          controller: 'MainCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('about_main_index_path', {
+          url: '/main/about',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['about_main_index_path'](params);
+          },
+          controller: 'MainCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('about', $stateParams)
+            }]
+          }
+        })
+      
+        .state('gallery_main_index_path', {
+          url: '/main/gallery',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['gallery_main_index_path'](params);
+          },
+          controller: 'MainCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('gallery', $stateParams)
+            }]
+          }
+        })
+      
+        .state('contacts_main_index_path', {
+          url: '/main/contacts',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['contacts_main_index_path'](params);
+          },
+          controller: 'MainCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('contacts', $stateParams)
+            }]
+          }
+        })
+      
+        .state('main_index_path', {
+          url: '/main',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['main_index_path'](params);
+          },
+          controller: 'MainCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('town_stuff_box_index_path', {
+          url: '/stuff_box/town',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['town_stuff_box_index_path'](params);
+          },
+          controller: 'StuffBoxCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('town', $stateParams)
+            }]
+          }
+        })
+      
+        .state('stuff_box_index_path', {
+          url: '/stuff_box',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['stuff_box_index_path'](params);
+          },
+          controller: 'StuffBoxCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+        .state('profile_index_path', {
+          url: '/profile',
+          
+          templateUrl: function(params) {
+            params['ng-view']='';
+            
+            
+            return Routes['profile_index_path'](params);
+          },
+          controller: 'ProfileCtrl as ctrl',
+          resolve: {
+            action: ['$stateParams', function ($stateParams) {
+              return resolve('index', $stateParams)
+            }]
+          }
+        })
+      
+      return $stateProvider;
+    }
+  }])
+
+  .config(['$provide',
+    function($provide) {
+      $provide.decorator('$state', ['$delegate', function($delegate) {
+        var state = $delegate;
+        state.baseGo = state.go;
+
+        var go = function(to, params, options) {
+          options = options || {};
+
+          if (state.defaultParams) {
+            var defaultParams = angular.copy(state.defaultParams);
+            params = angular.extend(defaultParams, params);
+          }
+
+          options.inherit = false;
+
+          state.baseGo(to, params, options);
+        };
+        state.go = go;
+
+        return $delegate;
+      }]);
+    }
+  ])
+angular.module("oxymoron.config.debug", [])
+.config(['$compileProvider', function ($compileProvider) {
+  $compileProvider.debugInfoEnabled(true);
+}]);
+
+angular.module("oxymoron.config", ['oxymoron.config.http', 'oxymoron.config.states', 'oxymoron.config.debug'])
+
+  angular.module("oxymoron.services.interceptor", [])
+  .factory('httpInterceptor', ['$q', '$rootScope', '$log', function ($q, $rootScope, $log) {
+    return {
+      request: function (config) {
+        $rootScope.$broadcast('loading:progress');
+        return config || $q.when(config);
+      },
+      response: function (response) {
+        $rootScope.$broadcast('loading:finish', response);
+        return response || $q.when(response);
+      },
+      responseError: function (response) {
+        $rootScope.$broadcast('loading:error', response);
+        return $q.reject(response);
+      }
+    };
+  }])
+  .config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.interceptors.push('httpInterceptor');
+  }])
+angular.module("oxymoron.services.resources", [])
+  .factory('resourceDecorator', [function () {
+    return function(resource) {
+      return resource;
+    };
+  }])
+
+  
+angular.module("oxymoron.services.sign", [])
+  .service('Sign', ['$http', function ($http) {
+    var Sign = this;
+
+    Sign.out = function (callback) {
+      $http.delete(Routes.destroy_user_session_path())
+        .success(function () {
+          if (callback)
+            callback()
+        })
+    }
+
+    Sign.in = function (user_params, callback) {
+      $http.post(Routes.user_session_path(), {user: user_params})
+        .success(function () {
+          if (callback)
+            callback();
+        })
+    }
+
+    Sign.up = function (user_params, callback) {
+      $http.post(Routes.user_registration_path(), {user: user_params})
+        .success(function () {
+          if (callback)
+            callback();
+        })
+    }
+  }])
+angular.module("oxymoron.services.validate", [])
+  .factory('Validate', [function(){
+    return function (form, errors){
+      try {
+        var $form = angular.element(document.querySelector('[name="'+form+'"]')).scope()[form];
+      } catch(e) {
+        var $form = {};
+      }
+
+      angular
+        .element(document.querySelectorAll('.rails-errors')).remove();
+
+      angular.forEach($form, function(ctrl, name) {
+        if (name.indexOf('$') != 0) {
+          angular.forEach(ctrl.$error, function(value, name) {
+            ctrl.$setValidity(name, null);
+          });
+        }
+      });
+
+
+      angular.forEach(errors, function(errors_array, key) {
+        var form_key = form+'['+key+']';
+        try {
+          if ($form[form_key]) {
+            $form[form_key].$setTouched();
+            $form[form_key].$setDirty();
+            $form[form_key].$setValidity('server', false);
+          }
+          
+          angular
+            .element(document.querySelector('[name="'+form_key+'"]'))
+            .parent()
+            .append('<div class="rails-errors" ng-messages="'+form_key+'.$error"><div ng-message="server">'+errors_array[0]+'</div></div>')
+        } catch(e) {
+          console.log(e)
+          console.warn('Element with name ' + form_key + ' not found for validation.')
+        }
+      });
+    };
+  }])
+angular.module("oxymoron.services.notice", [])
+.service('Notice', ['ngNotify', function(ngNotify){
+  var Notice = this;
+
+  Notice.callback = function (type, res) {
+    ngNotify.set(res.data.msg || res.data.error, type);
+  }
+}])
+
+angular.module("oxymoron.services", ["oxymoron.services.interceptor", "oxymoron.services.notice", "oxymoron.services.resources", "oxymoron.services.sign", "oxymoron.services.validate"])
+  angular.module("oxymoron.directives.contentFor", [])
+  .directive("contentFor", [
+    "$compile", function($compile) {
+      return {
+        compile: function(el, attrs, transclude) {
+          var template = el.html();
+
+          return {
+            pre: function(scope, iElement, iAttrs, controller) {
+              var DOMElements = angular.element(document.querySelectorAll('[ng-yield="'+iAttrs.contentFor+'"]'));
+              if (DOMElements.attr("only-text") == "true") {
+                template = el.text().replace(/(?:\r\n|\r|\n)/g, ' ');
+              }
+              DOMElements.html((DOMElements.attr("prefix") || "") + template + (DOMElements.attr("postfix") || ""))
+              $compile(DOMElements)(scope);
+
+              
+              return iElement.remove();
+            }
+          };
+        }
+      };
+    }
+  ])
+angular.module("oxymoron.directives.fileupload", [])
+  .directive('fileupload', ['$http', '$timeout', '$cookies', 'ngNotify', function ($http, $timeout, $cookies, ngNotify) {
+    return {
+      scope: {
+        fileupload: "=",
+        ngModel: "=",
+        hash: "=",
+        percentCompleted: "=",
+        maxSize: "="
+      },
+      restrict: 'A',
+      link: function($scope, element, attrs) {
+        $scope.percentCompleted = undefined;
+
+        element.bind('change', function(){
+          var valid = true;
+          if ($scope.xhr) $scope.xhr.abort();
+
+          var fd = new FormData();
+
+          angular.forEach(element[0].files, function (file) {
+            if ($scope.maxSize && file.size/1024/1024 > $scope.maxSize) {
+              valid = false;
+              return
+            }
+            fd.append("attachments[]", file);
+          })
+
+          if (!valid) {
+            ngNotify.set("File size is more then " + $scope.maxSize + " Mb", "error")
+            return false;
+          }
+
+          $scope.xhr = new XMLHttpRequest;
+
+          $scope.percentCompleted = 0;
+          
+          $scope.xhr.upload.onprogress = function(e) {
+              $scope.$apply(function() {
+                  if (e.lengthComputable) {
+                      $scope.percentCompleted = Math.round(e.loaded / e.total * 100);
+                  }
+              });
+          };
+
+          $scope.xhr.onload = function() {
+            var res = JSON.parse(this.responseText)
+            
+            if (this.status == 200) {
+              $scope.$apply(function() {
+                if (!$scope.hash) {
+                  if (attrs.multiple) {
+                    $scope.ngModel = $scope.ngModel || [];
+                    angular.forEach(res, function (attachment) {
+                      $scope.ngModel.push(attachment);
+                    });
+                  } else {
+                    $scope.ngModel = res[0];
+                  }
+                } else {
+                  $scope.ngModel = $scope.ngModel || {};
+                  angular.forEach(res, function(value, key) {
+                    $scope.ngModel[key] = $scope.ngModel[key] || [];
+                    angular.forEach(value, function (attachment) {
+                      $scope.ngModel[key].push(attachment);
+                    });
+                  });
+                }
+
+                $scope.percentCompleted = undefined;
+              });
+            } else {
+              ngNotify.set(res.msg || "Uploading error", "error")
+            }
+          };
+
+
+          $scope.xhr.open('POST', $scope.fileupload);
+          $scope.xhr.setRequestHeader('X-XSRF-Token', $cookies.get('XSRF-TOKEN'));
+          $scope.xhr.send(fd);
+
+          element[0].value = '';
+        })
+      }
+    }
+  }])
+angular.module("oxymoron.directives.clickOutside", [])
+  .directive('clickOutside', ['$document', function ($document) {
+    return {
+      restrict: 'A',
+      scope: {
+        clickOutside: '&',
+        clickOutsideIf: '='
+      },
+      link: function (scope, el, attr) {
+        var handler = function (e) {
+          if (scope.clickOutsideIf && el !== e.target && !el[0].contains(e.target) && document.body.contains(e.target)) {
+            scope.$apply(function () {
+                scope.$eval(scope.clickOutside);
+            });
+          }
+        }
+
+        $document.bind('click', handler);
+
+        scope.$on('$destroy', function () {
+          $document.unbind('click', handler)
+        })
+      }
+    }
+  }])
+
+angular.module("oxymoron.directives", ['oxymoron.directives.fileupload', 'oxymoron.directives.contentFor', 'oxymoron.directives.clickOutside'])
+  angular.module("oxymoron.notifier", [])
+  .run(['$rootScope', 'ngNotify', 'Validate', '$state', '$http', '$location', 'Notice', function ($rootScope, ngNotify, Validate, $state, $http, $location, Notice) {
+    ngNotify.config({
+        theme: 'pure',
+        position: 'top',
+        duration: 2000,
+        type: 'info'
+    });
+
+    var callback = function(type, res) {
+      if (res.data && angular.isObject(res.data)) {
+        if (res.data.msg || res.data.error) {
+          Notice.callback(type, res);
+        }
+
+        if (res.data.errors) {
+          Validate(res.data.form_name || res.config.data.form_name, res.data.errors)
+        }
+
+        if (res.data.reload) {
+          if (res.data.redirect_to_url) {
+            window.location = res.data.redirect_to_url;
+          } else if (res.data.redirect_to) {
+            $state.transitionTo(res.data.redirect_to, res.data.redirect_options || {}, {notify: false, location: true, reload: true});
+          }
+        } else {
+          if (res.data.redirect_to_url) {
+            $location.url(res.data.redirect_to_url);
+          } else if (res.data.redirect_to) {
+            $state.go(res.data.redirect_to, res.data.redirect_options || {});
+          }
+        }
+
+        if (res.data.reload) {
+          window.location.reload();
+        }
+      }
+    }
+
+    $rootScope.$on('loading:finish', function (h, res) {
+      callback('success', res)
+    })
+
+    $rootScope.$on('loading:error', function (h, res, p) {
+      callback('error', res)
+    })
+
+
+  }])
+
+  angular.module('oxymoron', ['ngNotify', 'ngCookies', 'ui.router', 'ngResource', 'oxymoron.directives', 'oxymoron.services', 'oxymoron.config', 'oxymoron.notifier'])
+
+}).call(this);
+
+(function () {
+  var Routes = function () {
+    var self = this,
+        routes = {"rails_info_properties":{"defaults":{},"path":"/rails/info/properties"},"rails_info_routes":{"defaults":{},"path":"/rails/info/routes"},"rails_info":{"defaults":{},"path":"/rails/info"},"rails_mailers":{"defaults":{},"path":"/rails/mailers"},"new_user_session":{"defaults":{},"path":"/users/sign_in"},"user_session":{"defaults":{},"path":"/users/sign_in"},"destroy_user_session":{"defaults":{},"path":"/users/sign_out"},"new_user_password":{"defaults":{},"path":"/users/password/new"},"edit_user_password":{"defaults":{},"path":"/users/password/edit"},"user_password":{"defaults":{},"path":"/users/password"},"cancel_user_registration":{"defaults":{},"path":"/users/cancel"},"new_user_registration":{"defaults":{},"path":"/users/sign_up"},"edit_user_registration":{"defaults":{},"path":"/users/edit"},"user_registration":{"defaults":{},"path":"/users"},"root":{"defaults":{},"path":"/"},"about_main_index":{"defaults":{},"path":"/main/about"},"gallery_main_index":{"defaults":{},"path":"/main/gallery"},"contacts_main_index":{"defaults":{},"path":"/main/contacts"},"main_index":{"defaults":{},"path":"/main"},"town_stuff_box_index":{"defaults":{},"path":"/stuff_box/town"},"stuff_box_index":{"defaults":{},"path":"/stuff_box"},"profile_index":{"defaults":{},"path":"/profile"}};
+
+    self.defaultParams = {}
+
+    var serialize = function(obj, prefix) {
+      var str = [];
+      for(var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+          var k = prefix ? prefix + "[" + (Array.isArray(obj) ? '' : p) + "]" : p, v = obj[p];
+          str.push(typeof v == "object" ?
+            serialize(v, k) :
+            encodeURIComponent(k) + "=" + encodeURIComponent(v));
+        }
+      }
+      return str.join("&");
+    }
+
+    var omit = function (hash, key) {
+      var hash = angular.copy(hash);
+      delete hash[key]
+      return hash
+    }
+
+
+    angular.forEach(routes, function (val, key) {
+      var result = '';
+
+      var gsub = function(params) {
+        if (params.format) {
+          result += '.' + params.format
+        }
+
+        var params = omit(params, 'format');
+        angular.forEach(params, function (v, k) {
+          var subst = ':' + k;
+          if (result.search(subst) != -1) {
+            result = result.replace(subst, v);
+            params = omit(params, k);
+          }
+        })
+
+        if (result.search(/\*\w+/)!=-1) {
+          result = result.replace(/\*(\w+)/, function (a, b) {
+            return params[b];
+          })
+        }
+        
+        if (Object.keys(params).length)
+          result += '?'+serialize(params)
+
+        return result;
+      }
+
+      self[key+'_path'] = function (params) {
+        var params = angular.extend(angular.copy(val.defaults), params || {});
+        result = val.path;
+        var defaultParams = angular.copy(self.defaultParams);
+        return gsub(angular.extend(defaultParams, params));
+      }
+
+      self[key+'_url'] = function (params) {
+        return window.location.origin + self[key+'_path'](params)
+      }
+    })
+  }
+
+  window.Routes = new Routes();
+
+}).call(this)

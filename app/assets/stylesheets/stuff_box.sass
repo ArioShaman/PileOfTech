@@ -14,6 +14,23 @@ $shadow: #BFA58A
 $border: #D3A473
 
 $time: 1s
+$desctop: 1300px
+
+@mixin desctop
+  @media (min-width: $desctop)
+    @content
+
+@mixin smobile
+  @media (max-width: 320px)
+    @content
+
+@mixin mobile
+  @media (min-width: 321px) and (max-width: 567px)
+    @content
+
+@mixin tablet
+  @media (min-width: 568px) and (max-width: 1025px)
+    @content
 
 .close
   z-index: 30
@@ -120,6 +137,10 @@ $time: 1s
   display: none
   transition: 0.2s
   background-color: rgba(0,0,0,0)
+  @include mobile
+    width: 200px
+    height: 120px
+    margin-top: 30px   
   img
     position: absolute
     height: 100%
@@ -150,15 +171,24 @@ $time: 1s
     height: auto
     display: flex
     flex-wrap: wrap
+    @include mobile
+      width: 300px
     .stuff-bl
       z-index: 250 !important
       height: 180px
       width: 300px
       margin-top: 50px
+      @include mobile
+        width: 180px
+        height: 110px  
+        justify-content: space-around
+        margin-left: 60px !important
       &:hover
         transform: scale(1.1, 1.1)
       &:not(:nth-child(3n-2))
         margin-left: 150px
+        @include mobile
+          margin-left: 0px
       img
         height: 100%
         width: 100%
@@ -169,10 +199,15 @@ $time: 1s
   margin: 0px auto
   margin-top: 0px
   position: relative
+  @include mobile
+    height: 300px
+    width: 300px
+    margin-top: 170px
   .fly
     animation: Fly 0.5s
     top: -300px !important 
     left: 1000px !important
+    animation: MobFly 0.5s
   .scotch
     paddding-top: 10px
     z-index: 130
@@ -184,6 +219,9 @@ $time: 1s
     top: 260px
     left: 175px
     transform: rotate(-45deg)
+    @include mobile
+      top: 120px
+      left: 25px
     .text
       text-align: center
       margin-top: 5px
@@ -198,7 +236,11 @@ $time: 1s
     width: 300px
     margin-left: 150px
     top: 150px
-
+    @include mobile
+      height: 300px 
+      width: 300px
+      top: 0px
+      margin-left: auto
   .left-cap
     box-sizing: border-box
     position: absolute
@@ -213,12 +255,18 @@ $time: 1s
     border-bottom: 5px solid $border
     border-left: 5px solid $border
     transform: perspective(345px) rotateY(180deg)
-
+    @include mobile
+      top: 0px
+      left: 0px
   .left-cap-anim
     animation: leftCap $time
     z-index: 110
     left: 0
     transform: perspective(345px) rotateY(0deg)
+    @include mobile
+      left: -150px
+      animation: MobLeftCap $time
+
 
   .right-cap
     box-sizing: border-box
@@ -234,13 +282,19 @@ $time: 1s
     border-bottom: 5px solid $border    
     border-left: 5px solid $border
     transform: perspective(345px) rotateY(0deg)
+    @include mobile
+      top: 0px
+      right: 0px
 
   .right-cap-anim
     z-index: 110
     animation: rightCap $time
     right: 0
     transform: perspective(345px) rotateY(180deg)
-
+    @include mobile
+      top: 0px
+      right: -150px
+      animation: MobRightCap $time
   .top-cap
     box-sizing: border-box
     position: absolute
@@ -254,6 +308,9 @@ $time: 1s
     border-left: 5px solid $border
     border-right: 5px solid $border
     transform: perspective(345px) rotateX(0deg)
+    @include mobile
+      left: 0px
+      top: 0px
 
   .top-cap-anim
     position: absolute
@@ -264,6 +321,10 @@ $time: 1s
     height: 150px 
     animation: topCap $time
     transform: perspective(345px) rotateX(180deg)
+    @include mobile
+      left: 0px
+      top: -150px
+      animation: MobTopCap $time
 
   .bot-cap
     box-sizing: border-box
@@ -278,6 +339,9 @@ $time: 1s
     width: 300px
     height: 150px
     transform: perspective(345px) rotateX(180deg)
+    @include mobile
+      bottom: 0px
+      left: 0px
 
   .bot-cap-anim
     position: absolute
@@ -288,13 +352,25 @@ $time: 1s
     height: 150px 
     animation: botCap $time
     transform: perspective(345px) rotateX(0deg)
-
+    @include mobile
+      left: 0px
+      bottom: -150px
+      animation: MobBotCap $time
 
 @keyframes Toper
   0%
     transform: scale(0.6, 0.6)
   100%
     transform: scale(1.0, 1.0)
+
+
+@keyframes MobFly
+  0%
+    top: 120px
+    left: 25px
+  100%
+    top: -300
+    left: 1000
 
 @keyframes Fly
   0%
@@ -303,6 +379,28 @@ $time: 1s
   100%
     top: -300
     left: 1000
+
+@keyframes MobRightCap
+  0%
+    transform: perspective($angle) rotateY(0deg)
+    right: 0
+    height: 300px
+    top: 0  
+  33%
+    transform: perspective($angle) rotateY(0deg)
+    right: 0
+    height: 300px
+    top: 0
+  66%
+    transform: perspective($angle) rotateY(90deg)
+    right: -75
+    height: 500px
+    top: -100
+  100%
+    transform: perspective($angle) rotateY(180deg)
+    right: -150
+    height: 300px
+    top: 0
 
 @keyframes rightCap
   0%
@@ -326,12 +424,34 @@ $time: 1s
     height: 300px
     top: 150
 
+@keyframes MobLeftCap
+  0%
+    transform: perspective($angle) rotateY(180deg)
+    left: 0
+    height: 300px
+    top: 0
+  33%
+    transform: perspective($angle) rotateY(180deg)
+    left: 0
+    height: 300px
+    top: 0
+  66%
+    transform: perspective($angle) rotateY(90deg)
+    left: -75
+    height: 500px
+    top: -100
+  100%
+    transform: perspective($angle) rotateY(0deg)
+    left: -150
+    height: 300px
+    top: 0
+
 @keyframes leftCap
   0%
     transform: perspective($angle) rotateY(180deg)
     left: 150
     height: 300px
-    top: 150  
+    top: 150
   33%
     transform: perspective($angle) rotateY(180deg)
     left: 150
@@ -347,6 +467,28 @@ $time: 1s
     left: 0
     height: 300px
     top: 150
+
+@keyframes MobBotCap
+  0%
+    transform: perspective($angle) rotateX(180deg)
+    bottom: 0px
+    width: 300px
+    left: 0  
+  33%
+    transform: perspective($angle) rotateX(180deg)
+    bottom: 0px
+    width: 300px
+    left: 0
+  66%
+    transform: perspective($angle) rotateX(90deg)
+    bottom: -75px
+    width: 500px
+    left: -100
+  100%
+    transform: perspective($angle) rotateX(0deg)
+    bottom: -150px
+    width: 300px
+    left: 0
 
 @keyframes botCap
   0%
@@ -369,6 +511,28 @@ $time: 1s
     bottom: 0px
     width: 300px
     left: 150
+
+@keyframes MobTopCap
+  0%
+    transform: perspective($angle) rotateX(0deg)
+    top: 0px
+    width: 300px
+    left: 0  
+  33%
+    transform: perspective($angle) rotateX(0deg)
+    top: 0px
+    width: 300px
+    left: 0
+  66%
+    transform: perspective($angle) rotateX(90deg)
+    top: -75px
+    width: 500px
+    left: -100
+  100%
+    transform: perspective($angle) rotateX(180deg)
+    top: -150px
+    width: 300px
+    left: 0
 
 @keyframes topCap
   0%
