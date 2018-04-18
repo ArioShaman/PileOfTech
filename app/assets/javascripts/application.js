@@ -30,7 +30,6 @@ app.config(['$stateProvider', function ($stateProvider) {
 app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('en', translationsEN);
   $translateProvider.translations('ru', translationsRU);
-  // $translateProvider.useSanitizeValueStrategy('escape');
   $translateProvider.useSanitizeValueStrategy('escapeParameters');
 }])
 
