@@ -20,19 +20,19 @@ html ng-app="app"
     .menu
       .content
         a.menu-link.link ui-sref="root_path"
-          .el ДОМОЙ
+          .el ng-bind="'HOME' | translate"
         a.menu-link.link ui-sref="about_main_index_path"
-          .el О НАС
+          .el ng-bind="'ABOUT' | translate"
         a.menu-link.link ui-sref="gallery_main_index_path"
-          .el ГАЛЕРЕЯ
+          .el ng-bind="'GALLERY' | translate"
         a.menu-link.link ui-sref="stuff_box_index_path"
           .el 
             span STUFFBOX  
             .new NEW
         a.menu-link.link ui-sref="contacts_main_index_path"
-          .el КОНТАКТЫ
+          .el ng-bind="'CONTACTS' | translate"
         a.menu-link.link ui-sref="new_user_session_path"
-          .el ЛИЧНЫЙ КАБИНЕТ
+          .el ng-bind="'LK' | translate"
 
 
         -if user_signed_in?
@@ -40,6 +40,6 @@ html ng-app="app"
             = link_to('Logout', destroy_user_session_path, method: :delete)
 
         
-        div.lang-back ng-bind="lang"
+        div.lang-back.ru ng-bind="lang"
 
     ui-view.slide

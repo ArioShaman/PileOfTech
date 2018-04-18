@@ -53,8 +53,8 @@ app.run(['$rootScope','$location', '$localStorage', '$translate', function($root
     }
   });
 
-  $rootScope.lang
-
+  $rootScope.lang = 'ru'
+  $localStorage.lang = 'ru'
   if($localStorage.lang){
     $rootScope.lang = $localStorage.lang;
   }else{
@@ -73,14 +73,12 @@ app.run(['$rootScope','$location', '$localStorage', '$translate', function($root
   $(document).on("click", ".lang-back", function(){
     if($rootScope.lang == 'ru'){
       $rootScope.lang = 'en';
-      console.log($rootScope.lang);
       $localStorage.lang = 'en';
       $translate.use('en');
       $('.lang-back').removeClass('ru'); 
       $('.lang-back').addClass('en'); 
     }else{
       $rootScope.lang = 'ru';
-      console.log($rootScope.lang);
       $localStorage.lang = 'ru';
       $translate.use('ru');
       $('.lang-back').removeClass('en'); 
