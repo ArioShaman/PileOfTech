@@ -2,18 +2,18 @@
   .container
     .big-cover
       .background
-        .title Мечтай. Создавай. Созерцай
+        .title ng-bind="'SLOGAN' | translate"
     .footer-nav
       .container
         a.foot-el.link ui-sref="gallery_main_index_path"
           .hover.yellow
             .cont
-              .text ГАЛЕРЕЯ
+              .text ng-bind="'GALLERY' | translate"
               =image_tag("gallery.svg")
         a.foot-el.link ui-sref="about_main_index_path"
           .hover.grey
             .cont
-              .text О НАС
+              .text ng-bind="'ABOUT' | translate"
               =image_tag("profile.svg") 
         a.foot-el.link ui-sref="contacts_main_index_path"  
           .hover.bgrey

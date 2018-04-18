@@ -53,6 +53,8 @@ app.run(['$rootScope','$location', '$localStorage', '$translate', function($root
     }
   });
 
+  $rootScope.lang
+
   if($localStorage.lang){
     $rootScope.lang = $localStorage.lang;
   }else{
@@ -62,10 +64,11 @@ app.run(['$rootScope','$location', '$localStorage', '$translate', function($root
         code = 'en';
       }
       $rootScope.lang = code;
+      $localStorage.lang = code;
     }, "jsonp");
   }
-  $translate.use($rootScope.lang); 
-  $('.lang-back').addClass($rootScope.lang);  
+  $translate.use($localStorage.lang); 
+  $('.lang-back').addClass($localStorage.lang);  
 
   $(document).on("click", ".lang-back", function(){
     if($rootScope.lang == 'ru'){

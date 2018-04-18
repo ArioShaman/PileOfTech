@@ -13,22 +13,18 @@ app.controller 'MainCtrl', [
       KostyaName = "Константин Кравченко"
       VladName = "Влад Клименко"
       DanPosition = "back-end разработчик"
-      KostyaPosition = "manager"
       VladPosition = "web-дизайнер"
 
       $scope.isDan = false
       $scope.isVlad = false
-      $scope.isKostya = false
       $scope.dan = {
         "Навыки": [
             "HTML(HTML5), CSS(CSS3)", "JS, JQuery, AngularJs",
-            "Ruby on Rails", "Database(PostgreSQL, MySQL, SQLite)",
-            "Python, C/c++. Java "
+            "Ruby on Rails, Python(Flask)", "Database(PostgreSQL, MySQL, SQLite)"
           ],
         "Личностные навыки": [
           "Критическое мышление",
           "Професиональное отношение к работе",
-          "Общительный",
           "Легко нахожу общий язык",
           "Творческий подход в любом деле"
         ],
@@ -52,23 +48,6 @@ app.controller 'MainCtrl', [
           '© Влад Клименко']
       }   
 
-      $scope.kostya = {
-        "Навыки": [
-            "SMM",
-            "Маркетинг",
-            "Продвижение"
-          ],
-        "Личностные навыки": [
-            "Креативный",
-            "Справедливый",
-            "Решительный",
-            "Целеустремленный",
-            "Коммуникабельный"
-        ],
-        "Любимая цитата": ['"Ты родился оригиналом,не умри копией..."',
-          '© Джон Мэйсон']
-      }         
-
       $scope.tab = (name)->
         $scope.isDan = false
         $scope.isVlad = false
@@ -81,10 +60,7 @@ app.controller 'MainCtrl', [
           $scope.isDan = true
           $scope.name = DanName
           $scope.position = DanPosition
-        if (name == 'kostya')
-          $scope.isKostya = true
-          $scope.name = KostyaName
-          $scope.position = KostyaPosition
+
 
       $('.sidebar-el').click ->
         $('.sidebar-el').removeClass('active')

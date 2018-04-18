@@ -18,14 +18,6 @@
             .name ДАНИИЛ МАТВЕЕВ
             .position back-end разработчик
 
-      .sidebar-el ng-click="tab('kostya')"
-        .pers-bl
-          .ava
-            =image_tag("kostya.jpg")
-          .text-cont.kostya
-            .name Константин Кравченко
-            .position manager/редактор
-
     .info-cont
       .profile-info-bl
         .close-but
@@ -44,14 +36,7 @@
             .block ng-repeat="(type, skills) in vlad track by $index"
               .tit ng-bind="type" 
               div ng-repeat="skill in skills track by $index"
-                .subtit - {{skill}}
-
-          div ng-show="isKostya"
-            .block ng-repeat="(type, skills) in kostya track by $index"
-              .tit ng-bind="type" 
-              div ng-repeat="skill in skills track by $index"
-                .subtit - {{skill}}                
-
+                .subtit - {{skill}}             
 
       .info
         .content
