@@ -60,7 +60,11 @@ $desctop: 1300px
   @include mobile
     width: 200px
     height: 120px
-    margin-top: 30px   
+    margin-top: 30px
+  @include smobile
+    width: 200px
+    height: 120px
+    margin-top: 30px       
   img
     position: absolute
     height: 100%
@@ -93,6 +97,8 @@ $desctop: 1300px
     flex-wrap: wrap
     @include mobile
       width: 300px
+    @include smobile
+      width: 300px      
     .stuff-bl
       z-index: 250 !important
       height: 180px
@@ -103,12 +109,19 @@ $desctop: 1300px
         height: 110px  
         justify-content: space-around
         margin-left: 60px !important
+      @include smobile
+        width: 180px
+        height: 110px  
+        justify-content: space-around
+        margin-left: 60px !important        
       &:hover
         transform: scale(1.1, 1.1)
       &:not(:nth-child(3n-2))
         margin-left: 150px
         @include mobile
           margin-left: 0px
+        @include smobile
+          margin-left: 0px          
       img
         height: 100%
         width: 100%
@@ -123,6 +136,10 @@ $desctop: 1300px
     height: 300px
     width: 300px
     margin-top: 170px
+  @include smobile
+    height: 300px
+    width: 300px
+    margin-top: 170px    
   .fly
     animation: Fly 0.5s
     top: -300px !important 
@@ -142,6 +159,9 @@ $desctop: 1300px
     @include mobile
       top: 120px
       left: 25px
+    @include smobile
+      top: 120px
+      left: 25px      
     .text
       text-align: center
       margin-top: 5px
@@ -161,6 +181,11 @@ $desctop: 1300px
       width: 300px
       top: 0px
       margin-left: auto
+    @include smobile
+      height: 300px 
+      width: 300px
+      top: 0px
+      margin-left: auto      
   .left-cap
     box-sizing: border-box
     position: absolute
@@ -178,12 +203,18 @@ $desctop: 1300px
     @include mobile
       top: 0px
       left: 0px
+    @include smobile
+      top: 0px
+      left: 0px      
   .left-cap-anim
     animation: leftCap $time
     z-index: 110
     left: 0
     transform: perspective(345px) rotateY(0deg)
     @include mobile
+      left: -150px
+      animation: MobLeftCap $time
+    @include smobile
       left: -150px
       animation: MobLeftCap $time
 
@@ -205,6 +236,9 @@ $desctop: 1300px
     @include mobile
       top: 0px
       right: 0px
+    @include smobile
+      top: 0px
+      right: 0px
 
   .right-cap-anim
     z-index: 110
@@ -215,6 +249,11 @@ $desctop: 1300px
       top: 0px
       right: -150px
       animation: MobRightCap $time
+    @include smobile
+      top: 0px
+      right: -150px
+      animation: MobRightCap $time
+
   .top-cap
     box-sizing: border-box
     position: absolute
@@ -231,6 +270,9 @@ $desctop: 1300px
     @include mobile
       left: 0px
       top: 0px
+    @include smobile
+      left: 0px
+      top: 0px
 
   .top-cap-anim
     position: absolute
@@ -245,6 +287,10 @@ $desctop: 1300px
       left: 0px
       top: -150px
       animation: MobTopCap $time
+    @include smobile
+      left: 0px
+      top: -150px
+      animation: MobTopCap $time      
 
   .bot-cap
     box-sizing: border-box
@@ -262,6 +308,9 @@ $desctop: 1300px
     @include mobile
       bottom: 0px
       left: 0px
+    @include smobile
+      bottom: 0px
+      left: 0px
 
   .bot-cap-anim
     position: absolute
@@ -273,6 +322,10 @@ $desctop: 1300px
     animation: botCap $time
     transform: perspective(345px) rotateX(0deg)
     @include mobile
+      left: 0px
+      bottom: -150px
+      animation: MobBotCap $time
+    @include smobile
       left: 0px
       bottom: -150px
       animation: MobBotCap $time

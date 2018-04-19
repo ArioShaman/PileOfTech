@@ -41,18 +41,26 @@ $desctop: 1300px
     background-color: $light
     @include mobile
       bottom: 35px
+    @include smobile
+      bottom: 35px      
     .buttons
-      width: 300px
+      width: 360px
       height: 35px
       margin: 7px auto
       position: relative
+      @include mobile
+        height: 50px
+        margin: 0px auto
+      @include smobile
+        height: 50px
+        margin: 0px auto        
       .button
-        height: 35px
-        width: 35px
+        height: 50px
+        width: 50px
         position: absolute
         background-color: $bgrey
         cursor: pointer
-        
+      
       .left
         left: 0
       .right
@@ -75,11 +83,14 @@ $desctop: 1300px
       @include mobile
         margin-top: 14%
         margin-left: 20px
+      @include smobile
+        margin-top: 14%
+        margin-left: 20px        
       .active
         transition: 1s
         .coffee-cont
           transition: 1s
-          transform: scale(1.3, 1.2)
+          transform: scale(1.3, 1.3)
       .uses
 
       .move-down
@@ -92,7 +103,12 @@ $desctop: 1300px
         width: 350px
         margin-top: 25px
         margin-left: 75px
-
+        @include mobile
+          width: 260px
+          margin-left: 30px
+        @include smobile
+          width: 260px
+          margin-left: 30px          
         .coffee-cont
           height: 100%
           width: 100%
@@ -101,6 +117,10 @@ $desctop: 1300px
           .image
             width: 100%
             height: 200px
+            @include mobile
+              height: 150px
+            @include smobile
+              height: 150px              
             img
               border-radius: 5px 5px 0px 0px
               height: 100%
@@ -110,11 +130,15 @@ $desctop: 1300px
             width: 100%
             background-color: white
             border-radius: 0px 0px 5px 5px
+            @include mobile
+              height: calc(100% - 150px)
+            @include smobile
+              height: calc(100% - 150px)              
 
 
 @keyframes MoveDown
   0%
-    transform: scale(1.3, 1.2)
+    transform: scale(1.3, 1.3)
   100%
     transform: scale(1.0, 1.0)
 

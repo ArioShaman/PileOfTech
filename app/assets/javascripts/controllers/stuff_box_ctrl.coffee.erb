@@ -50,7 +50,7 @@ app.controller 'StuffBoxCtrl', [
         setInterval(()->
           $('#car1').animate({top: 125, left: 300, opacity: 0})        
           $('#car1').animate({top: 125, left: 300, opacity: 1}, 1000, "linear")
-          $('#car1').animate({top: 25, left: 120}, 8000, "linear")
+          $('#car1').animate({top: 25, left: 120}, 10000, "linear")
           $('#car1').animate({top: 20, left: 110, opacity: 0}, 1000, "linear")
         
         , 1000)
@@ -58,7 +58,7 @@ app.controller 'StuffBoxCtrl', [
         setInterval(()->
           $('#car1').animate({top: 280, left: 880, opacity: 0})        
           $('#car1').animate({top: 250, left: 840, opacity: 1}, 1000, "linear")
-          $('#car1').animate({top: 29, left: 450}, 8000, "linear")
+          $('#car1').animate({top: 29, left: 450}, 10000, "linear")
           $('#car1').animate({top: 9, left: 420, opacity: 0}, 1000, "linear")
         
         , 1000)
@@ -68,7 +68,7 @@ app.controller 'StuffBoxCtrl', [
         setInterval(()->
             $('#car2').animate({top: 160, left: 90, opacity: 0})        
             $('#car2').animate({top: 160, left: 90, opacity: 1}, 1000, "linear")
-            $('#car2').animate({top: 60, left: 265}, 8000, "linear")
+            $('#car2').animate({top: 60, left: 265}, 10000, "linear")
             $('#car2').animate({top: 50, left: 275, opacity: 0}, 1000, "linear")
           
           , 1000)
@@ -76,7 +76,7 @@ app.controller 'StuffBoxCtrl', [
         setInterval(()->
           $('#car2').animate({top: 365, left: 265, opacity: 0})        
           $('#car2').animate({top: 335, left: 315, opacity: 1}, 1000, "linear")
-          $('#car2').animate({top: 120, left: 700}, 8000, "linear")
+          $('#car2').animate({top: 120, left: 700}, 10000, "linear")
           $('#car2').animate({top: 90, left: 750, opacity: 0}, 1000, "linear")
         
         , 1000)
@@ -96,25 +96,25 @@ app.controller 'StuffBoxCtrl', [
     leftCloud = () ->
       if width < 767
         setInterval(() ->
-          $("#cloud-left").animate({top: -40, left: 150}, 18000)
-          $("#cloud-left").animate({top: 35, left: 0}, 18000)
+          $("#cloud-left").animate({top: -40, left: 150}, 110000)
+          $("#cloud-left").animate({top: 35, left: 0}, 110000)
         ,1000)
       else
         setInterval(() ->
-          $("#cloud-left").animate({top: -40, left: 300}, 18000)
-          $("#cloud-left").animate({top: 80, left: 50}, 18000)
+          $("#cloud-left").animate({top: -40, left: 300}, 110000)
+          $("#cloud-left").animate({top: 80, left: 50}, 110000)
         ,1000)
 
     rightCloud = () ->
       if width < 767
         setInterval(() ->
-          $("#cloud-right").animate({top: -20, left: 175}, 18000)
-          $("#cloud-right").animate({top: 35, left: 270}, 18000)
+          $("#cloud-right").animate({top: -20, left: 175}, 110000)
+          $("#cloud-right").animate({top: 35, left: 270}, 110000)
         ,1000)        
       else      
         setInterval(() ->
-          $("#cloud-right").animate({top: 0, left: 650}, 18000)
-          $("#cloud-right").animate({top: 70, left: 800}, 18000)
+          $("#cloud-right").animate({top: 0, left: 650}, 110000)
+          $("#cloud-right").animate({top: 70, left: 1000}, 110000)
         ,1000)  
 
     rick = () ->
@@ -123,6 +123,7 @@ app.controller 'StuffBoxCtrl', [
           $('#portal').animate({opacity: 1}, 4000)
           $('#portal').animate({opacity: 0}, 4000)
         , 7000)
+
     action 'index', () ->
       $('.scotch').click ->
         $('.scotch').addClass('fly')
@@ -130,7 +131,7 @@ app.controller 'StuffBoxCtrl', [
         setTimeout(openSides, 600)
         setTimeout(background, 1700)
         setTimeout(position, 600)
-        setTimeout(toBlock, 1800)
+        setTimeout(toBlock, 1100)
 
 
     action 'town', () ->
@@ -141,8 +142,10 @@ app.controller 'StuffBoxCtrl', [
       rightCloud()
       rick()
 
+
+
     action 'coffee', ()->
-              
+      disable = false
       slides = $('.coffee-bl')
       lastItem =  slides.length - 1  
       for i in [0..lastItem]
@@ -163,43 +166,100 @@ app.controller 'StuffBoxCtrl', [
 
       Right = (target)->
         left = $('.slide-container').offset()['left']
-        $('.slide-container').animate({left: left-450}, 1000)
+        if width > 768
+          delta = 450
+        else
+          delta = 310
+        $('.slide-container').animate({left: left-delta}, 1000)
         $('.coffee-bl#'+target).addClass('active')        
+ 
 
       Left = (target)->
         left = $('.slide-container').offset()['left']
-        $('.slide-container').animate({left: left+450}, 1000)
+        if width > 768
+          delta = 450
+        else
+          delta = 270        
+        $('.slide-container').animate({left: left+delta}, 1000)
         $('.coffee-bl#'+target).addClass('active')        
-            
+
+
+
       sliderResponse = (target, prev, side) ->
         left = $('.slide-container').offset()['left']
-
-        if side == 'Right'
-          if prev == first
-            MoveDown(prev)
-            $('.coffee-bl#'+target).addClass('active')  
+        if width > 768
+          if side == 'Right'
+            if prev == first
+              disable = true
+              MoveDown(prev)
+              $('.coffee-bl#'+target).addClass('active')
+              setInterval(() ->
+                disable = false
+              ,1000)                
+            else
+              if target < last
+                disable = true  
+                MoveDown(prev)  
+                Right(target)
+                setInterval(() ->
+                  disable = false
+                ,1000)                              
+              if prev == last - 1
+                disable = true
+                MoveDown(prev) 
+                $('.coffee-bl#'+target).addClass('active')
+                setInterval(() ->
+                  disable = false
+                ,1000)                  
           else
-            if target < last  
+            if prev == last
+              disable = true 
+              MoveDown(prev)
+              $('.coffee-bl#'+target).addClass('active') 
+              setInterval(() ->
+                disable = false
+              ,1000)                 
+            else              
+              if prev > first+1
+                if prev == last
+                  disable = true 
+                  MoveDown(prev) 
+                  $('.coffee-bl#'+target).addClass('active') 
+                  setInterval(() ->
+                    disable = false
+                  ,1000)                                  
+                else
+                  disable = true 
+                  MoveDown(prev)           
+                  Left(target)
+                  setInterval(() ->
+                    disable = false
+                  ,1000)                    
+              if prev == first+1 
+                disable = true 
+                MoveDown(prev) 
+                $('.coffee-bl#'+target).addClass('active') 
+                setInterval(() ->
+                  disable = false
+                ,1000)    
+        else
+          if side == 'Right'
+            if target <= last
+              disable = true  
               MoveDown(prev)  
               Right(target)
-            if prev == last - 1
-              MoveDown(prev) 
-              $('.coffee-bl#'+target).addClass('active')  
-        else
-          if prev == last 
-            MoveDown(prev)
-            $('.coffee-bl#'+target).addClass('active')  
-          else              
-            if prev > first+1
-              if prev == last
-                MoveDown(prev) 
-                $('.coffee-bl#'+target).addClass('active')               
-              else
-                MoveDown(prev)           
-                Left(target)
-            if prev == first+1 
-              MoveDown(prev) 
-              $('.coffee-bl#'+target).addClass('active') 
+              setInterval(() ->
+                disable = false
+              ,1000)                              
+          else
+            if prev > first
+              disable = true 
+              MoveDown(prev)           
+              Left(target)
+              setInterval(() ->
+                disable = false
+              ,1000)               
+
 
 
       nextId = (target) ->
@@ -210,19 +270,21 @@ app.controller 'StuffBoxCtrl', [
         target        
 
       $('.next').click () ->
-        target = $('.coffee-bl.active').attr('id')
-        target = parseInt(target)
-        prev = target
-        target = nextId(target)
-        sliderResponse(target, prev, 'Right')
+        if disable == false  
+          target = $('.coffee-bl.active').attr('id')
+          target = parseInt(target)
+          prev = target
+          target = nextId(target)
+          sliderResponse(target, prev, 'Right')
 
 
-      $('.last').click () ->  
-        target = $('.coffee-bl.active').attr('id')
-        target = parseInt(target)
-        prev = target
-        target = prevId(target)
-        sliderResponse(target, prev, 'Left')  
+      $('.last').click () ->
+        if disable == false  
+          target = $('.coffee-bl.active').attr('id')
+          target = parseInt(target)
+          prev = target
+          target = prevId(target)
+          sliderResponse(target, prev, 'Left')  
 
     return
 ]
