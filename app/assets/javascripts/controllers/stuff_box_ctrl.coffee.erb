@@ -161,19 +161,45 @@ app.controller 'StuffBoxCtrl', [
           $('.coffee-bl#'+prev).removeClass('move-down')
         ,700)              
 
+      Right = (target)->
+        left = $('.slide-container').offset()['left']
+        $('.slide-container').animate({left: left-450}, 1000)
+        $('.coffee-bl#'+target).addClass('active')        
+
+      Left = (target)->
+        left = $('.slide-container').offset()['left']
+        $('.slide-container').animate({left: left+450}, 1000)
+        $('.coffee-bl#'+target).addClass('active')        
+            
       sliderResponse = (target, prev, side) ->
         left = $('.slide-container').offset()['left']
 
         if side == 'Right'
-          if target != last  
-            MoveDown(prev)     
-            $('.slide-container').animate({left: left-450}, 1000)
-            $('.coffee-bl#'+target).addClass('active')
+          if prev == first
+            MoveDown(prev)
+            $('.coffee-bl#'+target).addClass('active')  
+          else
+            if target < last  
+              MoveDown(prev)  
+              Right(target)
+            if prev == last - 1
+              MoveDown(prev) 
+              $('.coffee-bl#'+target).addClass('active')  
         else
-          if prev != first
-            MoveDown(prev)           
-            $('.slide-container').animate({left: left+450}, 1000)    
-            $('.coffee-bl#'+target).addClass('active')          
+          if prev == last 
+            MoveDown(prev)
+            $('.coffee-bl#'+target).addClass('active')  
+          else              
+            if prev > first+1
+              if prev == last
+                MoveDown(prev) 
+                $('.coffee-bl#'+target).addClass('active')               
+              else
+                MoveDown(prev)           
+                Left(target)
+            if prev == first+1 
+              MoveDown(prev) 
+              $('.coffee-bl#'+target).addClass('active') 
 
 
       nextId = (target) ->
