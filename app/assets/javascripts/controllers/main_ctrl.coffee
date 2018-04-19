@@ -128,8 +128,8 @@ app.controller 'MainCtrl', [
         dots[i].setAttribute("id", i)
       images
         
-      console.log images
-      console.log dots
+      # console.log images
+      # console.log dots
       images.first().addClass('active')
       dots.first().addClass('active')
 

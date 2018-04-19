@@ -141,5 +141,62 @@ app.controller 'StuffBoxCtrl', [
       rightCloud()
       rick()
 
+    action 'coffee', ()->
+              
+      slides = $('.coffee-bl')
+      lastItem =  slides.length - 1  
+      for i in [0..lastItem]
+        slides[i].setAttribute("id", i)
+      slides      
+      slides.first().addClass('active')
+
+      first = parseInt($('.coffee-bl').first().attr('id'))
+      last = parseInt($('.coffee-bl').last().attr('id'))
+
+
+      MoveDown = (prev)->
+        slides.removeClass('active') 
+        $('.coffee-bl#'+prev).addClass('move-down')
+        setInterval(() ->
+          $('.coffee-bl#'+prev).removeClass('move-down')
+        ,700)              
+
+      sliderResponse = (target, prev, side) ->
+        left = $('.slide-container').offset()['left']
+
+        if side == 'Right'
+          if target != last  
+            MoveDown(prev)     
+            $('.slide-container').animate({left: left-450}, 1000)
+            $('.coffee-bl#'+target).addClass('active')
+        else
+          if prev != first
+            MoveDown(prev)           
+            $('.slide-container').animate({left: left+450}, 1000)    
+            $('.coffee-bl#'+target).addClass('active')          
+
+
+      nextId = (target) ->
+        if target == lastItem then target else target += 1
+        target
+      prevId =(target) ->
+        if parseInt(target) == 0 then target  else target -= 1
+        target        
+
+      $('.next').click () ->
+        target = $('.coffee-bl.active').attr('id')
+        target = parseInt(target)
+        prev = target
+        target = nextId(target)
+        sliderResponse(target, prev, 'Right')
+
+
+      $('.last').click () ->  
+        target = $('.coffee-bl.active').attr('id')
+        target = parseInt(target)
+        prev = target
+        target = prevId(target)
+        sliderResponse(target, prev, 'Left')  
+
     return
 ]

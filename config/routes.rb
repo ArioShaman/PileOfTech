@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :stuff_box, only: [:index] do
     collection do
       get :town
+      get :coffee
     end
   end
   
