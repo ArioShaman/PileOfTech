@@ -169,7 +169,12 @@ app.controller 'StuffBoxCtrl', [
         if width > 768
           delta = 450
         else
-          delta = 310
+          if width < 360
+            delta = 290
+          if (width >= 360 and width < 370)
+            delta = 315
+          if width >= 370
+            delta = 314
         $('.slide-container').animate({left: left-delta}, 1000)
         $('.coffee-bl#'+target).addClass('active')        
  
@@ -179,7 +184,10 @@ app.controller 'StuffBoxCtrl', [
         if width > 768
           delta = 450
         else
-          delta = 270        
+          if width < 360
+            delta = 280
+          if width >= 360
+            delta = 275        
         $('.slide-container').animate({left: left+delta}, 1000)
         $('.coffee-bl#'+target).addClass('active')        
 
