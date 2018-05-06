@@ -50,7 +50,7 @@ app.controller 'StuffBoxCtrl', [
         setInterval(()->
           $('#car1').animate({top: 125, left: 300, opacity: 0})        
           $('#car1').animate({top: 125, left: 300, opacity: 1}, 1000, "linear")
-          $('#car1').animate({top: 25, left: 120}, 8000, "linear")
+          $('#car1').animate({top: 25, left: 120}, 10000, "linear")
           $('#car1').animate({top: 20, left: 110, opacity: 0}, 1000, "linear")
         
         , 1000)
@@ -58,7 +58,7 @@ app.controller 'StuffBoxCtrl', [
         setInterval(()->
           $('#car1').animate({top: 280, left: 880, opacity: 0})        
           $('#car1').animate({top: 250, left: 840, opacity: 1}, 1000, "linear")
-          $('#car1').animate({top: 29, left: 450}, 8000, "linear")
+          $('#car1').animate({top: 29, left: 450}, 10000, "linear")
           $('#car1').animate({top: 9, left: 420, opacity: 0}, 1000, "linear")
         
         , 1000)
@@ -68,7 +68,7 @@ app.controller 'StuffBoxCtrl', [
         setInterval(()->
             $('#car2').animate({top: 160, left: 90, opacity: 0})        
             $('#car2').animate({top: 160, left: 90, opacity: 1}, 1000, "linear")
-            $('#car2').animate({top: 60, left: 265}, 8000, "linear")
+            $('#car2').animate({top: 60, left: 265}, 10000, "linear")
             $('#car2').animate({top: 50, left: 275, opacity: 0}, 1000, "linear")
           
           , 1000)
@@ -76,7 +76,7 @@ app.controller 'StuffBoxCtrl', [
         setInterval(()->
           $('#car2').animate({top: 365, left: 265, opacity: 0})        
           $('#car2').animate({top: 335, left: 315, opacity: 1}, 1000, "linear")
-          $('#car2').animate({top: 120, left: 700}, 8000, "linear")
+          $('#car2').animate({top: 120, left: 700}, 10000, "linear")
           $('#car2').animate({top: 90, left: 750, opacity: 0}, 1000, "linear")
         
         , 1000)
@@ -96,25 +96,25 @@ app.controller 'StuffBoxCtrl', [
     leftCloud = () ->
       if width < 767
         setInterval(() ->
-          $("#cloud-left").animate({top: -40, left: 150}, 18000)
-          $("#cloud-left").animate({top: 35, left: 0}, 18000)
+          $("#cloud-left").animate({top: -40, left: 150}, 110000)
+          $("#cloud-left").animate({top: 35, left: 0}, 110000)
         ,1000)
       else
         setInterval(() ->
-          $("#cloud-left").animate({top: -40, left: 300}, 18000)
-          $("#cloud-left").animate({top: 80, left: 50}, 18000)
+          $("#cloud-left").animate({top: -40, left: 300}, 110000)
+          $("#cloud-left").animate({top: 80, left: 50}, 110000)
         ,1000)
 
     rightCloud = () ->
       if width < 767
         setInterval(() ->
-          $("#cloud-right").animate({top: -20, left: 175}, 18000)
-          $("#cloud-right").animate({top: 35, left: 270}, 18000)
+          $("#cloud-right").animate({top: -20, left: 175}, 110000)
+          $("#cloud-right").animate({top: 35, left: 270}, 110000)
         ,1000)        
       else      
         setInterval(() ->
-          $("#cloud-right").animate({top: 0, left: 650}, 18000)
-          $("#cloud-right").animate({top: 70, left: 800}, 18000)
+          $("#cloud-right").animate({top: 0, left: 650}, 110000)
+          $("#cloud-right").animate({top: 70, left: 1000}, 110000)
         ,1000)  
 
     rick = () ->
@@ -123,6 +123,7 @@ app.controller 'StuffBoxCtrl', [
           $('#portal').animate({opacity: 1}, 4000)
           $('#portal').animate({opacity: 0}, 4000)
         , 7000)
+
     action 'index', () ->
       $('.scotch').click ->
         $('.scotch').addClass('fly')
@@ -130,7 +131,7 @@ app.controller 'StuffBoxCtrl', [
         setTimeout(openSides, 600)
         setTimeout(background, 1700)
         setTimeout(position, 600)
-        setTimeout(toBlock, 1800)
+        setTimeout(toBlock, 1100)
 
 
     action 'town', () ->
@@ -141,5 +142,213 @@ app.controller 'StuffBoxCtrl', [
       rightCloud()
       rick()
 
+
+
+    action 'coffee', ()->
+      disable = false
+      slides = $('.coffee-bl')
+      lastItem =  slides.length - 1  
+      for i in [0..lastItem]
+        slides[i].setAttribute("id", i)
+      slides      
+      slides.first().addClass('active')
+
+      first = parseInt($('.coffee-bl').first().attr('id'))
+      last = parseInt($('.coffee-bl').last().attr('id'))
+
+
+      MoveDown = (prev)->
+        slides.removeClass('active') 
+        $('.coffee-bl#'+prev).addClass('move-down')
+        setInterval(() ->
+          $('.coffee-bl#'+prev).removeClass('move-down')
+        ,700)              
+
+      Right = (target)->
+        leftTransf = parseInt($('.slide-container').css("transform").split(',')[4])
+        left = $('.slide-container').offset()['left']
+        if width > 768
+          delta = 450
+        else
+          if width < 360
+            delta = 290
+          if (width >= 360 and width < 370)
+            delta = 315
+          if width >= 370
+            delta = 314
+        $('.slide-container').animate({left: left-delta}, 1000)
+
+        # In future TouchSlider
+        # $({x: leftTransf}).animate({x: -350}, {
+        #     duration: 500,
+        #     step: (val) ->
+        #         $('.slide-container').css("transform", `translateX(${val}px)`); 
+            
+        # })
+        $('.coffee-bl#'+target).addClass('active')        
+ 
+
+      Left = (target)->
+        left = $('.slide-container').offset()['left']
+        if width > 768
+          delta = 450
+        else
+          if width < 360
+            delta = 280
+          if width >= 360
+            delta = 275        
+        $('.slide-container').animate({left: left+delta}, 1000)
+        $('.coffee-bl#'+target).addClass('active')        
+
+      curX = null
+      fixLeft = null
+
+      # In future TouchSlider
+      # handleTouchStart = (e) ->
+      #   if (e.touches.length != 1)
+      #     return                                  
+      #   curX = e.touches[0].clientX  
+      #   fixLeft = $('.slide-container').offset()['left']                                  
+
+
+      # handleTouchMove = (e) ->                                  
+      #   if ( !curX )
+      #     return
+
+      #   moveX = e.touches[0].clientX
+      #   delta = curX - moveX
+      #   if delta > 0
+      #     console.log 'right'           
+      #     # setTimeout( () ->
+      #     #   $('.slide-container').css({"-webkit-transform": "translate(-"fixLeft+delta+"px, 0px)"})
+      #     # , 120)   
+      #   if delta < 0 
+      #     console.log 'swipeLeft'
+
+      # handleEnd = (e)->
+      #   $('.slide-container').css({left: fixLeft})
+
+      # if width < 768
+      #   document.addEventListener('touchstart', handleTouchStart, false)
+      #   document.addEventListener('touchmove', handleTouchMove, false)
+      #   document.addEventListener("touchend", handleEnd, false)
+
+      sliderResponse = (target, prev, side) ->
+        left = $('.slide-container').offset()['left']
+        if width > 768
+          if side == 'Right'
+            if prev == first
+              disable = true
+              MoveDown(prev)
+              $('.coffee-bl#'+target).addClass('active')
+              setInterval(() ->
+                disable = false
+              ,1000)                
+            else
+              if target < last
+                disable = true  
+                MoveDown(prev)  
+                Right(target)
+                setInterval(() ->
+                  disable = false
+                ,1000)                              
+              if prev == last - 1
+                disable = true
+                MoveDown(prev) 
+                $('.coffee-bl#'+target).addClass('active')
+                setInterval(() ->
+                  disable = false
+                ,1000)                  
+          else
+            if prev == last
+              disable = true 
+              MoveDown(prev)
+              $('.coffee-bl#'+target).addClass('active') 
+              setInterval(() ->
+                disable = false
+              ,1000)                 
+            else              
+              if prev > first+1
+                if prev == last
+                  disable = true 
+                  MoveDown(prev) 
+                  $('.coffee-bl#'+target).addClass('active') 
+                  setInterval(() ->
+                    disable = false
+                  ,1000)                                  
+                else
+                  disable = true 
+                  MoveDown(prev)           
+                  Left(target)
+                  setInterval(() ->
+                    disable = false
+                  ,1000)                    
+              if prev == first+1 
+                disable = true 
+                MoveDown(prev) 
+                $('.coffee-bl#'+target).addClass('active') 
+                setInterval(() ->
+                  disable = false
+                ,1000)    
+        else
+          #мобилка
+          if side == 'Right'
+            if target < last
+              disable = true  
+              MoveDown(prev)  
+              Right(target)
+              setInterval(() ->
+                disable = false
+              ,1000)
+            if prev == last - 1
+              disable = true
+              MoveDown(prev) 
+              # $('.coffee-bl#'+target).addClass('active')
+              Right(target)
+              setInterval(() ->
+                disable = false
+              ,1000)                                             
+          else
+            if prev > first
+              disable = true 
+              MoveDown(prev)           
+              Left(target)
+              setInterval(() ->
+                disable = false
+              ,1000)               
+
+
+
+      nextId = (target) ->
+        if target == lastItem then target else target += 1
+        target
+      prevId =(target) ->
+        if parseInt(target) == 0 then target  else target -= 1
+        target        
+
+      $('.next').click () ->
+        if disable == false  
+          target = $('.coffee-bl.active').attr('id')
+          target = parseInt(target)
+          prev = target
+          target = nextId(target)
+          sliderResponse(target, prev, 'Right')
+
+
+      $('.last').click () ->
+        if disable == false  
+          target = $('.coffee-bl.active').attr('id')
+          target = parseInt(target)
+          prev = target
+          target = prevId(target)
+          sliderResponse(target, prev, 'Left')  
+
+      $(".coffee-slick").slick(
+        infinite: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true
+      )
     return
 ]

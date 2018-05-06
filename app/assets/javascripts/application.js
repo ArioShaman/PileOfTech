@@ -7,12 +7,14 @@
 = require oxymoron/ng-notify
 = require oxymoron/angular-animate
 = require oxymoron
-= require_self
-= require_tree ./controllers
-= require angular-scroll
-= require angular-translate
 = require jquery3
 = require jquery_ujs
+= require slick
+= require_self
+= require_tree ./controllers
+= require angular-slick-carousel
+= require angular-scroll
+= require angular-translate
 = require script
 = require translate
 = require ngstorage
@@ -21,6 +23,7 @@
 = require_tree ./configs
 = require_tree ./directives
 */
+
 var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate', 'ngStorage', 'ngSanitize']);
 
 app.config(['$stateProvider', function ($stateProvider) {

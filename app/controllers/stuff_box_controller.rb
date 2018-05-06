@@ -5,5 +5,7 @@ class StuffBoxController < ApplicationController
   def town
   end
 
+  def coffee
+  end
 
 end
