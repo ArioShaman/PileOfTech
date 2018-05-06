@@ -165,6 +165,7 @@ app.controller 'StuffBoxCtrl', [
         ,700)              
 
       Right = (target)->
+        leftTransf = parseInt($('.slide-container').css("transform").split(',')[4])
         left = $('.slide-container').offset()['left']
         if width > 768
           delta = 450
@@ -176,6 +177,14 @@ app.controller 'StuffBoxCtrl', [
           if width >= 370
             delta = 314
         $('.slide-container').animate({left: left-delta}, 1000)
+
+        # In future TouchSlider
+        # $({x: leftTransf}).animate({x: -350}, {
+        #     duration: 500,
+        #     step: (val) ->
+        #         $('.slide-container').css("transform", `translateX(${val}px)`); 
+            
+        # })
         $('.coffee-bl#'+target).addClass('active')        
  
 
@@ -191,7 +200,38 @@ app.controller 'StuffBoxCtrl', [
         $('.slide-container').animate({left: left+delta}, 1000)
         $('.coffee-bl#'+target).addClass('active')        
 
+      curX = null
+      fixLeft = null
 
+      # In future TouchSlider
+      # handleTouchStart = (e) ->
+      #   if (e.touches.length != 1)
+      #     return                                  
+      #   curX = e.touches[0].clientX  
+      #   fixLeft = $('.slide-container').offset()['left']                                  
+
+
+      # handleTouchMove = (e) ->                                  
+      #   if ( !curX )
+      #     return
+
+      #   moveX = e.touches[0].clientX
+      #   delta = curX - moveX
+      #   if delta > 0
+      #     console.log 'right'           
+      #     # setTimeout( () ->
+      #     #   $('.slide-container').css({"-webkit-transform": "translate(-"fixLeft+delta+"px, 0px)"})
+      #     # , 120)   
+      #   if delta < 0 
+      #     console.log 'swipeLeft'
+
+      # handleEnd = (e)->
+      #   $('.slide-container').css({left: fixLeft})
+
+      # if width < 768
+      #   document.addEventListener('touchstart', handleTouchStart, false)
+      #   document.addEventListener('touchmove', handleTouchMove, false)
+      #   document.addEventListener("touchend", handleEnd, false)
 
       sliderResponse = (target, prev, side) ->
         left = $('.slide-container').offset()['left']
@@ -251,14 +291,23 @@ app.controller 'StuffBoxCtrl', [
                   disable = false
                 ,1000)    
         else
+          #мобилка
           if side == 'Right'
-            if target <= last
+            if target < last
               disable = true  
               MoveDown(prev)  
               Right(target)
               setInterval(() ->
                 disable = false
-              ,1000)                              
+              ,1000)
+            if prev == last - 1
+              disable = true
+              MoveDown(prev) 
+              # $('.coffee-bl#'+target).addClass('active')
+              Right(target)
+              setInterval(() ->
+                disable = false
+              ,1000)                                             
           else
             if prev > first
               disable = true 
@@ -294,5 +343,12 @@ app.controller 'StuffBoxCtrl', [
           target = prevId(target)
           sliderResponse(target, prev, 'Left')  
 
+      $(".coffee-slick").slick(
+        infinite: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true
+      )
     return
 ]
