@@ -160,6 +160,7 @@ app.controller 'StuffBoxCtrl', [
       MoveDown = (prev)->
         slides.removeClass('active') 
         $('.coffee-bl#'+prev).addClass('move-down')
+        
         setInterval(() ->
           $('.coffee-bl#'+prev).removeClass('move-down')
         ,700)              
@@ -168,7 +169,7 @@ app.controller 'StuffBoxCtrl', [
         leftTransf = parseInt($('.slide-container').css("transform").split(',')[4])
         left = $('.slide-container').offset()['left']
         if width > 768
-          delta = 450
+          delta = 430
         else
           if width < 360
             delta = 290
