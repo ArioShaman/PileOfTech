@@ -4,6 +4,18 @@
       .gallery-cont
         .gallery-el
           .cover
+            =image_tag("tw.jpg")
+          .info-bl
+            .title TravelWorld
+            .desc-bl at="" Статус:  &nbsp;&nbsp;&nbsp; Готово
+            .desc-bl 
+              p at="" Описание: 
+              p at="" Шаблон лендинга для турфирмы, которая занимается необычными видами туризма. Для создания этого проекта применились современные parallax технологии, именно поэтому на некоторых мобильных браузерах на старых движках может некоректно отображаться сайт. Но это была умышленная жертва ради красивого эффекта. Если вы хотите запечатлить все прелести лендинга на мобильном устройстве, рекомендуем вам скачать последние версии следующих браузеров: UCBrowser, Chrome, Opera, Mozilla Firefox.
+
+            a.but href="http://g9882563.beget.tech/" target="blank" ПЕРЕЙТИ
+
+        .gallery-el
+          .cover
             =image_tag("mnt.png")
           .info-bl
             .title MidNightTown
@@ -43,13 +55,17 @@
       .dots
         .dot.visible
           .back
+            .text TravelWorld
+          =image_tag("tw.jpg")  
+        .dot.visible
+          .back
             .text MidNightTown
           =image_tag("mnt-small.png")      
-        .dot
+        .dot.visible
           .back
             .text MART
           =image_tag("mart-small.png")
-        .dot.visible
+        .dot
           .back
             .text MAD          
           =image_tag("music.jpg")
