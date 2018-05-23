@@ -2,6 +2,20 @@
   .container
     .gallery    
       .gallery-cont
+
+        .gallery-el
+          .cover
+            =image_tag("food.png")
+          .info-bl
+            .title Food
+            .desc-bl at="" Статус:  &nbsp;&nbsp;&nbsp; Готово
+            .desc-bl 
+              p at="" Описание: 
+              p at="" Наша команда любит вкусно поесть, именно поэтому мы посвятили целый сайт с интересными историями появления бургеров и т.д.
+
+            a.but href="http://foodtempate.g9882563.beget.tech/ " target="blank" ПЕРЕЙТИ
+
+
         .gallery-el
           .cover
             =image_tag("tw.jpg")
@@ -10,7 +24,7 @@
             .desc-bl at="" Статус:  &nbsp;&nbsp;&nbsp; Готово
             .desc-bl 
               p at="" Описание: 
-              p at="" Шаблон лендинга для турфирмы, которая занимается необычными видами туризма. Для создания этого проекта применились современные parallax технологии, именно поэтому на некоторых мобильных браузерах на старых движках может некоректно отображаться сайт. Но это была умышленная жертва ради красивого эффекта. Если вы хотите запечатлить все прелести лендинга на мобильном устройстве, рекомендуем вам скачать последние версии следующих браузеров: UCBrowser, Chrome, Opera, Mozilla Firefox.
+              p at="" Шаблон лендинга для турфирмы, которая занимается необычными видами туризма. Для создания этого проекта применились современные parallax технологии, именно поэтому на некоторых мобильных браузерах на старых движках может некоректно отображаться сайт. Но это была умышленная жертва ради красивого эффекта. На мобильных браузерах мы рекомендуем вам скачать последние версии одного из следующих браузеров: UCBrowser, Chrome, Opera, Mozilla Firefox.
 
             a.but href="http://g9882563.beget.tech/" target="blank" ПЕРЕЙТИ
 
@@ -56,12 +70,16 @@
         .dot.visible
           .back
             .text TravelWorld
+          =image_tag("food-sm.png")        
+        .dot.visible
+          .back
+            .text TravelWorld
           =image_tag("tw.jpg")  
         .dot.visible
           .back
             .text MidNightTown
           =image_tag("mnt-small.png")      
-        .dot.visible
+        .dot
           .back
             .text MART
           =image_tag("mart-small.png")
