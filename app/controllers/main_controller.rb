@@ -10,6 +10,14 @@ class MainController < ApplicationController
     render :gallery
   end
 
+  def design
+    render :design
+  end
+
+  def sites
+    render :sites
+  end
+
   def contacts
     render :contacts
   end

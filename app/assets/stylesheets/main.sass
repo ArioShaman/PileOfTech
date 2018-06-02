@@ -654,409 +654,48 @@ $desctop: 1300px
 
 
 
+    .projects
+      position: relative
+      height: 100%
+      display: flex
+      flex-direction: row
+      flex-wrap: no-wrap
+      .side-panel
+        height: 100%
+        width: 250px 
+        background-color: $bgrey          
     .gallery
       position: relative
       $cover-h: 100%
       height: $cover-h 
-      align-items: stretch                     
-      .gallery-cont   
-        width: 100%
-        position: absolute
-        display: flex
-        flex-direction: row
-        flex-wrap: nowrap
-        height: $cover-h     
-        .prev
-          left: -100%
-        .next
-          left: 100%
-        .gallery-el
-          opacity: 0
-          position: absolute
-          display: flex
-          flex-direction: row
-          flex-wrap: nowrap
-          height: 100%
-          min-width: 100%
-          height: $cover-h
-          @include tablet
-            flex-direction: column
-            .cover
-              min-width: 100% !important
-              img
-                display: none
-            &:nth-child(1)
-              .cover
-                background-image: url("food.png") !important
-                background-size: cover
-                background-position: center 
-            &:nth-child(2)
-              .cover
-                background-image: url("tw.jpg") !important
-                background-size: cover
-                background-position: center 
-            &:nth-child(3)
-              .cover
-                background-image: url("mnt.png") !important
-                background-size: cover
-                background-position: center          
-            &:nth-child(4)
-              .cover
-                background-image: url("mart.png")
-                background-size: cover
-                background-position: center
-            &:nth-child(5)
-              .cover
-                background-image: url("MAD.png")
-                background-size: cover           
-          @include mobile
-            flex-direction: column
-            &:nth-child(1)
-              .cover
-                min-width: 100% !important
-                background-image: url("food.png")
-                background-size: contain
-                background-position: -5%
-                background-repeat: no-repeat
-            &:nth-child(2)
-              .cover
-                min-width: 100% !important
-                background-image: url("tw.jpg")
-                background-size: contain
-                background-position: 0%
-                background-repeat: no-repeat
-            &:nth-child(3)
-              .cover
-                min-width: 100% !important
-                background-image: url("mnt.png")
-                background-size: contain
-                background-position: 10%
-                background-repeat: no-repeat
-            &:nth-child(4)
-              .cover
-                min-width: 100% !important
-                background-image: url("mart.png")
-                background-size: contain
-                background-position: 10%
-                background-repeat: no-repeat
-            &:nth-child(5)
-              .cover
-                min-width: 100% !important
-                background-image: url("MAD.png")
-                background-size: contain
-                background-repeat: no-repeat           
-          @include smobile
-            flex-direction: column
-            &:nth-child(1)
-              .cover
-                background-image: url("food.png")
-                background-size: cover
-                background-position: center            
-            &:nth-child(2)
-              .cover
-                background-image: url("tw.jpg")
-                background-size: cover
-                background-position: center            
-            &:nth-child(3)
-              .cover
-                background-image: url("mnt.png")
-                background-size: cover
-                background-position: center
-            &:nth-child(4)
-              .cover
-                background-image: url("mart.png")
-                background-size: cover
-                background-position: center
-            &:nth-child(5)
-              .cover
-                background-image: url("MAD.png")
-                background-size: cover                           
-          .cover
-            position: relative
-            width: 100% 
-            background-color: grey
-            height: 100%
-            position: relative             
-            .note
-              top: 0
-              position: absolute
-              height: 50px
-              width: 200px
-              background-color: $yellow
-              margin-top: 250px
-              text-align: center
-              color: $bgrey
-              padding-top: 20px
-              font-size: 20px
-              font-family: 'super-molot' 
-            img
-              width: 100%
-              height: $cover-h
-              @include mobile
-                display: none
-              @include smobile 
-                display: none             
-          .info-bl
-            position: relative
-            min-width: 600px         
-            height: 100%
-            background-color: $bgrey
-            border-left: 4px solid $yellow
-            @include mobile
-              height: 100% 
-              border: none 
-              width: 100%
-            @include smobile
-              height: 100% 
-              border: none 
-              width: 100%                      
-            .title
-              font-family: 'm-fred'
-              color: $yellow
-              font-size: 55px
-              text-align: center
-              margin-top: 30px
-              display: block
-              @include mobile
-                display: none
-              @include smobile
-                display: none                                 
-            .desc-bl
-              color: white
-              height: auto
-              width: 92%
-              margin: 0px auto
-              margin-top: 20px
-              font-family: 'super-molot'  
-              @include tablet
-                width: 100% 
-                margin-top: 12px
-                margin-left: 60px 
-                font-size: 22px                                       
-              @include mobile
-                font-size: 10px
-                width: 350px
-                margin-top: 12px
-                margin-left: 18px
-              @include smobile
-                font-size: 10px !important
-                width: 300px
-                margin-top: 12px
-                margin-left: 18px                             
-              p:nth-child(2)
-                width: 450px
-                padding-left: 50px
-                @include tablet
-                  width: 90%
-                  padding-left: 10px                
-                @include mobile
-                  width: 80%
-                  padding-left: 10px
-                @include smobile
-                  width: 80%
-                  padding-left: 10px                  
-            .but
-              position: absolute
-              height: 40px
-              width: 250px
-              bottom: 40px
-              right: 20px
-              background-color: $yellow
-              text-align: center
-              padding-top: 17px
-              font-family: 'm-fred'
-              font-size: 25px
-              color: $bgrey
-              z-index: 200
-              transition: 0.3s
-              cursor: pointer
-              moz-user-select: none
-              user-select: none
-              apple-user-select: none
-              webkit-user-select: none
-              @include tablet
-                right: 50px
-              @include mobile
-                z-index: 900
-                height: 20px
-                width: 130px
-                font-size: 23px
-                top: -15px
-                right: 300px
-                padding-top: 8px
-                padding-bottom: 4px
-              @include smobile
-                height: 20px
-                width: 130px
-                font-size: 23px
-                top: -15px
-                right: 270px
-                padding-top: 8px
-                padding-bottom: 4px                                           
-              &:hover
-                transform: scale(1.1, 1.1)
-                box-shadow: 2px 2px 6px 2px black
-            .disable:hover
-              box-shadow: none
-              transform: none !important
-              background-color: $light
-        .hideSLide
-          animation: hide 0.4s   
-        .active 
-          opacity: 1
-          left: 0
-        .slideLeft
-          animation: slideLeft 0.8s 
-        .slideRight
-          animation: slideRight 0.8s             
-        .hide
-          display: none 
+      display: flex
+      flex-direction: row
+      flex-wrap: no-wrap                   
+      .gallery-section
+        width: 50%
+        height: 100%
+        background-color: grey
+        transition: 0.5s
+        background-image: url('web-site.jpg')
+        background-size: cover
+        background-position: center
+        &:hover
+          .title
+            transform: scale(1.1, 1.1) translateY(-50px)
 
-    .footer-slider
-      height: 180px
-      width: 100%
-      background-color: #404040
-      position: relative
-      @include mobile 
-        height: 140px
-      @include smobile 
-        height: 110px        
-      .dots
-        height: 160px
-        width: 90%
-        margin: 0px auto
-        margin-top: 20px
-        position: relative
-        display: flex
-        wrap: nowrap
-        justify-content: space-around
-        @include mobile
-          margin-top: 10px
-          height: 100px
-        @include smobile
-          margin-top: 10px
-          height: 80px 
-        .visible
-          display: block !important        
-        .dot
-          display: none
-          z-index: 1000
-          height: 140px
-          width: 250px
-          @include mobile
-            height: 90px
-            width: 130px
-          @include smobile
-            height: 80px
-            width: 110px                      
-          img
-            top: 0
-            position: absolute
-            z-index: 90
-            margin: 5px
-            width: 240px
-            height: 130px
-            @include mobile
-              height: 80px
-              width: 120px
-            @include smobile
-              height: 60px
-              width: 110px                    
-          .back
-            top: 0
-            z-index: 100
-            position: relative
-            height: 140px
-            width: 250px            
-            cursor: pointer
-            transition: 0.6s
-            background: url("borders.svg") no-repeat
-            @include mobile
-              height: 90px
-              width: 130px
-            @include smobile
-              height: 70px
-              width: 120px                            
-            .text
-              opacity: 0 
-              text-align: center
-              color: white
-              font-family: 'm-fred'
-              font-size: 30px
-              padding-top: 55px
-              @include mobile
-                font-size: 24px
-                padding-top: 35px
-              @include smobile
-                font-size: 24px
-                padding-top: 25px                
-            &:hover, &:focus
-              background-color: rgba(0, 0, 0, 0.9)
-              transform: scale(1.1, 1.1)
-              @include mobile
-                transform: scale(1.1, 1.15)
-              @include smobile
-                transform: scale(1.05, 1.10)  
-              .text
-                opacity: 1                
-        .active
-          .back
-            background-color: rgba(0, 0, 0, 0.9)
-            transform: scale(1.1, 1.1)   
-            .text
-              opacity: 1       
-      .arrow-cont
-        top: 0px
-        z-index: 100
-        $arrow-h: 60px
-        position: absolute
-        height: $arrow-h
-        width: 100%
-        margin-top: 65px
-        @include mobile
-          height: 40px
-          margin-top: 30px
-        @include smobile
-          height: 40px
-          margin-top: 30px          
-        .arrow
-          position: absolute
-          height: $arrow-h
-          width: 30px
-          background-color: $yellow
+        .back
+          background-color: rgba(0,0,0,0.4)
+          width: 100%
+          height: 100%
+          position: relative
+        .title
           transition: 0.5s
-          @include mobile
-            height: 45px
-            width: 25px
-          @include smobile
-            height: 45px
-            width: 25px            
-          img
-            margin-top: 5px
-            margin-left: 3px
-            height: 50px
-            width: 24px 
-            @include mobile
-              margin-top: 4px
-              margin-left: 2px
-              height: 37px
-              width: 20px 
-            @include smobile
-              margin-top: 4px
-              margin-left: 2px
-              height: 37px
-              width: 20px               
-          &:hover
-            cursor: pointer 
-            background-color: $grey             
-        .last
-          left: 0
-          border-radius: 0px 5px 5px 0px     
-        .next
-          right: 0
-          border-radius: 5px 0px 0px 5px
-          img
-            transform: rotate(180deg)
+          font-size: 60px
+          font-family: 'super-molot'
+          color: $yellow
+          text-align: center
+          padding-top: calc((100% - 120px)/2)
+
 
     .footer-nav
       $foot-h: 100px

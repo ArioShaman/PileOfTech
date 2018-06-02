@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       get :contacts
     end
   end
+  get '/gallery/sites', to: 'main#sites'
+  get '/gallery/design', to: 'main#design'
 
   resources :stuff_box, only: [:index] do
     collection do
@@ -19,5 +21,9 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :profile, only: [:index]
+  resources :profiles, only: [:index] do
+    # collection do
+    #   get :project
+    # end
+  end
 end

@@ -1,3 +1,77 @@
 // Place all the styles related to the profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass here: http://sass-lang.com/
+
+$light: #c3c3c3
+$bgrey: #2e2e2e
+$yellow: #ffd631
+$grey: #a7a7a7
+$desctop: 1300px
+
+@mixin desctop
+  @media (min-width: $desctop)
+    @content
+
+@mixin smobile
+  @media (max-width: 320px)
+    @content
+
+@mixin mobile
+  @media (min-width: 321px) and (max-width: 567px)
+    @content
+
+@mixin tablet
+  @media (min-width: 568px) and (max-width: 1025px)
+    @content
+
+
+.profile
+  height: 100%
+  width: 100%
+  display: flex
+  flex-direction: row
+  flex-wrap: no-wrap
+  .panel
+    min-width: 250px
+    max-width: 250px
+    width: 250px
+    background-color: $bgrey
+    .links
+      width: 100%
+      height: auto
+      .active
+        background-color: rgba(0,0,0,0.5)
+      .link-el
+        height: 45px
+        width: 100%
+        display: flex
+        flex-wrap: no-wrap
+        cursor: pointer
+        transition: 0.5s
+        &:hover
+          background-color: rgba(0,0,0,0.5)
+        .icon
+          margin-left: 10px
+          margin-top: 5px
+          height: 40px
+          width: 40px
+          color: $yellow
+          .fa
+            font-size: 1.3em
+            padding-top: 8px
+            padding-left: 10px
+        span
+          padding-left: 10px
+          padding-top: 15px
+          font-size: 1em
+          font-family: 'super-molot'
+          color: $yellow
+  .place
+    height: 100%
+    width: 100%
+    .gallery-profile
+      height: 100%
+      width: 100%
+    .coming-profile    
+      height: 100%
+      width: 100%

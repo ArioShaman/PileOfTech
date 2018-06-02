@@ -1,0 +1,15 @@
+.profile
+  .panel
+    .links
+      .link-el.active#gallery
+        .icon
+          i.fa.fa-picture-o
+        span Gallery
+      .link-el#coming
+        .icon
+          i.fa.fa-paper-plane 
+        span Coming soon
+  .place
+    .gallery-profile ng-show="gallery"
+      div ng-repeat="project in projects"
+        p 1

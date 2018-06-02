@@ -6,18 +6,32 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times do
-  FactoryGirl.create(:country)
-end
+file = File.open('/home/arioshaman/project/PileOfTech/app/assets/images/food-sm.png')
 
-5.times do
-  FactoryGirl.create(:author)
-end
+Project.create(
+  title: 'Test Test',
+  description: 'adadasd',
+  kind: 'website',
+  link: 'http://pileof.tech',
+  small_cover: file
+)
 
-10.times do
-  FactoryGirl.create(:track)
-end
+Image.create(
+  image: file,
+  project_id: 1
+)
 
-20.times do
-  FactoryGirl.create(:country_play_list)
-end
+Image.create(
+  image: file,
+  project_id: 1
+)
+
+Image.create(
+  image: file,
+  project_id: 1
+)
+
+Image.create(
+  image: file,
+  project_id: 1
+)

@@ -7,7 +7,7 @@ app.controller 'UsersSessionsCtrl', [
     $scope.commit = ->
 
       $http.post('/users/sign_in.json',  ctrl.data).then((res)->  
-        $location.url Routes.profile_index_path()
+        $location.url Routes.profiles_path()
       ).catch ()->
     
     return

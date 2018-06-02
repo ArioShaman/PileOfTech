@@ -4,7 +4,7 @@ class Users::SessionsController < Devise::SessionsController
   
   def new
     if user_signed_in?
-      redirect_to profile_index_path
+      redirect_to profiles_path
     end
   end
 
