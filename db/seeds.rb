@@ -10,28 +10,30 @@ file = File.open('/home/arioshaman/project/PileOfTech/app/assets/images/food-sm.
 
 Project.create(
   title: 'Test Test',
-  description: 'adadasd',
-  kind: 'website',
+  small_cover: file,
+  rus_description: 'Hусский текст',
+  eng_description: 'adadasd',
+  # kind: 'website',
+  kind: 'design',
   link: 'http://pileof.tech',
-  small_cover: file
 )
 
 Image.create(
   image: file,
-  project_id: 1
+  project_id: 4
 )
 
 Image.create(
   image: file,
-  project_id: 1
+  project_id: 4
 )
 
 Image.create(
   image: file,
-  project_id: 1
+  project_id: 4
 )
 
 Image.create(
   image: file,
-  project_id: 1
+  project_id: 4
 )

@@ -11,11 +11,13 @@ class MainController < ApplicationController
   end
 
   def design
-    render :design
+    @projects = Project.where(kind: 'design')
+    @projects
   end
 
   def sites
-    render :sites
+    @projects = Project.where(kind: 'website')
+    @projects
   end
 
   def contacts

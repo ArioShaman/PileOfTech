@@ -1,6 +1,6 @@
 app.controller 'MainCtrl', [
-  '$scope', '$document', 'action','$translate',
-  ($scope, $document, action, $translate) -> 
+  '$scope', '$document', 'action','$translate', '$http', '$timeout',
+  ($scope, $document, action, $translate, $http, $timeout) -> 
     $scope.lang = 'ru'
     $document.scrollTo(0, 0)
     ctrl = this
@@ -111,6 +111,75 @@ app.controller 'MainCtrl', [
 
     action 'gallery', () ->
       $scope.name = 'Dan'
+
+    $scope.projects = []
+    $scope.activeProject = null
+    $scope.dataLoaded = false
+
+    $scope.carSettings = {
+      dots: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      asNavFor: '.small-slider',
+    }
+
+    $scope.smCarSettings = {
+      asNavFor: '.slider',
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      dots: false,
+      arrows: false,
+      focusOnSelect: true,
+      initOnload:true        
+    }
+
+    $scope.activate = (project)->
+      $('.slider').addClass('disable')
+      $('.small-slider').addClass('disable')
+      $('.preloader').addClass('active')
+      $('.slider').slick('unslick')
+      $('.small-slider').slick('unslick')
+      $scope.activeProject = project
+      $timeout(()->
+        $('.slider').slick($scope.carSettings)
+        $('.small-slider').slick($scope.smCarSettings)
+      , 10)
+      $timeout(()->
+        $('.preloader').removeClass('active')
+        $('.slider').removeClass('disable')
+        $('.small-slider').removeClass('disable')
+      , 1200)  
+
+    action 'sites', () ->    
+      $http(
+          method : "GET",
+          url : "/gallery/sites.json"
+      ).then((response) ->
+          $scope.projects = response.data
+          $scope.activate($scope.projects[0])  
+          $scope.activeProject = $scope.projects[0] 
+          $timeout(()->         
+            $scope.dataLoaded = true
+          , 1200)
+
+          console.log $scope.projects
+      )
+
+    action 'design', () ->
+      $http(
+          method : "GET",
+          url : "/gallery/design.json"
+      ).then((response) ->
+          $scope.projects = response.data
+          $scope.activeProject = $scope.projects[0]   
+          $timeout(()->
+            $scope.dataLoaded = true
+          )
+
+          console.log $scope.projects
+      )
 
 
     return

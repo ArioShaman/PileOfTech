@@ -47,7 +47,7 @@ source 'https://rails-assets.org' do
   # gem 'rails-assets-angular-truncate-2',  '~> 0.4'
   # gem 'rails-assets-angularjs-toaster',   '~> 2.1'
   # gem 'rails-assets-ngDialog',            '~> 1.3'
-  # gem 'rails-assets-ng-file-upload',      '~> 12.2'  
+  gem 'rails-assets-ng-file-upload',      '~> 12.2'
 end
 
 group :development, :test do
@@ -82,6 +82,7 @@ gem 'angularjs-rails'
 gem 'oxymoron'
 gem 'jquery-rails'
 gem 'carrierwave', '~> 1.0'
+gem 'mini_magick', '~> 4.3'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'devise'
 gem 'therubyracer'

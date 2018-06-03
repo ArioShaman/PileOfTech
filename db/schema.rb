@@ -37,7 +37,8 @@ ActiveRecord::Schema.define(version: 20180602105948) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title", null: false
-    t.string "description", null: false
+    t.string "rus_description", null: false
+    t.string "eng_description"
     t.boolean "status", default: true, null: false
     t.string "kind"
     t.string "link"

@@ -1,0 +1,43 @@
+.content
+  .container
+    .projects
+      .side-panel
+        .list
+          div ng-repeat="project in projects"
+            div ng-show="project == activeProject"
+              .list-el.active ng-click="activate(project)"
+                .cover
+                  img ng-if="project.small_cover.url" ng-src="{{project.small_cover.url}}"                  
+                .name ng-bind="project.title"
+
+            div ng-show="project != activeProject"
+              .list-el ng-click="activate(project)"
+                .cover
+                  img ng-if="project.small_cover.url" ng-src="{{project.small_cover.url}}"                  
+                .name ng-bind="project.title"
+
+      .project-content
+        .media-content  
+          .preloader  
+          .sliders 
+            slick.slider arrows="false" ng-if="dataLoaded" init-onload="false" data="dataLoaded" settings="carSettings"
+              div.slider-el ng-repeat="image in activeProject.images"
+                img  ng-src="{{image.image.url}}"         
+      
+            slick.small-slider arrows="false" ng-if="dataLoaded" init-onload="false" data="dataLoaded" settings="smCarSettings"
+              div.sm-sl-el ng-repeat="image in activeProject.images"
+                img  ng-src="{{image.image.url}}"         
+
+          a  target="blank" href="{{activeProject.link}}" ng-show="activeProject.link != ''"
+            .route ng-bind="'goto' | translate"
+
+          a ng-show="activeProject.link == '' "
+            .route.disable-route  ng-bind="'absent' | translate"
+
+        .text-content
+          h1 ng-bind="activeProject.title"
+
+          p ng-show="$root.lang == 'ru'" 
+            | {{activeProject.rus_description}}
+          p ng-show="$root.lang == 'en'" 
+            | {{activeProject.eng_description}}            

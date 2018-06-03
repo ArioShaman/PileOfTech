@@ -13,6 +13,7 @@ var translationsEN = {
   'goto': 'Go to',
   'done': 'Done',
   'inDev': 'In development',  
+  'absent' : 'Link is absent',
   'martDesc': 
       'Landing-page template for a branded online clothing store.'+
       ' In addition to the well-chosen corporate identity, the site is adapted to'+
@@ -34,6 +35,7 @@ var translationsRU = {
   'status': 'Статус:',
   'goto': 'ПЕРЕЙТИ',
   'done': 'Готово',
+  'absent':'Ссылка отсутствует',
   'inDev': 'В разработке',
   'martDesc': 
       'Шаблон Landing-page для брендового интернет-магазина одежды.'+

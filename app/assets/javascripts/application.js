@@ -9,6 +9,7 @@
 = require oxymoron
 = require jquery3
 = require jquery_ujs
+= require ng-file-upload
 = require slick
 = require_self
 = require_tree ./controllers
@@ -16,15 +17,17 @@
 = require angular-scroll
 = require angular-translate
 = require script
+= require angular-slick-carousel 
 = require translate
 = require ngstorage
 = require angular-sanitize
 = require translate
+
 = require_tree ./configs
 = require_tree ./directives
 */
 
-var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate', 'ngStorage', 'ngSanitize']);
+var app = angular.module('app', ['ui.router','oxymoron', 'ngAnimate', 'duScroll', 'pascalprecht.translate', 'ngStorage', 'ngSanitize', 'ngFileUpload', 'slickCarousel']);
 
 app.config(['$stateProvider', function ($stateProvider) {
   $stateProvider.rails()

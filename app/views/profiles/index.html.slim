@@ -11,5 +11,20 @@
         span Coming soon
   .place
     .gallery-profile ng-show="gallery"
-      div ng-repeat="project in projects"
-        p 1
+      .side-panel
+        .list
+          div ng-repeat="project in projects"
+            div ng-show="project == activeProject"
+              .list-el.active ng-click="activate(project)"
+                .cover
+                  img ng-if="project.small_cover.url" ng-src="{{project.small_cover.url}}"                  
+                .name ng-bind="project.title"
+
+            div ng-show="project != activeProject"
+              .list-el ng-click="activate(project)"
+                .cover
+                  img ng-if="project.small_cover.url" ng-src="{{project.small_cover.url}}"                  
+                .name ng-bind="project.title"   
+      .project-show  
+      / div ng-repeat="project in projects"
+      /   p 1

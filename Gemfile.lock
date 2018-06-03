@@ -138,6 +138,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.8.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
@@ -195,6 +196,8 @@ GEM
     rails-assets-angular-translate (2.17.0)
       rails-assets-angular (>= 1.2.26, < 1.7)
     rails-assets-jquery (3.3.1)
+    rails-assets-ng-file-upload (12.2.13)
+      rails-assets-angular (> 1.2.0)
     rails-assets-ngstorage (0.3.11)
       rails-assets-angular (>= 1.0.8)
     rails-assets-slick-carousel (1.6.0)
@@ -323,6 +326,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
+  mini_magick (~> 4.3)
   oxymoron
   pg (~> 0.18)
   puma (~> 3.7)
@@ -332,6 +336,7 @@ DEPENDENCIES
   rails-assets-angular-scroll!
   rails-assets-angular-slick-carousel!
   rails-assets-angular-translate!
+  rails-assets-ng-file-upload (~> 12.2)!
   rails-assets-ngstorage!
   rails-assets-underscore (~> 1.8)!
   rails-i18n (~> 5.0.0)

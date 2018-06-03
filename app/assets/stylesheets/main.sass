@@ -663,7 +663,139 @@ $desctop: 1300px
       .side-panel
         height: 100%
         width: 250px 
-        background-color: $bgrey          
+        min-width: 250px
+        max-width: 250px
+        background-color: darken(#2e2e2e, 18.04)
+        .list
+          margin-top: 0px
+          .active
+            // background-color: rgba(0,0,0,0.5)
+            background-color: $bgrey
+          .list-el
+            height: 46px
+            width: 100%
+            display: flex
+            transition: 0.5s
+            cursor: pointer
+            margin-top: 0px
+            &:hover
+              // background-color: rgba(0,0,0,0.5)
+              background-color: $bgrey
+            .cover
+              height: 40px
+              width: 40px
+              margin-top: 3px
+              margin-left: 3px
+              background-color: grey
+              img 
+                height: 40px
+                width: 40px
+            .name
+              padding-top: 13px
+              font-size: 20px
+              padding-left: 20px
+              font-family: 'm-fred'
+              color: $yellow
+      .project-content
+        display: flex
+        flex-wrap: no-wrap
+        flex-direction: row
+        height: 100%
+        width: 100%
+        .media-content
+          height: 100%
+          min-width: 675px
+          max-width: 675px
+          width: 675px
+          transition: 0.5s
+          background-color: $bgrey
+          .disable 
+            .slider-el
+              opacity: 0 !important
+            .sm-sl-el
+              opacity: 0 !important
+          .active
+            display: block !important
+          .preloader
+            transition: 0.5s
+            display: none
+            position: absolute
+            width: 635px
+            height: 470px
+            z-index: 600
+            margin-top: 20px
+            margin-left: 20px
+            background-repeat: no-repeat
+            background-position: center
+            background-size: 230px 170px
+            background-image: url('logo-anim.gif')
+            background-color: $bgrey
+          .sliders
+            width: 635px
+            height: 470px
+            position: relative
+            margin-top: 20px
+            margin-left: 20px
+            .slider
+              width: 635px
+              height: 350px
+              z-index: 500
+              clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
+              .slider-el
+                position: relative
+                height: 100%
+                width: 225px
+                img 
+                  height: 100%
+                  width: 100%
+            .small-slider
+              width: 635px
+              height: 120px          
+              clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
+              .sm-sl-el
+                width: 220px
+                height: 120px
+                img 
+                  height: 100%
+                  width: 100%  
+          .disable-route
+            cursor: pointer
+            background-color: $grey !important
+            border: 0px solid $yellow !important              
+            &:hover
+              color: $bgrey !important
+          .route
+            height: 50px
+            width: 250px
+            background-color: $yellow            
+            margin-top: 50px
+            margin-left: calc((635px - 200px)/2)
+            color: $bgrey
+            font-size: 25px
+            font-family: 'm-fred'
+            text-decoration: uppercase
+            text-align: center
+            padding-top: 15px
+            box-sizing: border-box
+            transition: 0.7s
+            border: 2px solid $yellow            
+            &:hover
+              background-color: $bgrey
+              color: $yellow
+
+        .text-content
+          height: 100%
+          width: 50%
+          h1 
+            padding-left: 50px
+            padding-right: 50px
+            font-family: 'm-fred'
+          p
+            width: 80%
+            padding-left: 50px 
+            font-family: 'super-molot'
+            line-height: 1.5em
+
     .gallery
       position: relative
       $cover-h: 100%
