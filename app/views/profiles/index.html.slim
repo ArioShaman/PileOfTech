@@ -18,13 +18,41 @@
               .list-el.active ng-click="activate(project)"
                 .cover
                   img ng-if="project.small_cover.url" ng-src="{{project.small_cover.url}}"                  
-                .name ng-bind="project.title"
+                .name 
+                  |{{project.title | limitTo:16}} {{project.title.length > 16 ? '...' : ''}}
 
             div ng-show="project != activeProject"
               .list-el ng-click="activate(project)"
                 .cover
                   img ng-if="project.small_cover.url" ng-src="{{project.small_cover.url}}"                  
-                .name ng-bind="project.title"   
-      .project-show  
-      / div ng-repeat="project in projects"
-      /   p 1
+                .name
+                  |{{project.title | limitTo:16}}{{project.title.length > 16 ? '...' : ''}}
+        .add ADD 
+      .project-show
+        input.tit-input ng-model="activeProject.title" type='text' name="title"
+        .images ТУТ БУДЕТ СПИСОК ИЗОБРАЖЕНИЙ
+        .form
+          .group-el
+            .label Link:
+            input.link ng-model="activeProject.link" type='text' name="link"
+          .areas
+            .area
+              .label Russian description
+              textarea ng-model="activeProject.rus_description" type='text' name="rus_description" 
+            .area
+              .label English description
+              textarea ng-model="activeProject.eng_description" type='text' name="eng_description" 
+          .groups
+            .group
+              .group-el
+                .label Change kind of project:
+                select name="singleSelect" ng-model="activeProgect.kind"
+                  option value="" Plese select
+                  option value="website" Website
+                  option value="design"  Design   
+            .group
+              .group-el
+                .label Confirm changes:    
+                .confirm Confirm 
+
+               
